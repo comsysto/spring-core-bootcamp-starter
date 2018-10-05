@@ -1,4 +1,9 @@
-.gradle/
+# Compiled class files
 build/
+
+# Gradle cache
+.gradle/
+
+# IntelliJ IDEA project files
 .idea/
 *.iml
