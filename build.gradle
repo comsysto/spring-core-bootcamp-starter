@@ -24,19 +24,6 @@ repositories {
 dependencies {
 
     /*
-     * JUnit test framework
-     */
-    final junitVersion = '5.3.1'
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
-    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
-
-    /*
-     * Logback behind SLF4J for logging
-     */
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-
-    /*
      * Spring MVC for REST controller
      */
     final springVersion = '5.0.9.RELEASE'
@@ -60,6 +47,29 @@ dependencies {
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
+
+    /*
+     * Logback behind SLF4J for logging
+     */
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    /*
+     * JUnit test framework
+     */
+    final junitVersion = '5.3.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+
+    /*
+     * Library with matchers to be used as part of test cases
+     */
+    testCompile group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
+
+    /*
+     * JsonPath used to evaluate values in JSON responses as part of test cases
+     */
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: '2.4.0'
 }
 
 test {
