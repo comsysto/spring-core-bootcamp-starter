@@ -4,6 +4,11 @@ plugins {
 }
 
 /*
+ * Set Java source code version.
+ */
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+/*
  * Name of the main class of the application
  */
 mainClassName = "de.comsystoreply.spring.core.bootcamp.Application"
