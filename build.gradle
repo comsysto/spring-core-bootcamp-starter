@@ -20,3 +20,48 @@ repositories {
     jcenter()
     mavenCentral()
 }
+
+dependencies {
+
+    /*
+     * JUnit test framework
+     */
+    final junitVersion = '5.3.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+
+    /*
+     * Logback behind SLF4J for logging
+     */
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+
+    /*
+     * Spring MVC for REST controller
+     */
+    final springVersion = '5.0.9.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
+
+    /*
+     * Spring testing support
+     */
+    testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
+
+    /*
+     * Embedded Tomcat web server to run the application on.
+     */
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.12'
+
+    /*
+   * Jackson to serialize and deserialize JSON
+   */
+    final jacksonVersion = '2.9.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
+}
+
+test {
+    useJUnitPlatform()
+}
