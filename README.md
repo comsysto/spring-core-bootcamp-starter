@@ -1,5 +1,7 @@
 # Spring Core - Bootcamp - Starter
 
+[![Build Status](https://travis-ci.org/comsysto/spring-core-bootcamp-starter.svg?branch=master)](https://travis-ci.org/comsysto/spring-core-bootcamp-starter)
+
 This project serves as a basic start point for our Spring core training.
 It provides a basic setup containing an embedded Tomcat and a basic REST controller to check if it works.
 So with this participants should be able to start hacking right away.
