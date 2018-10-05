@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.file.Files;
 
-
 /**
  * Main class of the application.
  */
@@ -30,7 +29,7 @@ public class Application {
      * @throws Exception any kind of exception will just be thrown up resulting in the application crashing
      */
     public static void main(String... args) throws Exception {
-        LOGGER.info("Application is running.");
+        LOGGER.info("Application is starting.");
 
         /*
          * Configure embedded Tomcat instance.
