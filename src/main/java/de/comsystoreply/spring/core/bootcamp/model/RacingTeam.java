@@ -4,6 +4,10 @@ public class RacingTeam {
 
     String name;
 
+    public RacingTeam(){
+
+    }
+
     public RacingTeam(String name) {
         this.name = name;
     }

@@ -37,7 +37,7 @@ class RacingServiceTest {
 
         final RacingTeam banana = service.createRacingTeam("Banana");
 
-        assertThrows(IllegalArgumentException.class, () -> service.createRacingTeam("Banana"));
+        assertThrows(TeamAlreadyExistsException.class, () -> service.createRacingTeam("Banana"));
 
 
     }

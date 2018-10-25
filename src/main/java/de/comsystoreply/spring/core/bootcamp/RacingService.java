@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp;
 
 import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
 
+import javax.management.InstanceAlreadyExistsException;
 import java.util.*;
 
 public class RacingService implements Racing {
@@ -11,7 +12,7 @@ public class RacingService implements Racing {
     @Override
     public RacingTeam createRacingTeam(String name) {
         if (getRacingTeamByName(name).isPresent()) {
-            throw new IllegalArgumentException();
+            throw new TeamAlreadyExistsException();
         }
         RacingTeam racingTeam = new RacingTeam(name);
         racingTeams.put(name, racingTeam);

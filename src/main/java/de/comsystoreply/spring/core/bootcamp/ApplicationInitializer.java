@@ -36,6 +36,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
          */
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
         applicationContext.register(ApplicationInitializer.class);
+        applicationContext.register(Application.class);
         applicationContext.registerShutdownHook();
 
         /*
