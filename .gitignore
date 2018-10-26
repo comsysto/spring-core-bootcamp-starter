@@ -1,5 +1,6 @@
 # Compiled class files
 build/
+out/
 
 # Gradle cache
 .gradle/
