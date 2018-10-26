@@ -34,6 +34,10 @@ dependencies {
      */
     testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
 
+    // https://mvnrepository.com/artifact/org.mockito/mockito-core
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.0'
+
+
     /*
      * Embedded Tomcat web server to run the application on.
      */
@@ -47,6 +51,13 @@ dependencies {
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
+
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
+
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
+    runtime group: 'org.hibernate', name: 'hibernate-java8', version: '5.2.13.Final'
+
+    runtime group: 'com.h2database', name: 'h2', version: '1.4.196'
 
     /*
      * Logback behind SLF4J for logging

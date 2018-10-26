@@ -2,11 +2,10 @@ package de.comsystoreply.spring.core.bootcamp;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
-import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.services.Racing;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,22 +17,20 @@ import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.lang.model.type.ArrayType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
         loader = AnnotationConfigWebContextLoader.class,
-        classes = {Application.class})
+        classes = {ApplicationInitializer.class})
 @WebAppConfiguration
 public class RacingTeamControllerTest {
 

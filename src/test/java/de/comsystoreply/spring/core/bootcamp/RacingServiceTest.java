@@ -1,23 +1,30 @@
 package de.comsystoreply.spring.core.bootcamp;
 
-import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.data.RacingTeamRepository;
+import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.services.Racing;
+import de.comsystoreply.spring.core.bootcamp.services.RacingService;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RacingServiceTest {
 
     private Racing service;
 
+    @Mock
+    private RacingTeamRepository repository;
+
     @BeforeEach
     void setUp() {
-        service = new RacingService();
+        service = new RacingService(repository);
     }
 
     @AfterEach

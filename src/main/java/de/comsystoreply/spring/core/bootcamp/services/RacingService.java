@@ -1,13 +1,24 @@
-package de.comsystoreply.spring.core.bootcamp;
+package de.comsystoreply.spring.core.bootcamp.services;
 
-import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.TeamAlreadyExistsException;
+import de.comsystoreply.spring.core.bootcamp.data.RacingTeamRepository;
+import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.management.InstanceAlreadyExistsException;
 import java.util.*;
 
+@Service
 public class RacingService implements Racing {
 
     private Map<String, RacingTeam> racingTeams = new HashMap<>();
+
+    private final RacingTeamRepository repository;
+
+    @Autowired
+    public RacingService(RacingTeamRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public RacingTeam createRacingTeam(String name) {

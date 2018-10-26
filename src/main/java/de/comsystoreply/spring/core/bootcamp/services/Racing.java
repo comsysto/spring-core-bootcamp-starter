@@ -1,6 +1,6 @@
-package de.comsystoreply.spring.core.bootcamp;
+package de.comsystoreply.spring.core.bootcamp.services;
 
-import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,9 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import de.comsystoreply.spring.core.bootcamp.data.DataConfiguration;
 import de.comsystoreply.spring.core.bootcamp.health.HealthController;
+import de.comsystoreply.spring.core.bootcamp.services.ServiceConfiguration;
+import de.comsystoreply.spring.core.bootcamp.web.WebConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
@@ -9,7 +12,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
@@ -24,19 +26,21 @@ import javax.servlet.ServletRegistration;
 @Configuration
 @EnableWebMvc
 @Import({
-        HealthController.class
+        HealthController.class,
+        WebConfiguration.class,
+        ServiceConfiguration.class,
+        DataConfiguration.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    public void onStartup(ServletContext servletContext) {
 
         /*
          * Create WebApplicationContext.
          */
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
         applicationContext.register(ApplicationInitializer.class);
-        applicationContext.register(Application.class);
         applicationContext.registerShutdownHook();
 
         /*

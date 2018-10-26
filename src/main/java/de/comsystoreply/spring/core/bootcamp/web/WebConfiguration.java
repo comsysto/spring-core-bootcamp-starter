@@ -1,7 +1,8 @@
-package de.comsystoreply.spring.core.bootcamp;
+package de.comsystoreply.spring.core.bootcamp.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -14,12 +15,8 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan
 public class WebConfiguration implements WebMvcConfigurer {
-
-    @Bean
-    public Racing racingService() {
-        return new RacingService();
-    }
 
     @Bean
     public ObjectMapper objectMapper() {

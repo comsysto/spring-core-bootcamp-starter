@@ -1,15 +1,14 @@
-package de.comsystoreply.spring.core.bootcamp;
+package de.comsystoreply.spring.core.bootcamp.web;
 
-import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.services.Racing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.InstanceAlreadyExistsException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/racingTeams", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
