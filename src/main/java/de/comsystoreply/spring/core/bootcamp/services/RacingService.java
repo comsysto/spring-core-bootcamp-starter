@@ -6,12 +6,11 @@ import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RacingService implements Racing {
-
-    private Map<String, RacingTeam> racingTeams = new HashMap<>();
 
     private final RacingTeamRepository repository;
 
@@ -26,37 +25,34 @@ public class RacingService implements Racing {
             throw new TeamAlreadyExistsException();
         }
         RacingTeam racingTeam = new RacingTeam(name);
-        racingTeams.put(name, racingTeam);
-        return racingTeam;
+        return repository.save(racingTeam);
     }
 
     @Override
     public void deleteRacingTeamByName(String name) {
-        racingTeams.remove(name);
+        repository.deleteByName(name);
     }
 
     @Override
     public RacingTeam modifyTeamByName(String oldName, String newName) {
-        RacingTeam racingTeam = racingTeams.remove(oldName);
+        RacingTeam racingTeam = repository.findByName(oldName);
         if(racingTeam == null) throw new IllegalArgumentException();
         racingTeam.setName(newName);
-        racingTeams.put(newName, racingTeam);
-        return racingTeam;
+        return repository.save(racingTeam);
     }
 
     @Override
     public Optional<RacingTeam> getRacingTeamByName(String name) {
-        return Optional.ofNullable(racingTeams.get(name));
+        return Optional.ofNullable(repository.findByName(name));
     }
 
     @Override
     public List<RacingTeam> getAllRacingTeams() {
-        Collection<RacingTeam> values = racingTeams.values();
-        return Collections.unmodifiableList(new ArrayList<>(values));
+        return repository.findAll();
     }
 
     @Override
     public void deleteAllRacingTeams() {
-        racingTeams.clear();
+        repository.deleteAll();
     }
 }

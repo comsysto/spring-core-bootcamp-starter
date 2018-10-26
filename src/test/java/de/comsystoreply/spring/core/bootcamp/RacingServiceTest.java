@@ -1,25 +1,39 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import de.comsystoreply.spring.core.bootcamp.data.DataConfiguration;
 import de.comsystoreply.spring.core.bootcamp.data.RacingTeamRepository;
 import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.services.Racing;
 import de.comsystoreply.spring.core.bootcamp.services.RacingService;
+import de.comsystoreply.spring.core.bootcamp.services.ServiceConfiguration;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//@ExtendWith(MockitoExtension.class)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(
+        loader = AnnotationConfigContextLoader.class,
+        classes = {ServiceConfiguration.class, DataConfiguration.class})
+@Transactional
 class RacingServiceTest {
 
     private Racing service;
 
-    @Mock
+    //@Mock
+    @Autowired
     private RacingTeamRepository repository;
 
     @BeforeEach
@@ -29,6 +43,7 @@ class RacingServiceTest {
 
     @AfterEach
     void tearDown() {
+        repository.deleteAll();
     }
 
     @Test
@@ -36,16 +51,13 @@ class RacingServiceTest {
         final RacingTeam banana = service.createRacingTeam("Banana");
         Assert.assertNotNull(banana);
         Assert.assertEquals("Banana", banana.getName());
-
     }
 
     @Test
     void createRacingTeam_nonDuplicateName() {
 
-        final RacingTeam banana = service.createRacingTeam("Banana");
-
+        service.createRacingTeam("Banana");
         assertThrows(TeamAlreadyExistsException.class, () -> service.createRacingTeam("Banana"));
-
 
     }
 
@@ -78,10 +90,11 @@ class RacingServiceTest {
 
     @Test
     void getRacingTeamByName() {
-        final RacingTeam expected = service.createRacingTeam("Tomato");
+        service.createRacingTeam("Tomato");
         Optional<RacingTeam> tomato = service.getRacingTeamByName("Tomato");
         Assert.assertTrue(tomato.isPresent());
-        Assert.assertEquals(expected.getName(),tomato.get().getName());
+        Assert.assertEquals("Tomato", tomato.get().getName());
+
     }
 
     @Test

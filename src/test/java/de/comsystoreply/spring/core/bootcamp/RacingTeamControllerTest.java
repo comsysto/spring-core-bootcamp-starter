@@ -18,6 +18,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
@@ -32,6 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         loader = AnnotationConfigWebContextLoader.class,
         classes = {ApplicationInitializer.class})
 @WebAppConfiguration
+@Transactional
 public class RacingTeamControllerTest {
 
     @Autowired
@@ -51,7 +53,6 @@ public class RacingTeamControllerTest {
 
     @AfterEach
     void tearDown() {
-        racingService.deleteAllRacingTeams();
     }
 
     @Test

@@ -34,9 +34,8 @@ dependencies {
      */
     testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
 
-    // https://mvnrepository.com/artifact/org.mockito/mockito-core
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.0'
-
+    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.23.0'
 
     /*
      * Embedded Tomcat web server to run the application on.

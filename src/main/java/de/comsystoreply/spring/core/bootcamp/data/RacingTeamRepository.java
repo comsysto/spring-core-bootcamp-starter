@@ -8,5 +8,9 @@ import org.springframework.stereotype.Repository;
 public interface RacingTeamRepository extends JpaRepository<RacingTeam, Long> {
 
 
+    RacingTeam findByName(String name);
+
+    void deleteByName(String name);
+
 }
 
