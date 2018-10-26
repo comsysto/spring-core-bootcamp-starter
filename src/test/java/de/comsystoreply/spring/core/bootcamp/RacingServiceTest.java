@@ -2,10 +2,10 @@ package de.comsystoreply.spring.core.bootcamp;
 
 import de.comsystoreply.spring.core.bootcamp.data.DataConfiguration;
 import de.comsystoreply.spring.core.bootcamp.data.RacingTeamRepository;
-import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.services.Racing;
 import de.comsystoreply.spring.core.bootcamp.services.RacingService;
 import de.comsystoreply.spring.core.bootcamp.services.ServiceConfiguration;
+import de.comsystoreply.spring.core.bootcamp.web.model.RacingTeamResource;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,7 +48,7 @@ class RacingServiceTest {
 
     @Test
     void createRacingTeam() {
-        final RacingTeam banana = service.createRacingTeam("Banana");
+        final RacingTeamResource banana = service.createRacingTeam("Banana");
         Assert.assertNotNull(banana);
         Assert.assertEquals("Banana", banana.getName());
     }
@@ -64,7 +64,7 @@ class RacingServiceTest {
     @Test
     void deleteRacingTeamByName() {
 
-        RacingTeam banana = service.createRacingTeam("Banana");
+        RacingTeamResource banana = service.createRacingTeam("Banana");
 
         service.deleteRacingTeamByName(banana.getName());
 
@@ -74,7 +74,7 @@ class RacingServiceTest {
     @Test
     void modifyTeamByName_teamIsPresent() {
         service.createRacingTeam("Tomato");
-        RacingTeam result = service.modifyTeamByName("Tomato", "Cucumber");
+        RacingTeamResource result = service.modifyTeamByName("Tomato", "Cucumber");
 
         Assert.assertEquals("Cucumber", result.getName());
     }
@@ -91,7 +91,7 @@ class RacingServiceTest {
     @Test
     void getRacingTeamByName() {
         service.createRacingTeam("Tomato");
-        Optional<RacingTeam> tomato = service.getRacingTeamByName("Tomato");
+        Optional<RacingTeamResource> tomato = service.getRacingTeamByName("Tomato");
         Assert.assertTrue(tomato.isPresent());
         Assert.assertEquals("Tomato", tomato.get().getName());
 
@@ -103,7 +103,7 @@ class RacingServiceTest {
         service.createRacingTeam("Banana");
         service.createRacingTeam("Apple");
 
-        List<RacingTeam> allRacingTeams = service.getAllRacingTeams();
+        List<RacingTeamResource> allRacingTeams = service.getAllRacingTeams();
         Assert.assertEquals(2, allRacingTeams.size());
     }
 

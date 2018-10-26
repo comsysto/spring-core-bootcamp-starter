@@ -57,8 +57,6 @@ public class RacingTeamControllerTest {
 
     @Test
     void getAllRacingTeams() throws Exception {
-
-
         racingService.createRacingTeam("Banana");
         racingService.createRacingTeam("Tomato");
 
@@ -125,8 +123,7 @@ public class RacingTeamControllerTest {
     @Test
     void modifyTeamByName_ok() throws Exception {
         racingService.createRacingTeam("Carrot");
-
-        MvcResult result = mvc.perform(
+        mvc.perform(
                 put("/racingTeams/Carrot").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content("{\"name\":\"Banana\"}"))
                 .andExpect( status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -137,8 +134,7 @@ public class RacingTeamControllerTest {
 
     @Test
     void modifyTeamByName_notFound() throws Exception {
-
-        MvcResult result = mvc.perform(
+        mvc.perform(
                 put("/racingTeams/Carrot").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content("{\"name\":\"Banana\"}"))
                 .andExpect( status().isNotFound())
                 .andReturn();

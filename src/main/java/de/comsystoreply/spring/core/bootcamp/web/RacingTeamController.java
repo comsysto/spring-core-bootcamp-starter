@@ -1,7 +1,7 @@
 package de.comsystoreply.spring.core.bootcamp.web;
 
-import de.comsystoreply.spring.core.bootcamp.data.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.services.Racing;
+import de.comsystoreply.spring.core.bootcamp.web.model.RacingTeamResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +23,7 @@ public class RacingTeamController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public RacingTeam createRacingTeam(@RequestBody RacingTeam team) {
+    public RacingTeamResource createRacingTeam(@RequestBody RacingTeamResource team) {
         return service.createRacingTeam(team.getName());
     }
 
@@ -34,19 +34,19 @@ public class RacingTeamController {
     }
 
     @PutMapping("/{name}")
-    public RacingTeam modifyTeamByName(@PathVariable("name") String oldName, @RequestBody RacingTeam team) {
+    public RacingTeamResource modifyTeamByName(@PathVariable("name") String oldName, @RequestBody RacingTeamResource team) {
       return service.modifyTeamByName(oldName, team.getName());
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<RacingTeam> getRacingTeamByName(@PathVariable String name) {
+    public ResponseEntity<RacingTeamResource> getRacingTeamByName(@PathVariable String name) {
         return service.getRacingTeamByName(name)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping()
-    public List<RacingTeam> getAllRacingTeams() {
+    public List<RacingTeamResource> getAllRacingTeams() {
         return service.getAllRacingTeams();
     }
 
