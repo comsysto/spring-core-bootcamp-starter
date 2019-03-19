@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
@@ -25,9 +24,7 @@ public class HealthController {
          * for the returned entity. This was not done here as the response is to simple to justify the overhead of an
          * dedicated class.
          */
-        Map<String, Object> healthInfo = new HashMap<>();
-        healthInfo.put("status", "up");
-
-        return ResponseEntity.ok(healthInfo);
+        return ResponseEntity.ok(
+                Map.of("status", "up"));
     }
 }
