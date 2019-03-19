@@ -6,7 +6,7 @@ plugins {
 /*
  * Set Java source code version.
  */
-sourceCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_11
 
 /*
  * Name of the main class of the application
