@@ -6,7 +6,7 @@ plugins {
 /*
  * Set Java source code version.
  */
-sourceCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_1_8
 
 /*
  * Name of the main class of the application
@@ -26,7 +26,7 @@ dependencies {
     /*
      * Spring MVC for REST controller
      */
-    final springVersion = '5.0.9.RELEASE'
+    final springVersion = '5.1.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
 
     /*
@@ -37,42 +37,29 @@ dependencies {
     /*
      * Embedded Tomcat web server to run the application on.
      */
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.12'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.16'
 
     /*
-     * Jackson to serialize and deserialize JSON
-     */
-    final jacksonVersion = '2.9.7'
+   * Jackson to serialize and deserialize JSON
+   */
+    final jacksonVersion = '2.9.8'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
 
     /*
-     * Data and stuff...
-     */
-    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
-
-    runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
-
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    
-    //compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
-
-    /*
      * Logback behind SLF4J for logging
      */
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.26'
     runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
     /*
      * JUnit test framework
      */
-    final junitVersion = '5.3.1'
+    final junitVersion = '5.4.1'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
     testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
-
 
     /*
      * Library with matchers to be used as part of test cases

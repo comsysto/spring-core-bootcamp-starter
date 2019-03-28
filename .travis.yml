@@ -1,13 +1,8 @@
-dist: trusty
+dist: xenial
 sudo: required
 
 language: java
 
 jdk:
-- oraclejdk8
-- oraclejdk9
-- oraclejdk10
-- openjdk8
-- openjdk9
-- openjdk10
+- oraclejdk11
 - openjdk11
