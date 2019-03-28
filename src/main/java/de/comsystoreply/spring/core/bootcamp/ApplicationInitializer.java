@@ -26,7 +26,9 @@ import javax.servlet.ServletRegistration;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@Import({
+        WebConfiguration.class
+})
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
