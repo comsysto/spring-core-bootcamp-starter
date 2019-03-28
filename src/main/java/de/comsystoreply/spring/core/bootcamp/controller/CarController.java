@@ -3,6 +3,7 @@ package de.comsystoreply.spring.core.bootcamp.controller;
 import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
 import de.comsystoreply.spring.core.bootcamp.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +50,18 @@ public class CarController {
         try {
             carService.deleteById(id);
             return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | EmptyResultDataAccessException e ) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity update(@PathVariable("id") Long id,
+        @RequestBody CarDto carDto) {
+        try {
+            carService.update(id, carDto);
+            return ResponseEntity.ok().build();
+        } catch () {
             return ResponseEntity.notFound().build();
         }
     }
