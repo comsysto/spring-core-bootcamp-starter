@@ -55,6 +55,17 @@ dependencies {
     runtime group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
     /*
+     * Data and stuff...
+     */
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
+
+    runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
+//
+//    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+
+    /*
      * JUnit test framework
      */
     final junitVersion = '5.4.1'
