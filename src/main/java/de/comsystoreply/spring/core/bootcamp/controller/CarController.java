@@ -1,6 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.controller;
 
-import de.comsystoreply.spring.core.bootcamp.model.Car;
+import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
 import de.comsystoreply.spring.core.bootcamp.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +21,7 @@ public class CarController {
     }
 
     @GetMapping
-    public List<Car> listAll() {
+    public List<CarDto> listAll() {
         return this.carService.findAll();
     }
 

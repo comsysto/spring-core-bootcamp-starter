@@ -1,16 +1,16 @@
-package de.comsystoreply.spring.core.bootcamp.model;
+package de.comsystoreply.spring.core.bootcamp.repositories.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Car {
+public class CarEntity {
 
     @Id
     private Long id;
     private String name;
 
-    public Car(long id, String name) {
+    public CarEntity(long id, String name) {
         this.id = id;
         this.name = name;
     }

@@ -1,11 +1,13 @@
 package de.comsystoreply.spring.core.bootcamp.services;
 
-import de.comsystoreply.spring.core.bootcamp.model.Car;
+import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
+import de.comsystoreply.spring.core.bootcamp.repositories.model.CarEntity;
 import de.comsystoreply.spring.core.bootcamp.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -17,7 +19,8 @@ public class CarService {
         this.repository = repository;
     }
 
-    public List<Car> findAll() {
-        return repository.findAll();
+    public List<CarDto> findAll() {
+        List<CarEntity> entities = this.repository.findAll();
+        return entities.stream().map(CarDto::fromEntity).collect(Collectors.toList());
     }
 }

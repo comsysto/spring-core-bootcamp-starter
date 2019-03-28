@@ -47,7 +47,7 @@ public class RepositoryConfiguration {
     ) {
         // manages the PersistenceUnits
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
-        bean.setPackagesToScan("de.comsystoreply.spring.core.bootcamp.model");
+        bean.setPackagesToScan("de.comsystoreply.spring.core.bootcamp.repositories.model");
         bean.setDataSource(dataSource);
         bean.setJpaVendorAdapter(jpaVendorAdapter);
 
