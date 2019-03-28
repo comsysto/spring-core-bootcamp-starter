@@ -40,13 +40,19 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.12'
 
     /*
-   * Jackson to serialize and deserialize JSON
-   */
+     * Jackson to serialize and deserialize JSON
+     */
     final jacksonVersion = '2.9.7'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: jacksonVersion
     compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: jacksonVersion
+
+    /*
+     * Data and stuff...
+     */
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
 
     /*
      * Logback behind SLF4J for logging
