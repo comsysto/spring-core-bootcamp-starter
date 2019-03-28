@@ -1,8 +1,12 @@
 package de.comsystoreply.spring.core.bootcamp.repositories.model;
 
 public class CarDto {
+
     private Long id;
     private String name;
+
+    public CarDto() {
+    }
 
     public String getName() {
         return name;
