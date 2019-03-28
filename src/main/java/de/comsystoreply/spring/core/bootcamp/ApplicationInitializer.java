@@ -1,11 +1,8 @@
 package de.comsystoreply.spring.core.bootcamp;
 
-import de.comsystoreply.spring.core.bootcamp.controller.CarController;
-import de.comsystoreply.spring.core.bootcamp.health.HealthController;
-import org.springframework.context.annotation.ComponentScan;
+import de.comsystoreply.spring.core.bootcamp.controller.WebConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.stereotype.Component;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;

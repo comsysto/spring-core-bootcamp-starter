@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.health;
+package de.comsystoreply.spring.core.bootcamp.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
