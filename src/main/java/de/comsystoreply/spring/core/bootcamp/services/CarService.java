@@ -25,6 +25,6 @@ public class CarService {
     }
 
     public Long create(CarDto carDto) {
-        repository.save()
+        return repository.save(CarEntity.fromDto(carDto)).getId();
     }
 }

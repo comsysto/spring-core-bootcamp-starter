@@ -4,7 +4,9 @@ import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
 import de.comsystoreply.spring.core.bootcamp.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -18,15 +20,19 @@ public class CarController {
         this.carService = carService;
     }
 
+
     @GetMapping
     public List<CarDto> listAll() {
         return this.carService.findAll();
     }
 
     @PostMapping
-    public CarDto create(@RequestBody CarDto carDto) {
-        carService.create(carDto);
-        return carDto;
+    public ResponseEntity create(@RequestBody CarDto carDto, UriComponentsBuilder uriComponentsBuilder) {
+        Long id = carService.create(carDto);
+        return ResponseEntity
+                .created(uriComponentsBuilder.path("/cars/{id}")
+                        .buildAndExpand(id).toUri())
+                .build();
     }
 
 }
