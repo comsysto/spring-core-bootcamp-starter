@@ -26,6 +26,11 @@ public class CarController {
         return this.carService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public CarDto findById(@PathVariable("id") Long id) {
+        return this.carService.findById(id);
+    }
+
     @PostMapping
     public ResponseEntity create(@RequestBody CarDto carDto, UriComponentsBuilder uriComponentsBuilder) {
         Long id = carService.create(carDto);

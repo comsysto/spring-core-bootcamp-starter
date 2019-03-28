@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,5 +27,10 @@ public class CarService {
 
     public Long create(CarDto carDto) {
         return repository.save(CarEntity.fromDto(carDto)).getId();
+    }
+
+    public CarDto findById(Long id) {
+        Optional<CarEntity> result = this.repository.findById(id);
+        return CarDto.fromEntity(result.orElseThrow(IllegalArgumentException::new));
     }
 }
