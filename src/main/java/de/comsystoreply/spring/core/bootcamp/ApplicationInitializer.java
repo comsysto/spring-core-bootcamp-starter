@@ -1,6 +1,8 @@
 package de.comsystoreply.spring.core.bootcamp;
 
 import de.comsystoreply.spring.core.bootcamp.controller.WebConfiguration;
+import de.comsystoreply.spring.core.bootcamp.repositories.RepositoryConfiguration;
+import de.comsystoreply.spring.core.bootcamp.services.ServicesConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
@@ -24,7 +26,9 @@ import javax.servlet.ServletRegistration;
 @Configuration
 @EnableWebMvc
 @Import({
-        WebConfiguration.class
+        WebConfiguration.class,
+        RepositoryConfiguration.class,
+        ServicesConfiguration.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 

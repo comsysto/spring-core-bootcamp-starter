@@ -54,6 +54,12 @@ dependencies {
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
 
+    runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
+
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    
+    //compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+
     /*
      * Logback behind SLF4J for logging
      */
@@ -66,6 +72,7 @@ dependencies {
     final junitVersion = '5.3.1'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
     testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+
 
     /*
      * Library with matchers to be used as part of test cases
