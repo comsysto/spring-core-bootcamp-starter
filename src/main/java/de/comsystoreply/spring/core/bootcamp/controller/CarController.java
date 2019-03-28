@@ -27,8 +27,12 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public CarDto findById(@PathVariable("id") Long id) {
-        return this.carService.findById(id);
+    public ResponseEntity<CarDto> findById(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(this.carService.findById(id));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
@@ -38,6 +42,16 @@ public class CarController {
                 .created(uriComponentsBuilder.path("/cars/{id}")
                         .buildAndExpand(id).toUri())
                 .build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable("id") Long id){
+        try {
+            carService.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

@@ -33,4 +33,8 @@ public class CarService {
         Optional<CarEntity> result = this.repository.findById(id);
         return CarDto.fromEntity(result.orElseThrow(IllegalArgumentException::new));
     }
+
+    public void deleteById(Long id) {
+        this.repository.deleteById(id);
+    }
 }
