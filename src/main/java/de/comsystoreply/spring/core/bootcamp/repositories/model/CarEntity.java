@@ -4,11 +4,13 @@ import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class CarEntity {
 
-    @GeneratedValue
+    @GeneratedValue(generator = "car_id_gen")
+    @SequenceGenerator(name = "car_id_gen", sequenceName = "car_id_gen", allocationSize = 1)
     @Id
     private Long id;
     private String name;

@@ -37,4 +37,8 @@ public class CarService {
     public void deleteById(Long id) {
         this.repository.deleteById(id);
     }
+
+    public void update(Long id, CarDto carDto) {
+        this.repository.save(CarEntity.fromDto(carDto));
+    }
 }

@@ -61,7 +61,7 @@ public class CarController {
         try {
             carService.update(id, carDto);
             return ResponseEntity.ok().build();
-        } catch () {
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
