@@ -23,4 +23,8 @@ public class CarService {
         List<CarEntity> entities = this.repository.findAll();
         return entities.stream().map(CarDto::fromEntity).collect(Collectors.toList());
     }
+
+    public Long create(CarDto carDto) {
+        repository.save()
+    }
 }

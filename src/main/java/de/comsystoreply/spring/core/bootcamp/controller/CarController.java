@@ -23,9 +23,9 @@ public class CarController {
         return this.carService.findAll();
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public CarDto create(@RequestBody CarDto carDto) {
-
+        carService.create(carDto);
         return carDto;
     }
 

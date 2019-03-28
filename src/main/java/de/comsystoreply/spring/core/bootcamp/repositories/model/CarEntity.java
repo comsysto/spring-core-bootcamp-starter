@@ -30,4 +30,8 @@ public class CarEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static CarEntity fromDto(CarDto carDto) {
+        return new CarEntity(carDto.getId(), carDto.getName());
+    }
 }
