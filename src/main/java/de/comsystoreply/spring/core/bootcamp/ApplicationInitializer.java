@@ -1,8 +1,11 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import de.comsystoreply.spring.core.bootcamp.controller.CarController;
 import de.comsystoreply.spring.core.bootcamp.health.HealthController;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Component;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -23,9 +26,7 @@ import javax.servlet.ServletRegistration;
  */
 @Configuration
 @EnableWebMvc
-@Import({
-        HealthController.class
-})
+@ComponentScan
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override

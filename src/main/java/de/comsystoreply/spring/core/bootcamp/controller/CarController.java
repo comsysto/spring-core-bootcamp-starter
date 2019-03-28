@@ -1,5 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.controller;
 
+import de.comsystoreply.spring.core.bootcamp.model.Car;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

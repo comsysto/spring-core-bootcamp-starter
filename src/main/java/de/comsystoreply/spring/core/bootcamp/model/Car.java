@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.controller;
+package de.comsystoreply.spring.core.bootcamp.model;
 
 public class Car {
 
