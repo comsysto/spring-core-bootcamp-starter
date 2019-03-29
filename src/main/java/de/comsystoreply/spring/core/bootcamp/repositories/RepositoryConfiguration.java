@@ -49,11 +49,11 @@ public class RepositoryConfiguration {
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(boolean generate, ) {
+    public JpaVendorAdapter jpaVendorAdapter(@Value("${spring.jpa.generate-ddl:true}") boolean generate, @Value("${spring.jpa.show-sql:true}") boolean showSql) {
         // provides a HibernatePersistenceProvider
         HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-        bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, true));
-        bean.setShowSql(environment.getProperty("spring.jpa.show-sql", Boolean.TYPE, false));
+        bean.setGenerateDdl(generate);
+        bean.setShowSql(showSql);
 
         return bean;
     }
