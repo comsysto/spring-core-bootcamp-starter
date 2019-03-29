@@ -40,8 +40,8 @@ public class RepositoryConfiguration {
     public DataSource postgresDataSource(){
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriver(new org.postgresql.Driver());
-        dataSource.setUrl("jdbc:postgresql://localhost:5432");
-        dataSource.setUsername("root");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        dataSource.setUsername("postgres");
         dataSource.setPassword("example");
         return dataSource;
     }
