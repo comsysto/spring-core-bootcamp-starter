@@ -6,7 +6,8 @@ plugins {
 /*
  * Set Java source code version.
  */
-sourceCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 /*
  * Name of the main class of the application
@@ -58,7 +59,9 @@ dependencies {
      * Data and stuff...
      */
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.1.RELEASE'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
+    compile (group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final') {
+        exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
+    }
 
     runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
 //

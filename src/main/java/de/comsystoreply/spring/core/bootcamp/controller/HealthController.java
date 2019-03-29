@@ -24,6 +24,6 @@ public class HealthController {
          * for the returned entity. This was not done here as the response is to simple to justify the overhead of an
          * dedicated class.
          */
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(Map.of("status", "up"));
     }
 }
