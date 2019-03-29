@@ -1,11 +1,13 @@
 package de.comsystoreply.spring.core.bootcamp.controller;
 
 import de.comsystoreply.spring.core.bootcamp.repositories.CarRepository;
+import de.comsystoreply.spring.core.bootcamp.repositories.RepositoryConfiguration;
 import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
 import de.comsystoreply.spring.core.bootcamp.repositories.model.CarEntity;
 import de.comsystoreply.spring.core.bootcamp.services.ServicesConfiguration;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,7 +43,8 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @ContextConfiguration(
         loader = AnnotationConfigContextLoader.class,
         classes = {WebConfiguration.class,
-                ServicesConfiguration.class}
+                ServicesConfiguration.class,
+                RepositoryConfiguration.class}
 )
 @Configuration
 @ActiveProfiles("test")
@@ -55,14 +58,16 @@ class CarControllerTest {
 
     private MockMvc mock ;
 
-    @Bean
-    public CarRepository carRepository() {
-        return Mockito.mock(CarRepository.class);
-    }
 
     @BeforeEach
     public void init(){
         this.mock =standaloneSetup(carController).build();
+        carRepository.save(new CarEntity(123L, "Testname"));
+    }
+
+    @AfterEach
+    public void clear(){
+        carRepository.deleteById(123L);
     }
 
     @Test
@@ -72,7 +77,6 @@ class CarControllerTest {
 
     @Test
     void testListAll() throws Exception {
-        Mockito.when(carRepository.findAll()).thenReturn(List.of(new CarEntity(123L, "Testname")));
         mock.perform(get("/cars").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
