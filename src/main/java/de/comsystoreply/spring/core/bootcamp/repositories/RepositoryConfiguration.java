@@ -1,6 +1,7 @@
 package de.comsystoreply.spring.core.bootcamp.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -26,9 +27,6 @@ import javax.sql.DataSource;
 @PropertySource("classpath:app.properties")
 public class RepositoryConfiguration {
 
-    @Autowired
-    private Environment env;
-
     @Bean
     @Profile("test")
     public DataSource dataSource() {
@@ -39,19 +37,19 @@ public class RepositoryConfiguration {
 
     @Bean
     @Profile("default")
-    public DataSource postgresDataSource(){
+    public DataSource postgresDataSource(@Value("${db.url}") String url,
+                                         @Value("${db.username}") String username,
+                                         @Value("${db.password}")String password){
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        String test = env.getProperty("db.url");
         dataSource.setDriver(new org.postgresql.Driver());
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        dataSource.setUrl(env.getProperty("db.url"));
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("example");
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(Environment environment) {
+    public JpaVendorAdapter jpaVendorAdapter(boolean generate, ) {
         // provides a HibernatePersistenceProvider
         HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
         bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, true));
