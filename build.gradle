@@ -63,6 +63,8 @@ dependencies {
         exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
     }
 
+    implementation 'org.postgresql:postgresql:42.2.5'
+
     runtime group: 'com.h2database', name: 'h2', version: '1.4.199'
 //
 //    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'

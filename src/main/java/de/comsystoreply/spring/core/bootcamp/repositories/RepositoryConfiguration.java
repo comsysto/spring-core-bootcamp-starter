@@ -38,7 +38,12 @@ public class RepositoryConfiguration {
     @Bean
     @Profile("default")
     public DataSource postgresDataSource(){
-
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriver(new org.postgresql.Driver());
+        dataSource.setUrl("jdbc:postgresql://localhost:5432");
+        dataSource.setUsername("root");
+        dataSource.setPassword("example");
+        return dataSource;
     }
 
     @Bean
