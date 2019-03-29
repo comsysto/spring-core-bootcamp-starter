@@ -5,7 +5,9 @@ import de.comsystoreply.spring.core.bootcamp.repositories.model.CarDto;
 import de.comsystoreply.spring.core.bootcamp.repositories.model.CarEntity;
 import de.comsystoreply.spring.core.bootcamp.services.ServicesConfiguration;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -49,11 +51,16 @@ class CarControllerTest {
     @Autowired
     private CarRepository carRepository;
 
-    private MockMvc mock = webAppContextSetup(CarController.class).build();
+    private MockMvc mock ;
 
     @Bean
     public CarRepository carRepository() {
         return Mockito.mock(CarRepository.class);
+    }
+
+    @BeforeEach
+    public void init(){
+        this.mock =standaloneSetup(carController).build();
     }
 
     @Test
