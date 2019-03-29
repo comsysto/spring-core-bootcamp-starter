@@ -26,6 +26,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.result.PrintingResultHandler;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -48,6 +49,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 )
 @Configuration
 @ActiveProfiles("test")
+@Transactional
 class CarControllerTest {
 
     @Autowired

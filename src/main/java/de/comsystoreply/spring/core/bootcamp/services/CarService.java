@@ -5,6 +5,7 @@ import de.comsystoreply.spring.core.bootcamp.repositories.model.CarEntity;
 import de.comsystoreply.spring.core.bootcamp.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +26,13 @@ public class CarService {
         return entities.stream().map(CarDto::fromEntity).collect(Collectors.toList());
     }
 
+    @Transactional
     public Long create(CarDto carDto) {
         return repository.save(CarEntity.fromDto(carDto)).getId();
+    }
+
+    public Long customCreate(CarDto carDto) {
+        return create(carDto);
     }
 
     public CarDto findById(Long id) {
