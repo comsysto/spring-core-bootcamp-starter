@@ -18,16 +18,21 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.result.PrintingResultHandler;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @ExtendWith({SpringExtension.class})
 @ContextConfiguration(
@@ -44,7 +49,7 @@ class CarControllerTest {
     @Autowired
     private CarRepository carRepository;
 
-    private MockMvc mock = standaloneSetup(CarController.class).build();
+    private MockMvc mock = webAppContextSetup(CarController.class).build();
 
     @Bean
     public CarRepository carRepository() {
@@ -57,12 +62,11 @@ class CarControllerTest {
     }
 
     @Test
-    void testListAll() {
+    void testListAll() throws Exception {
         Mockito.when(carRepository.findAll()).thenReturn(List.of(new CarEntity(123L, "Testname")));
-        //List<CarDto> carDtos = carController.listAll();
         mock.perform(get("/cars").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.status", equalTo("up")));
+                .andExpect(jsonPath("$", hasSize(1)));
     }
 }
