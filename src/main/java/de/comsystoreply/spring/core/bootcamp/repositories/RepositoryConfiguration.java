@@ -1,9 +1,7 @@
 package de.comsystoreply.spring.core.bootcamp.repositories;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -25,7 +23,11 @@ import javax.sql.DataSource;
 @ComponentScan
 @EnableJpaRepositories
 @EnableTransactionManagement
+@PropertySource("classpath:app.properties")
 public class RepositoryConfiguration {
+
+    @Autowired
+    private Environment env;
 
     @Bean
     @Profile("test")
@@ -39,8 +41,10 @@ public class RepositoryConfiguration {
     @Profile("default")
     public DataSource postgresDataSource(){
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        String test = env.getProperty("db.url");
         dataSource.setDriver(new org.postgresql.Driver());
         dataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        dataSource.setUrl(env.getProperty("db.url"));
         dataSource.setUsername("postgres");
         dataSource.setPassword("example");
         return dataSource;
