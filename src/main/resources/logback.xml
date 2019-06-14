@@ -8,12 +8,12 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="info" />
-    <logger name="org.apache.tomcat" level="warn" />
-    <logger name="org.apache.coyote" level="warn" />
-    <logger name="org.apache.catalina" level="warn" />
+    <logger name="de.comsystoreply" level="debug"/>
+    <logger name="org.apache.tomcat" level="warn"/>
+    <logger name="org.apache.coyote" level="warn"/>
+    <logger name="org.apache.catalina" level="warn"/>
 
-    <root level="debug">
-        <appender-ref ref="STDOUT" />
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
