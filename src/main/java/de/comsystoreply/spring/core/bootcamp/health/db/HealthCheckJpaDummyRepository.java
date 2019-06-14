@@ -19,7 +19,11 @@ public class HealthCheckJpaDummyRepository implements HealthCheckDummyRepository
 
     @Override
     public List<HealthCheckDummy> findAll() {
-        var query = entityManager.createQuery("FROM HealthCheckDummy", HealthCheckDummy.class);
+        /*
+         * Please note that this is Java Persistence Query Language (JPQL) and not SQL.
+         * While JPQL is heavily inspired by SQL they are not the same thing.
+         */
+        var query = entityManager.createQuery("SELECT dummy FROM HealthCheckDummy dummy", HealthCheckDummy.class);
 
         return query.getResultList();
     }
