@@ -44,7 +44,15 @@ dependencies {
      */
     implementation("org.springframework.data:spring-data-jpa:2.1.5.RELEASE")
     implementation("org.hibernate:hibernate-core:5.4.1.Final")
-    implementation("com.h2database:h2:1.4.199")
+
+    /*
+     * Database connection pool.
+     */
+    implementation("com.zaxxer:HikariCP:3.3.1")
+
+    /*
+     * PostgreSQL JDBC dirver.
+     */
     implementation("org.postgresql:postgresql:42.2.5")
 
     /*
@@ -74,6 +82,11 @@ dependencies {
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
     testImplementation("com.jayway.jsonpath:json-path-assert:2.4.0")
+
+    /*
+     * In memory database.
+     */
+    testImplementation("com.h2database:h2:1.4.199")
 }
 
 tasks.test {

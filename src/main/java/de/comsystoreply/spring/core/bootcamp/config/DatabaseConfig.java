@@ -1,6 +1,8 @@
 package de.comsystoreply.spring.core.bootcamp.config;
 
-import org.postgresql.ds.PGSimpleDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import org.postgresql.Driver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -23,12 +25,15 @@ public class DatabaseConfig {
          * If you change the credentials please ensure to also update what is set in 'docker-compose.yml'.
          */
 
-        var dataSource = new PGSimpleDataSource();
-        dataSource.setServerName("localhost");
-        dataSource.setPortNumber(15432);
-        dataSource.setUser("ninja-guy");
-        dataSource.setPassword("inTheSh4d0ws");
+        var config = new HikariConfig();
+        config.setDriverClassName(Driver.class.getCanonicalName());
+        config.setJdbcUrl("jdbc:postgresql://localhost:15432/");
+        config.setUsername("ninja-guy");
+        config.setPassword("inTheSh4d0ws");
+        config.addDataSourceProperty("cachePrepStmts", "true");
+        config.addDataSourceProperty("prepStmtCacheSize", "250");
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-        return dataSource;
+        return new HikariDataSource(config);
     }
 }
