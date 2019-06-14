@@ -19,12 +19,7 @@ public class HealthCheckJpaDummyRepository implements HealthCheckDummyRepository
 
     @Override
     public List<HealthCheckDummy> findAll() {
-        var criteriaQuery = entityManager.getCriteriaBuilder()
-                .createQuery(HealthCheckDummy.class);
-        var root = criteriaQuery.from(HealthCheckDummy.class);
-        var selectAll = criteriaQuery.select(root);
-
-        var query = entityManager.createQuery(selectAll);
+        var query = entityManager.createQuery("FROM HealthCheckDummy", HealthCheckDummy.class);
 
         return query.getResultList();
     }
