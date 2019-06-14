@@ -1,12 +1,13 @@
 package de.comsystoreply.spring.core.bootcamp;
 
-import de.comsystoreply.spring.core.bootcamp.health.HealthController;
+import de.comsystoreply.spring.core.bootcamp.config.DatabaseConfig;
+import de.comsystoreply.spring.core.bootcamp.config.WebConfig;
+import de.comsystoreply.spring.core.bootcamp.health.HealthConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -22,9 +23,10 @@ import javax.servlet.ServletRegistration;
  * as a servlet in Tomcat.
  */
 @Configuration
-@EnableWebMvc
 @Import({
-        HealthController.class
+        WebConfig.class,
+        DatabaseConfig.class,
+        HealthConfig.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 

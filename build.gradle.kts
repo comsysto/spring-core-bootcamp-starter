@@ -27,7 +27,8 @@ dependencies {
     /*
      * Embedded Apache Tomcat to run the application on.
      */
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.16")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.21")
+    implementation("com.sun.activation:javax.activation:1.2.0")
 
     /*
      * Jackson to serialize and deserialize JSON.
@@ -44,7 +45,6 @@ dependencies {
     implementation("org.springframework.data:spring-data-jpa:2.1.5.RELEASE")
     implementation("org.hibernate:hibernate-core:5.4.1.Final")
     implementation("com.h2database:h2:1.4.199")
-    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.2")
 
     /*
      * Logback behind SLF4J for logging
