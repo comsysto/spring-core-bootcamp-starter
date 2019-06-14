@@ -45,6 +45,7 @@ dependencies {
     implementation("org.springframework.data:spring-data-jpa:2.1.5.RELEASE")
     implementation("org.hibernate:hibernate-core:5.4.1.Final")
     implementation("com.h2database:h2:1.4.199")
+    implementation("org.postgresql:postgresql:42.2.5")
 
     /*
      * Logback behind SLF4J for logging

@@ -18,17 +18,23 @@ It should be able to just import it into the IDE of choice and start adding new 
 
 ## How to check if the setup works
 
-1. Start the application using gradle:
+1. Start the required database as a Docker container:
+    ```
+    docker-compose up -d
+    ```
+
+2. Start the application using gradle:
    ```
    ./gradlew run
    ```
-2. Check if the provided health endpoint is responding:
+
+3. Check if the provided health endpoint is responding:
    ```
    curl http://localhost:8080/health
    ```
    This should return:
    ```json
-   {"status":"up"}
+   {"status":"UP","details":{"db-health":{"status":"UP"}}}
    ```
 
 ## What you get
@@ -41,3 +47,4 @@ It should be able to just import it into the IDE of choice and start adding new 
 3. Basic /health endpoint
    The project also contains a first Spring MVC REST controller that is exposing an health endpoint.
    This is mainly done to help you check if the setup is working at all so you can more easily find errors.
+4. Basic configuration for JPA
