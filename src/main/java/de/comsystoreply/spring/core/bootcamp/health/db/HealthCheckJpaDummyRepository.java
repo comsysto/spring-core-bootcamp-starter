@@ -7,13 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-import static org.springframework.transaction.annotation.Propagation.REQUIRED;
-
 /**
  * JPA based implementation of {@code HealthCheckDummyRepository}.
  */
 @Repository
-@Transactional(propagation = REQUIRED, readOnly = true)
+@Transactional(readOnly = true)
 public class HealthCheckJpaDummyRepository implements HealthCheckDummyRepository {
 
     @PersistenceContext
@@ -40,5 +38,12 @@ public class HealthCheckJpaDummyRepository implements HealthCheckDummyRepository
     @Transactional(readOnly = false)
     public HealthCheckDummy save(HealthCheckDummy dummy) {
         return entityManager.merge(dummy);
+    }
+
+    @Override
+    public void delete(long id) {
+        var entity = findById(id);
+
+        entityManager.remove(entity);
     }
 }

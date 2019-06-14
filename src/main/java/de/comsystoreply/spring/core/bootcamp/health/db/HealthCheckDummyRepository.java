@@ -22,4 +22,9 @@ public interface HealthCheckDummyRepository {
      * state of an existing instance.
      */
     HealthCheckDummy save(HealthCheckDummy dummy);
+
+    /**
+     * Delete a given {@code HealthCheckDummy} from the database.
+     */
+    void delete(long id);
 }

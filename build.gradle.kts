@@ -65,6 +65,11 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-junit:2.0.0.0")
 
     /*
+     * Add Mockito mocking framework.
+     */
+    testImplementation("org.mockito:mockito-core:2.28.2")
+
+    /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
     testImplementation("com.jayway.jsonpath:json-path-assert:2.4.0")

@@ -3,8 +3,6 @@ package de.comsystoreply.spring.core.bootcamp.health.db;
 import de.comsystoreply.spring.core.bootcamp.config.TestDatabaseConfig;
 import de.comsystoreply.spring.core.bootcamp.config.WebConfig;
 import de.comsystoreply.spring.core.bootcamp.health.HealthConfig;
-import de.comsystoreply.spring.core.bootcamp.health.db.HealthCheckDummy;
-import de.comsystoreply.spring.core.bootcamp.health.db.HealthCheckDummyRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +35,7 @@ class HealthCheckJpaRepositoryTest {
     @Test
     @DisplayName("entities can be saved to the database")
     void saveAnEntity() {
-        var entity = aDummy();
+        var entity = new HealthCheckDummy();
 
         var savedEntity = repository.save(entity);
 
@@ -48,14 +46,10 @@ class HealthCheckJpaRepositoryTest {
     @Test
     @DisplayName("entities that where saved can be loaded from the database")
     void findEntityById() {
-        var savedEntity = repository.save(aDummy());
+        var savedEntity = repository.save(new HealthCheckDummy());
 
         var loadedEntity = repository.findById(savedEntity.getId());
 
         assertEquals(savedEntity, loadedEntity);
-    }
-
-    private HealthCheckDummy aDummy() {
-        return new HealthCheckDummy();
     }
 }

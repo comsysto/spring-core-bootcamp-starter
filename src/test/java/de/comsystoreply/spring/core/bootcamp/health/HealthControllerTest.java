@@ -40,13 +40,13 @@ class HealthControllerTest {
     }
 
     @Test
-    @DisplayName("'/health' endpoint is available and returns 'status' is 'up'")
+    @DisplayName("'/health' endpoint is available and returns 'getStatus' is 'up'")
     void getHealth() throws Exception {
         mock.perform(
                 get("/health")
                         .accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$.status", equalTo("up")));
+                .andExpect(jsonPath("$.status", equalTo("UP")));
     }
 }
