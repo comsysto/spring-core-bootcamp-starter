@@ -46,6 +46,6 @@ It should be able to just import it into the IDE of choice and start adding new 
 ## Start database
 
 Make sure you have installed Docker Compose. The database can be started as a Docker container as follows:
-    ```
-    docker-compose up -d
-    ```
+```
+docker-compose up -d
+```
