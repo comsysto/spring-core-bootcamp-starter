@@ -43,7 +43,9 @@ dependencies {
      * Spring Data JPA to access data using JPA
      */
     implementation("org.springframework.data:spring-data-jpa:2.1.8.RELEASE")
-    implementation("org.hibernate:hibernate-core:5.4.3.Final")
+    implementation("org.hibernate:hibernate-core:5.4.3.Final") {
+        exclude("org.glassfish.jaxb", "jaxb-runtime")
+    }
 
     /*
      * Database connection pool.
