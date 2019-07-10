@@ -20,19 +20,20 @@ dependencies {
     /*
      * Spring Framework and Testing support.
      */
-    val springVersion = "5.1.5.RELEASE"
+    val springVersion = "5.1.8.RELEASE"
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
     /*
      * Embedded Apache Tomcat to run the application on.
      */
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.16")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.21")
+    implementation("com.sun.activation:javax.activation:1.2.0")
 
     /*
      * Jackson to serialize and deserialize JSON.
      */
-    val jacksonVersion = "2.9.8"
+    val jacksonVersion = "2.9.9"
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
@@ -41,10 +42,20 @@ dependencies {
     /*
      * Spring Data JPA to access data using JPA
      */
-    implementation("org.springframework.data:spring-data-jpa:2.1.5.RELEASE")
-    implementation("org.hibernate:hibernate-core:5.4.1.Final")
-    implementation("com.h2database:h2:1.4.199")
-    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.2")
+    implementation("org.springframework.data:spring-data-jpa:2.1.8.RELEASE")
+    implementation("org.hibernate:hibernate-core:5.4.3.Final") {
+        exclude("org.glassfish.jaxb", "jaxb-runtime")
+    }
+
+    /*
+     * Database connection pool.
+     */
+    implementation("com.zaxxer:HikariCP:3.3.1")
+
+    /*
+     * PostgreSQL JDBC dirver.
+     */
+    implementation("org.postgresql:postgresql:42.2.5")
 
     /*
      * Logback behind SLF4J for logging
@@ -55,7 +66,7 @@ dependencies {
     /*
      * JUnit test framework
      */
-    val junitVersion = "5.4.1"
+    val junitVersion = "5.4.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 
@@ -65,9 +76,19 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-junit:2.0.0.0")
 
     /*
+     * Add Mockito mocking framework.
+     */
+    testImplementation("org.mockito:mockito-core:2.28.2")
+
+    /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
     testImplementation("com.jayway.jsonpath:json-path-assert:2.4.0")
+
+    /*
+     * In memory database.
+     */
+    testImplementation("com.h2database:h2:1.4.199")
 }
 
 tasks.test {
