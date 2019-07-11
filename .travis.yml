@@ -4,5 +4,4 @@ sudo: required
 language: java
 
 jdk:
-- oraclejdk11
-- openjdk11
+- openjdk12
