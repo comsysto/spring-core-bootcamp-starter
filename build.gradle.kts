@@ -40,14 +40,6 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
 
     /*
-     * Spring Data JPA to access data using JPA
-     */
-    implementation("org.springframework.data:spring-data-jpa:2.1.8.RELEASE")
-    implementation("org.hibernate:hibernate-core:5.4.3.Final") {
-        exclude("org.glassfish.jaxb", "jaxb-runtime")
-    }
-
-    /*
      * Database connection pool.
      */
     implementation("com.zaxxer:HikariCP:3.3.1")
