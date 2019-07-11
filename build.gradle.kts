@@ -40,16 +40,6 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
 
     /*
-     * Database connection pool.
-     */
-    implementation("com.zaxxer:HikariCP:3.3.1")
-
-    /*
-     * PostgreSQL JDBC dirver.
-     */
-    implementation("org.postgresql:postgresql:42.2.5")
-
-    /*
      * Logback behind SLF4J for logging
      */
     implementation("org.slf4j:slf4j-api:1.7.26")
@@ -76,11 +66,6 @@ dependencies {
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
     testImplementation("com.jayway.jsonpath:json-path-assert:2.4.0")
-
-    /*
-     * In memory database.
-     */
-    testImplementation("com.h2database:h2:1.4.199")
 }
 
 tasks.test {
