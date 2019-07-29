@@ -3,7 +3,6 @@ package de.comsystoreply.spring.core.bootcamp.dao;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Driver {

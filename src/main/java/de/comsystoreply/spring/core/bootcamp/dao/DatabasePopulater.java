@@ -2,17 +2,15 @@ package de.comsystoreply.spring.core.bootcamp.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
 @Component
 public class DatabasePopulater {
-    private JpaDriverRepository driverRepository;
+    private SpringDataDriverRepository driverRepository;
 
     @Autowired
-    public DatabasePopulater(JpaDriverRepository driverRepository) {
+    public DatabasePopulater(SpringDataDriverRepository driverRepository) {
         this.driverRepository = driverRepository;
     }
 
@@ -20,6 +18,6 @@ public class DatabasePopulater {
     public void populate() {
         Driver driver = new Driver("Lewis", "Hamilton");
 
-        driverRepository.create(driver);
+        driverRepository.save(driver);
     }
 }
