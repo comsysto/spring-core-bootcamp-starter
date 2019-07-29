@@ -44,6 +44,9 @@ dependencies {
      */
     implementation("org.springframework.data:spring-data-jpa:2.1.9.RELEASE")
     implementation("com.h2database:h2:1.4.199")
+    implementation("org.hibernate:hibernate-core:5.4.3.Final") {
+        exclude("org.glassfish.jaxb", "jaxb-runtime")
+    }
 
     /*
      * Logback behind SLF4J for logging
