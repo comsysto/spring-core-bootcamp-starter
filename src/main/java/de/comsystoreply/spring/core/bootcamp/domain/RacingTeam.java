@@ -13,9 +13,9 @@ public class RacingTeam {
     @Column
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Driver> drivers;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<RaceCar> raceCars;
 
     public long getId() {
