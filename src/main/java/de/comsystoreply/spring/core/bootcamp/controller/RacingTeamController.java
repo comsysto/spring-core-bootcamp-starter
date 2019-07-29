@@ -33,8 +33,8 @@ public class RacingTeamController {
 
     @PostMapping
     public ResponseEntity<RacingTeam> save( @RequestBody RacingTeam racingTeam ) {
-
-        return ResponseEntity.ok(null);
+        RacingTeam savedRacingTeam = racingTeamRepo.save(racingTeam);
+        return ResponseEntity.ok(savedRacingTeam);
     }
 
     @DeleteMapping("/{id}")
