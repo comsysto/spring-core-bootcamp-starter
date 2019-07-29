@@ -12,10 +12,10 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 @RequestMapping(value = "/racingteam", produces = APPLICATION_JSON_UTF8_VALUE)
 public class RacingTeamController {
 
-    @GetMapping
-    public ResponseEntity<RacingTeam> get(@RequestParam long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<RacingTeam> get(@PathVariable long id) {
 
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(new RacingTeam(id,"Name", List.of(), List.of()));
     }
 
     @GetMapping
