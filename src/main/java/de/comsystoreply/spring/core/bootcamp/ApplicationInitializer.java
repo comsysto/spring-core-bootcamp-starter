@@ -31,8 +31,7 @@ import javax.servlet.ServletRegistration;
         HealthController.class,
         RacingTeamController.class,
         DataSourceConfiguration.class,
-        PersistenceConfiguration.class,
-        RacingTeamRepository.class
+        PersistenceConfiguration.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 

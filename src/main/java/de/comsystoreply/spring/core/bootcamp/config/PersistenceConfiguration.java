@@ -3,6 +3,7 @@ package de.comsystoreply.spring.core.bootcamp.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -10,6 +11,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
 
 @Configuration
+@EnableJpaRepositories(basePackages = {"de.comsystoreply.spring.core.bootcamp.domain", "de.comsystoreply.spring.core.bootcamp.repo"})
 public class PersistenceConfiguration {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(Environment environment) {

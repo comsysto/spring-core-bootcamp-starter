@@ -1,13 +1,11 @@
 package de.comsystoreply.spring.core.bootcamp.controller;
 
-import de.comsystoreply.spring.core.bootcamp.racingteam.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.repo.RacingTeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 

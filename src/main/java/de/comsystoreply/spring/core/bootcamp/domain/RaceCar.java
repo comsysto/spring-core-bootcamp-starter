@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.racingteam;
+package de.comsystoreply.spring.core.bootcamp.domain;
 
 public class RaceCar {
     private long id;

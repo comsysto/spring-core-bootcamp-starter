@@ -1,6 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.repo;
 
-import de.comsystoreply.spring.core.bootcamp.racingteam.RacingTeam;
+import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
