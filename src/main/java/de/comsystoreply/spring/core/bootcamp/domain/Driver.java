@@ -1,19 +1,20 @@
 package de.comsystoreply.spring.core.bootcamp.domain;
 
-public class Driver {
-    private long id;
-    private String firstName;
-    private String lastName;
-    private int age;
-    private RacingTeam racingTeam;
+import javax.persistence.*;
 
-    public Driver(long id, String firstName, String lastName, int age, RacingTeam racingTeam) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.racingTeam = racingTeam;
-    }
+@Entity
+public class Driver {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private int age;
+    @ManyToOne
+    private RacingTeam racingTeam;
 
     public long getId() {
         return id;

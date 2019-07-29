@@ -11,7 +11,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"de.comsystoreply.spring.core.bootcamp.domain", "de.comsystoreply.spring.core.bootcamp.repo"})
+@EnableJpaRepositories(basePackages = {"de.comsystoreply.spring.core.bootcamp.repo"})
 public class PersistenceConfiguration {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter(Environment environment) {
@@ -32,7 +32,8 @@ public class PersistenceConfiguration {
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setDataSource(dataSource);
         bean.setJpaVendorAdapter(jpaVendorAdapter);
-
+        bean.setPackagesToScan("de.comsystoreply.spring.core.bootcamp.domain");
+        bean.afterPropertiesSet();
         return bean;
     }
 }

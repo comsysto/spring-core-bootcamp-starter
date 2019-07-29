@@ -7,12 +7,10 @@ import java.util.List;
 public class RacingTeam {
 
     @Id
-    @SequenceGenerator(name = "racingteam_generator",
-            sequenceName = "RACINGTEAM_SEQUENCE",
-            allocationSize = 1)
-    @GeneratedValue(generator = "racingteam_generator")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
     private String name;
 
     @OneToMany

@@ -1,21 +1,23 @@
 package de.comsystoreply.spring.core.bootcamp.domain;
 
-public class RaceCar {
-    private long id;
-    private String title;
-    private String description;
-    private int horsePower;
-    private float weightInKg;
-    private RacingTeam racingTeam;
+import javax.persistence.*;
 
-    public RaceCar(long id, String title, String description, int horsePower, float weightInKg, RacingTeam racingTeam) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.horsePower = horsePower;
-        this.weightInKg = weightInKg;
-        this.racingTeam = racingTeam;
-    }
+@Entity
+public class RaceCar {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    @Column
+    private String title;
+    @Column
+    private String description;
+    @Column
+    private int horsePower;
+    @Column
+    private float weightInKg;
+
+    @ManyToOne
+    private RacingTeam racingTeam;
 
     public long getId() {
         return id;
