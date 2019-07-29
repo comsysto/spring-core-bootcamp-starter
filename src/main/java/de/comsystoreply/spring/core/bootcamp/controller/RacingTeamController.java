@@ -5,10 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @RestController
-@RequestMapping("/racingteam")
+@RequestMapping(value = "/racingteam", produces = APPLICATION_JSON_UTF8_VALUE)
 public class RacingTeamController {
 
     @GetMapping
@@ -24,11 +25,16 @@ public class RacingTeamController {
     }
 
     @PostMapping
-    public ResponseEntity<RacingTeam> save() {
+    public ResponseEntity<RacingTeam> save( @RequestBody RacingTeam racingTeam ) {
 
         return ResponseEntity.ok(null);
     }
 
+    @DeleteMapping
+    public ResponseEntity<Long> delete(@RequestParam long id) {
+
+        return ResponseEntity.ok(id);
+    }
 
 
 }
