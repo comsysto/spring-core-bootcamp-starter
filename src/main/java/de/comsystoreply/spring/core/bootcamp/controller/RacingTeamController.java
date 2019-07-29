@@ -24,7 +24,6 @@ public class RacingTeamController {
         return ResponseEntity.ok(racingTeam.orElse(null));
     }
 
-
     @GetMapping
     public ResponseEntity<List< RacingTeam>> list() {
         List<RacingTeam> allList = racingTeamRepo.findAll();
