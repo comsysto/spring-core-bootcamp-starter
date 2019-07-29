@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,12 +26,11 @@ public class RacingTeamController {
         return ResponseEntity.ok(racingTeam.orElse(null));
     }
 
+
     @GetMapping
     public ResponseEntity<List< RacingTeam>> list() {
-        Iterable<RacingTeam> all = racingTeamRepo.findAll();
-        new ArrayList(all);
-        Collections.
-        return ResponseEntity.ok(List.);
+        List<RacingTeam> allList = racingTeamRepo.findAll();
+        return ResponseEntity.ok(allList);
     }
 
     @PostMapping
