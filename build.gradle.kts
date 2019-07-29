@@ -3,9 +3,9 @@ plugins {
     application
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_12
-}
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_11
+//}
 
 application {
     mainClassName = "de.comsystoreply.spring.core.bootcamp.Application"
@@ -51,6 +51,16 @@ dependencies {
     val junitVersion = "5.4.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+
+    implementation ("org.springframework.data:spring-data-jpa:2.1.1.RELEASE")
+    implementation ("org.hibernate:hibernate-core:5.4.1.Final") {
+        exclude("org.glassfish.jaxb", "jaxb-runtime")
+    }
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation("com.h2database:h2:1.0.60")
+
+
 
     /*
      * Library with matchers to be used as part of test cases
