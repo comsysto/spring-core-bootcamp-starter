@@ -14,4 +14,36 @@ public class RacingTeam {
         this.drivers = drivers;
         this.raceCars = raceCars;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    public List<RaceCar> getRaceCars() {
+        return raceCars;
+    }
+
+    public void setRaceCars(List<RaceCar> raceCars) {
+        this.raceCars = raceCars;
+    }
 }
