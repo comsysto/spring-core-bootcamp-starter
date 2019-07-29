@@ -5,6 +5,7 @@ import de.comsystoreply.spring.core.bootcamp.repo.RacingTeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +14,10 @@ public class RacingTeamService {
     @Autowired
     private RacingTeamRepository racingTeamRepo;
 
+    @Transactional
     public RacingTeam findById(long id) {
         Optional<RacingTeam> racingTeam = racingTeamRepo.findById(id);
+        racingTeam.ifPresent(team -> {team.getDrivers().size();team.getRaceCars().size();});
         return racingTeam.orElse(null);
     }
 
