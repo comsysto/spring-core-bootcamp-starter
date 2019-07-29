@@ -7,3 +7,5 @@ build/
 # IntelliJ IDEA project files
 .idea/
 *.iml
+
+**/*.class

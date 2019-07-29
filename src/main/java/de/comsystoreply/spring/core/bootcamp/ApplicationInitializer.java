@@ -1,5 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import de.comsystoreply.spring.core.bootcamp.config.DataSourceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.controller.RacingTeamController;
 import de.comsystoreply.spring.core.bootcamp.health.HealthController;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,8 @@ import javax.servlet.ServletRegistration;
 @EnableWebMvc
 @Import({
         HealthController.class,
-        RacingTeamController.class
+        RacingTeamController.class,
+        DataSourceConfiguration.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 

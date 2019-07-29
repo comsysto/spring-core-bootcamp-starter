@@ -30,8 +30,8 @@ public class RacingTeamController {
         return ResponseEntity.ok(null);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Long> delete(@RequestParam long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> delete(@PathVariable long id) {
 
         return ResponseEntity.ok(id);
     }

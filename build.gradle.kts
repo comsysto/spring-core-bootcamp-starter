@@ -40,6 +40,12 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
 
     /*
+     * Spring Data
+     */
+    implementation("org.springframework.data:spring-data-jpa:2.1.9.RELEASE")
+    implementation("com.h2database:h2:1.4.199")
+
+    /*
      * Logback behind SLF4J for logging
      */
     implementation("org.slf4j:slf4j-api:1.7.26")
