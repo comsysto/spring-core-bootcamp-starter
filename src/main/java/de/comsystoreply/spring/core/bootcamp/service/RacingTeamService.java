@@ -17,15 +17,16 @@ public class RacingTeamService {
     @Transactional
     public RacingTeam findById(long id) {
         Optional<RacingTeam> racingTeam = racingTeamRepo.findById(id);
-        racingTeam.ifPresent(team -> {team.getDrivers().size();team.getRaceCars().size();});
+        racingTeam.ifPresent(this::touchDriversAndRaceCars);
         return racingTeam.orElse(null);
     }
 
+    @Transactional
     public List< RacingTeam> findAll() {
         List<RacingTeam> allList = racingTeamRepo.findAll();
+        allList.forEach(this::touchDriversAndRaceCars);
         return allList;
     }
-
 
     public RacingTeam save( RacingTeam racingTeam ) {
         RacingTeam savedRacingTeam = racingTeamRepo.save(racingTeam);
@@ -34,6 +35,11 @@ public class RacingTeamService {
 
     public void delete( long id) {
         racingTeamRepo.deleteById(id);
+    }
+
+    private void touchDriversAndRaceCars(RacingTeam racingTeam) {
+        racingTeam.getDrivers().size();
+        racingTeam.getRaceCars().size();
     }
 
 }
