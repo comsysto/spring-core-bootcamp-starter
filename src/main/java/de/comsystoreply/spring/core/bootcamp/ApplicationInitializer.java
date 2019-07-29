@@ -5,6 +5,7 @@ import de.comsystoreply.spring.core.bootcamp.config.PersistenceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.controller.RacingTeamController;
 import de.comsystoreply.spring.core.bootcamp.health.HealthController;
 import de.comsystoreply.spring.core.bootcamp.repo.RacingTeamRepository;
+import de.comsystoreply.spring.core.bootcamp.service.RacingTeamService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
@@ -31,7 +32,8 @@ import javax.servlet.ServletRegistration;
         HealthController.class,
         RacingTeamController.class,
         DataSourceConfiguration.class,
-        PersistenceConfiguration.class
+        PersistenceConfiguration.class,
+        RacingTeamService.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 
