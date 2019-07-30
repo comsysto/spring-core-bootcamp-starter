@@ -28,23 +28,16 @@ import static org.junit.jupiter.api.Assertions.*;
 @Transactional
 class DriverServiceTest {
 
-    @Autowired DriverService driverService;
-    @Autowired DriverRepository driverRepository;
+    @Autowired
+    DriverService driverService;
+    @Autowired
+    DriverRepository driverRepository;
 
-    Driver initialDriver;
-
-    @BeforeEach
-    void setup() {
-        initialDriver = new Driver();
-       // initialDriver.setId(1);
-        initialDriver.setFirstName("Intial Driver1");
-        initialDriver.setLastName("Initial DriverName1");
-        initialDriver.setAge(23);
-        driverRepository.save(initialDriver);
-    }
     @Test
     void findById() {
-        Driver foundDriver = driverService.findById(1);
+        Driver initialDriver = createInitialDriver();
+
+        Driver foundDriver = driverService.findById(initialDriver.getId());
         assertNotNull(foundDriver);
         assertEquals(initialDriver, foundDriver);
     }
@@ -57,12 +50,14 @@ class DriverServiceTest {
 
     @Test
     void findAll() {
+        Driver initialDriver = createInitialDriver();
+
         List<Driver> all = driverService.findAll();
         assertEquals(1, all.size());
+        assertEquals(initialDriver, all.get(0));
     }
 
     @Test
-    @Ignore
     void save() {
         Driver driver = new Driver();
         driver.setFirstName("Driver1");
@@ -77,7 +72,18 @@ class DriverServiceTest {
 
     @Test
     void delete() {
-       driverService.delete(1);
+        Driver initialDriver = createInitialDriver();
 
+        driverService.delete(initialDriver.getId());
+
+        assertEquals(0, driverService.findAll().size());
+    }
+
+    private Driver createInitialDriver() {
+        Driver initialDriver = new Driver();
+        initialDriver.setFirstName("Initial Driver1");
+        initialDriver.setLastName("Initial DriverName1");
+        initialDriver.setAge(23);
+        return driverService.save(initialDriver);
     }
 }
