@@ -1,5 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.health;
 
+import de.comsystoreply.spring.core.bootcamp.controller.HealthController;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 

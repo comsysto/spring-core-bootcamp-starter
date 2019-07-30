@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -16,6 +17,9 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = {"de.comsystoreply.spring.core.bootcamp.repo"})
 @EnableTransactionManagement
+@Import({
+        DataSourceConfiguration.class
+})
 public class PersistenceConfiguration {
 
     @Bean

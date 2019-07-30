@@ -1,19 +1,13 @@
 package de.comsystoreply.spring.core.bootcamp;
 
-import de.comsystoreply.spring.core.bootcamp.config.DataSourceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.config.PersistenceConfiguration;
-import de.comsystoreply.spring.core.bootcamp.controller.DriverController;
-import de.comsystoreply.spring.core.bootcamp.controller.RacingTeamController;
-import de.comsystoreply.spring.core.bootcamp.health.HealthController;
-import de.comsystoreply.spring.core.bootcamp.repo.RacingTeamRepository;
-import de.comsystoreply.spring.core.bootcamp.service.DriverService;
-import de.comsystoreply.spring.core.bootcamp.service.RacingTeamService;
+import de.comsystoreply.spring.core.bootcamp.config.ServiceConfiguration;
+import de.comsystoreply.spring.core.bootcamp.config.WebConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -29,15 +23,10 @@ import javax.servlet.ServletRegistration;
  * as a servlet in Tomcat.
  */
 @Configuration
-@EnableWebMvc
 @Import({
-        HealthController.class,
-        RacingTeamController.class,
-        DataSourceConfiguration.class,
         PersistenceConfiguration.class,
-        RacingTeamService.class,
-        DriverController.class,
-        DriverService.class
+        WebConfiguration.class,
+        ServiceConfiguration.class
 })
 public class ApplicationInitializer implements WebApplicationInitializer {
 
