@@ -1,15 +1,18 @@
 package de.comsystoreply.spring.core.bootcamp.repo;
 
 import de.comsystoreply.spring.core.bootcamp.domain.Driver;
-import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface DriverRepository extends CrudRepository<Driver,Long> {
+public interface DriverRepository extends JpaRepository<Driver,Long> {
 
     @Override
     List<Driver> findAll();
 
+
+    List<Driver> findByFirstNameAndLastNameAndAge(String firstName, String lastName,int age);
+
+    // CriteriaAPI für kompliziertere Queries (SQL-like)
 
 }
