@@ -5,6 +5,7 @@ import de.comsystoreply.spring.core.bootcamp.config.ServiceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.config.WebConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -28,6 +29,7 @@ import javax.servlet.ServletRegistration;
         WebConfiguration.class,
         ServiceConfiguration.class
 })
+@PropertySource("classpath:/application.properties")
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
