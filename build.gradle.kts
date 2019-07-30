@@ -47,6 +47,7 @@ dependencies {
     implementation("org.hibernate:hibernate-core:5.4.3.Final") {
         exclude("org.glassfish.jaxb", "jaxb-runtime")
     }
+    implementation("org.postgresql:postgresql:42.2.6")
 
     /*
      * Logback behind SLF4J for logging
