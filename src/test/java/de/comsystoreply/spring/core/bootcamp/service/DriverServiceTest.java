@@ -33,12 +33,14 @@ class DriverServiceTest {
     @Test
     void save() {
         Driver driver = new Driver();
-        driver.setId(12);
         driver.setFirstName("Driver1");
         driver.setLastName("DriverName1");
         driver.setAge(23);
-        Driver driverResult = driverService.save(driver);
-        assertEquals(driver, driverResult);
+        Driver savedDriver = driverService.save(driver);
+        assertNotNull(savedDriver.getId());
+        assertEquals("Driver1", savedDriver.getFirstName());
+        assertEquals("DriverName1", savedDriver.getLastName());
+        assertEquals(23, savedDriver.getAge());
     }
 
     @Test
