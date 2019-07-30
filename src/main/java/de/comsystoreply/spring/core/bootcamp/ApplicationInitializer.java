@@ -30,6 +30,7 @@ import javax.servlet.ServletRegistration;
         ServiceConfiguration.class
 })
 @PropertySource("classpath:/application.properties")
+
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override

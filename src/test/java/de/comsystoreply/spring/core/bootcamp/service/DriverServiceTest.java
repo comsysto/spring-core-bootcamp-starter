@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.service;
 
 import de.comsystoreply.spring.core.bootcamp.ApplicationInitializer;
 import de.comsystoreply.spring.core.bootcamp.config.PersistenceConfiguration;
+import de.comsystoreply.spring.core.bootcamp.config.Profiles;
 import de.comsystoreply.spring.core.bootcamp.config.ServiceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.domain.Driver;
 import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -26,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.*;
         loader = AnnotationConfigContextLoader.class,
         classes = {ServiceConfiguration.class, PersistenceConfiguration.class})
 @Transactional
+@ActiveProfiles(Profiles.TEST)
 class DriverServiceTest {
 
     @Autowired
