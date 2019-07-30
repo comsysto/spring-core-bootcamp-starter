@@ -25,19 +25,22 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(
         loader = AnnotationConfigContextLoader.class,
         classes = {ServiceConfiguration.class, PersistenceConfiguration.class})
-@Transactional
+
 class DriverServiceTest {
+
     @Autowired DriverService driverService;
     @Autowired DriverRepository driverRepository;
-    Driver initialDriver = new Driver();
+
+    Driver initialDriver;
 
     @BeforeEach
     void setup() {
+        initialDriver = new Driver();
         initialDriver.setId(1);
         initialDriver.setFirstName("Intial Driver1");
         initialDriver.setLastName("Initial DriverName1");
         initialDriver.setAge(23);
-        driverRepository.save(initialDriver);
+        driverService.save(initialDriver);
     }
     @Test
     void findById() {
@@ -73,7 +76,7 @@ class DriverServiceTest {
 
     @Test
     void delete() {
-        driverService.delete(1);
+       driverService.delete(1);
 
     }
 }
