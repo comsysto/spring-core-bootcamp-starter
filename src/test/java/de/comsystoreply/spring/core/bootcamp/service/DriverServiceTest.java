@@ -1,14 +1,10 @@
 package de.comsystoreply.spring.core.bootcamp.service;
 
-import de.comsystoreply.spring.core.bootcamp.ApplicationInitializer;
 import de.comsystoreply.spring.core.bootcamp.config.PersistenceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.config.Profiles;
 import de.comsystoreply.spring.core.bootcamp.config.ServiceConfiguration;
 import de.comsystoreply.spring.core.bootcamp.domain.Driver;
-import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.repo.DriverRepository;
-import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +12,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
