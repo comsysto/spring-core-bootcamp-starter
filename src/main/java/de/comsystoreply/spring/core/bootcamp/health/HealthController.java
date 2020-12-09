@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * Controller providing a very basic health check. At the moment it can only be used to check if the application is
  * handling any requests at all.
  */
 @RestController
-@RequestMapping(value = "/health", produces = APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/health", produces = APPLICATION_JSON_VALUE)
 public class HealthController {
 
     @GetMapping

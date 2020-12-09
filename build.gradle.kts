@@ -20,7 +20,7 @@ dependencies {
     /*
      * Spring Framework and Testing support.
      */
-    val springVersion = "5.1.8.RELEASE"
+    val springVersion = "5.3.2"
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
