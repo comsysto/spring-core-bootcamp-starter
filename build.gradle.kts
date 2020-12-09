@@ -8,7 +8,7 @@ java {
 }
 
 application {
-    mainClassName = "de.comsystoreply.spring.core.bootcamp.Application"
+    mainClass.set("de.comsystoreply.spring.core.bootcamp.Application")
 }
 
 repositories {
@@ -43,14 +43,14 @@ dependencies {
      * Logback behind SLF4J for logging
      */
     implementation("org.slf4j:slf4j-api:1.7.26")
-    runtime("ch.qos.logback:logback-classic:1.2.3")
+    runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 
     /*
      * JUnit test framework
      */
     val junitVersion = "5.4.2"
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 
     /*
      * Library with matchers to be used as part of test cases
