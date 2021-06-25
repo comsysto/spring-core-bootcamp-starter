@@ -1,11 +1,11 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import java.nio.file.Files;
+
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.file.Files;
 
 /**
  * Main class of the application.
@@ -34,10 +34,10 @@ public class Application {
         /*
          * Configure embedded Tomcat instance.
          */
-        String basedir = Files.createTempDirectory("bootcamp-tomcat").toAbsolutePath().toString();
-        String appBase = ".";
+        var basedir = Files.createTempDirectory("bootcamp-tomcat").toAbsolutePath().toString();
+        var appBase = ".";
 
-        Tomcat tomcat = new Tomcat();
+        var tomcat = new Tomcat();
         tomcat.setBaseDir(basedir);
         tomcat.setPort(SERVER_PORT);
         tomcat.getHost().setAppBase(appBase);
