@@ -19,7 +19,7 @@ dependencies {
     /*
      * Spring Framework and Testing support.
      */
-    val springVersion = "5.3.8"
+    val springVersion = "5.3.9"
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
@@ -44,7 +44,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.30")
     runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 
-    val jpaVersion = "2.1.1.RELEASE"
+    val jpaVersion = "2.5.3"
     val hibernateVersion = "5.4.1.Final"
     val postgresVersion = "42.2.23"
     implementation("org.springframework.data:spring-data-jpa:$jpaVersion")
@@ -66,10 +66,11 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest:2.2")
 
     /*
-     * Add Mockito mocking framework.
-     */
-    testImplementation("org.mockito:mockito-core:3.6.28")
-    testImplementation("org.mockito:mockito-junit-jupiter:3.6.28")
+  * Add Mockito mocking framework.
+  */
+    val mockitoVersion = "3.11.2"
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
 
     /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
