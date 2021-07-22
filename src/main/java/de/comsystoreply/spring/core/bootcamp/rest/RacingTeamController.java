@@ -11,10 +11,6 @@ import java.util.stream.Collectors;
 @RestController
 public class RacingTeamController {
 
-  @PersistenceContext
-  private EntityManager entityManager;
-
-
   @GetMapping("/teams")
   public String getTeams() {
     return "All my teams!";

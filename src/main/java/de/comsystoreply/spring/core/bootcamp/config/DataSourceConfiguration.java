@@ -29,20 +29,22 @@ public class DataSourceConfiguration {
   public JpaVendorAdapter jpaVendorAdapter(Environment environment) {
     // provides a HibernatePersistenceProvider
     HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-    // bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, false));
-    // bean.setShowSql(environment.getProperty("spring.jpa.show-sql", Boolean.TYPE, false));
+//     bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, false));
+//     bean.setShowSql(environment.getProperty("spring.jpa.show-sql", Boolean.TYPE, false));
 
     return bean;
   }
 
   @Bean
   public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-          DataSource dataSource
+          DataSource dataSource,
+          JpaVendorAdapter jpaVendorAdapter
   ) {
     // manages the PersistenceUnits
     LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
     bean.setDataSource(dataSource);
-   // bean.setJpaVendorAdapter(jpaVendorAdapter);
+    bean.setPackagesToScan("de.comsystoreply");
+    bean.setJpaVendorAdapter(jpaVendorAdapter);
 
     return bean;
   }
