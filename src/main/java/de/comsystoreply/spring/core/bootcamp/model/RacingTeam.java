@@ -1,13 +1,20 @@
 package de.comsystoreply.spring.core.bootcamp.model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class RacingTeam {
+
   private Long id;
+
   private String name;
+
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Driver> drivers;
+
   private List<RaceCar> raceCars;
 
   public Long getId() {
