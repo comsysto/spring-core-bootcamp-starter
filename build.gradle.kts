@@ -69,7 +69,7 @@ dependencies {
      * Add Mockito mocking framework.
      */
     testImplementation("org.mockito:mockito-core:3.6.28")
-    testImplementation("org.mockito:mockito-junit-jupiter:3.6.28")
+    testImplementation("org.mockito:mockito-core:3.6.28")
 
     /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
