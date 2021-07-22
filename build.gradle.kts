@@ -59,7 +59,9 @@ dependencies {
     /*
      * Add Mockito mocking framework.
      */
-    testImplementation("org.mockito:mockito-core:3.6.28")
+    val mockitoVersion = "3.11.2"
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
 
     /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
