@@ -1,9 +1,15 @@
 package de.comsystoreply.spring.core.bootcamp.config;
 
-import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.core.env.Environment;
+
+import javax.sql.DataSource;
+
 
 @Configuration
 public class DataSourceConfiguration {
