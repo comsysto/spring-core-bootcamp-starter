@@ -11,9 +11,12 @@ import java.util.stream.Collectors;
 @RestController
 public class RacingTeamController {
 
+//  @Autowired
+  private RacingTeamRepository racingTeamRepository;
+
   @GetMapping("/teams")
-  public String getTeams() {
-    return "All my teams!";
+  public Iterable<RacingTeam> getTeams() {
+    return racingTeamRepository.findAll();
   }
 
 }
