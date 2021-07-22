@@ -14,6 +14,7 @@ public class RacingTeamController {
 
     private final RacingTeamRepository racingTeamRepository;
 
+    @Autowired
     public RacingTeamController(RacingTeamRepository rtr) {
         this.racingTeamRepository = rtr;
     }
