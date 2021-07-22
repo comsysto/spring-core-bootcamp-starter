@@ -19,20 +19,20 @@ dependencies {
     /*
      * Spring Framework and Testing support.
      */
-    val springVersion = "5.3.8"
+    val springVersion = "5.3.9"
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
     /*
      * Embedded Apache Tomcat to run the application on.
      */
-    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.40")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper:9.0.50")
     implementation("com.sun.activation:javax.activation:1.2.0")
 
     /*
      * Jackson to serialize and deserialize JSON.
      */
-    val jacksonVersion = "2.12.0"
+    val jacksonVersion = "2.12.4"
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
@@ -64,7 +64,7 @@ dependencies {
     /*
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
-    testImplementation("com.jayway.jsonpath:json-path-assert:2.4.0")
+    testImplementation("com.jayway.jsonpath:json-path-assert:2.6.0")
 }
 
 tasks.test {
