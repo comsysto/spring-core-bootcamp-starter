@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 class HealthControllerTest {
 
-    private MockMvc mock = standaloneSetup(HealthController.class).build();
+    private final MockMvc mock = standaloneSetup(HealthController.class).build();
 
     @Test
     void getHealth() throws Exception {
