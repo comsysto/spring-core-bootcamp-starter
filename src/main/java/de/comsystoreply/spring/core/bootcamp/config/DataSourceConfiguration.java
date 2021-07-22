@@ -29,8 +29,8 @@ public class DataSourceConfiguration {
   public JpaVendorAdapter jpaVendorAdapter(Environment environment) {
     // provides a HibernatePersistenceProvider
     HibernateJpaVendorAdapter bean = new HibernateJpaVendorAdapter();
-//     bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, false));
-//     bean.setShowSql(environment.getProperty("spring.jpa.show-sql", Boolean.TYPE, false));
+    bean.setGenerateDdl(environment.getProperty("spring.jpa.generate-ddl", Boolean.TYPE, true));
+    bean.setShowSql(environment.getProperty("spring.jpa.show-sql", Boolean.TYPE, true));
 
     return bean;
   }
