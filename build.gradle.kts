@@ -46,12 +46,12 @@ dependencies {
 
     val jpaVersion = "2.1.1.RELEASE"
     val hibernateVersion = "5.4.1.Final"
+    val postgresVersion = "42.2.23"
     implementation("org.springframework.data:spring-data-jpa:$jpaVersion")
-    implementation("org.hibernate:hibernate-core:$hibernateVersion")
-
-//    compile (group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final') {
-//    exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
-//}
+    implementation("org.hibernate:hibernate-core:$hibernateVersion") {
+        exclude(group = "org.glassfish.jaxb", module = "jaxb-runtime")
+    }
+    implementation("org.postgresql:postgresql:$postgresVersion")
 
     /*
      * JUnit test framework
