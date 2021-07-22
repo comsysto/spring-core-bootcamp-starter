@@ -8,10 +8,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
 @RestController
-@PersistenceContext(PersistenceContextType.EXTENDED)
 public class RacingTeamController {
 
-  @PersistenceContext(PersistenceContextType.EXTENDED)
+  @PersistenceContext
   private EntityManager entityManager;
 
 

@@ -18,6 +18,7 @@ public class DataSourceConfiguration {
     return dataSource;
   }
 
+
   @Bean
   public JpaVendorAdapter jpaVendorAdapter(Environment environment) {
     // provides a HibernatePersistenceProvider
@@ -30,13 +31,12 @@ public class DataSourceConfiguration {
 
   @Bean
   public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-          DataSource dataSource,
-          JpaVendorAdapter jpaVendorAdapter
+          DataSource dataSource
   ) {
     // manages the PersistenceUnits
     LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
     bean.setDataSource(dataSource);
-    bean.setJpaVendorAdapter(jpaVendorAdapter);
+   // bean.setJpaVendorAdapter(jpaVendorAdapter);
 
     return bean;
   }
