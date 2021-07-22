@@ -25,6 +25,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan
 @PropertySource("classpath:/application.properties")
+@EnableJpaRepositories(basePackages = "de.comsystoreply.spring.core.bootcamp.persistence")
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override

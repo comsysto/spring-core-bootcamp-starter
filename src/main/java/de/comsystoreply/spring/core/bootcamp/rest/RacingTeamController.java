@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @RestController
 public class RacingTeamController {
 
-//  @Autowired
+  @Autowired
   private RacingTeamRepository racingTeamRepository;
 
   @GetMapping("/teams")
