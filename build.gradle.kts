@@ -44,6 +44,15 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.30")
     runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 
+    val jpaVersion = "2.1.1.RELEASE"
+    val hibernateVersion = "5.4.1.Final"
+    implementation("org.springframework.data:spring-data-jpa:$jpaVersion")
+    implementation("org.hibernate:hibernate-core:$hibernateVersion")
+
+//    compile (group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final') {
+//    exclude group: 'org.glassfish.jaxb', module: 'jaxb-runtime'
+//}
+
     /*
      * JUnit test framework
      */
