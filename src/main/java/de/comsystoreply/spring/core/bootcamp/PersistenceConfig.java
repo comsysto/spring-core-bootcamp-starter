@@ -15,7 +15,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -106,14 +109,14 @@ public class PersistenceConfig {
     }
 
     @Bean
-    TransactionManager transactionContextManager(DataSource dataSource) {
+    TransactionManager transactionContextManager(EntityManagerFactory entityManagerFactory) {
         /*
          * The TransactionManager is used to manage database transactions.
          * We do not have to interact with it manually because we use Spring's transaction support based on AOP and the
          * @Transactional annotation.
          */
 
-        return new DataSourceTransactionManager(dataSource);
+        return new JpaTransactionManager(entityManagerFactory);
     }
 
     @Bean

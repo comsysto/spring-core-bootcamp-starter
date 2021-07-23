@@ -40,6 +40,20 @@ class TeamRepositoryIntegrationTest {
     }
 
     @Test
+    void updateATeam() {
+        var original = repository.create(aTeam());
+
+        var newTeamName = "New even more impressive team name";
+        original.setName(newTeamName);
+        repository.update(original);
+
+        var loaded = repository.findById(original.getId());
+
+        assertTrue(loaded.isPresent());
+        assertEquals(newTeamName, loaded.get().getName());
+    }
+
+    @Test
     void findOneTeamById() {
         var searchedTeam = repository.create(aTeam());
 
@@ -51,6 +65,20 @@ class TeamRepositoryIntegrationTest {
 
         assertTrue(result.isPresent());
         assertEquals(searchedTeam, result.get());
+    }
+
+    @Test
+    void findAllTeams() {
+        var teamA = repository.create(aTeam());
+        var teamB = repository.create(aTeam());
+        var teamC = repository.create(aTeam());
+
+        var result = repository.findAll();
+
+        assertEquals(3, result.size());
+        assertTrue(result.contains(teamA));
+        assertTrue(result.contains(teamB));
+        assertTrue(result.contains(teamC));
     }
 
     @Test
