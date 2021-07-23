@@ -52,6 +52,11 @@ dependencies {
     implementation("org.postgresql:postgresql:42.2.23")
 
     /*
+     * Connection pool for database.
+     */
+    implementation("com.zaxxer:HikariCP:5.0.0")
+
+    /*
      * Use Flyway to manage DB schema.
      */
     implementation("org.flywaydb:flyway-core:7.11.3")
