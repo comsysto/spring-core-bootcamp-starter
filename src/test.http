@@ -10,14 +10,14 @@ POST http://localhost:8080/teams
 Content-Type: application/json
 
 {
- "name": "best racing team",
- "drivers": [
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "dateOfBirth": "1978-07-23"
-}
- ]
+  "name": "best racing team",
+  "drivers": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1978-07-23"
+    }
+  ]
 }
 
 
