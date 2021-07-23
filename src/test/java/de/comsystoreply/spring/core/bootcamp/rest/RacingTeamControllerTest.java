@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.http.MediaType.APPLICATION_XML;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -39,5 +40,11 @@ class RacingTeamControllerTest {
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].id", equalTo(racingTeam.getId().intValue())));
 //                .andExpect(jsonPath("$[0].driver[*].id").value().containsInAnyOrder(1));
+    }
+
+    @Test
+    void testXMLError()throws Exception {
+        mock.perform(get("/teams").accept(APPLICATION_XML))
+                .andExpect(status().isNotAcceptable());
     }
 }

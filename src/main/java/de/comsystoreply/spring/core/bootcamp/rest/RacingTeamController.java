@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(produces = APPLICATION_XML_VALUE)
+@RequestMapping(produces = APPLICATION_JSON_VALUE)
 public class RacingTeamController {
 
     private final RacingTeamRepository racingTeamRepository;
