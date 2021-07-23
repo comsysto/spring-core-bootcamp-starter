@@ -4,7 +4,7 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_16
 }
 
 application {
@@ -21,6 +21,7 @@ dependencies {
      */
     val springVersion = "5.3.9"
     implementation("org.springframework:spring-webmvc:$springVersion")
+    implementation("org.springframework:spring-orm:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
     /*
@@ -37,6 +38,23 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
+
+    /*
+     * Hibernate as the JPA implementation.
+     */
+    implementation("org.hibernate:hibernate-java8:5.5.4.Final"){
+        exclude(group = "org.glassfish.jaxb", module = "jaxb-runtime")
+    }
+
+    /*
+     * JDBC database driver for PostgreSQL.
+     */
+    implementation("org.postgresql:postgresql:42.2.23")
+
+    /*
+     * Use Flyway to manage DB schema.
+     */
+    implementation("org.flywaydb:flyway-core:7.11.3")
 
     /*
      * Logback behind SLF4J for logging
