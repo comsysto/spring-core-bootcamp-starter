@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.adapter.database;
+package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import de.comsystoreply.spring.core.bootcamp.Application;
+import de.comsystoreply.spring.core.bootcamp.domain.Team;
 
 @Configuration
 @EnableTransactionManagement // enable database transaction support
@@ -104,7 +104,7 @@ public class PersistenceConfig {
          * The root package to scan is configured using a class object instead of a plain String to make to code more
          * resilience to package renaming.
          */
-        entityManagerFactoryBean.setPackagesToScan(Application.class.getPackageName());
+        entityManagerFactoryBean.setPackagesToScan(Team.class.getPackageName());
 
         return entityManagerFactoryBean;
     }

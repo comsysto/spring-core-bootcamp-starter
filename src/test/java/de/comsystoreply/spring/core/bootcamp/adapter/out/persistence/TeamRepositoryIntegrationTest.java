@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.adapter.database;
+package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.adapter.database;
+package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import java.util.List;
 import java.util.Optional;

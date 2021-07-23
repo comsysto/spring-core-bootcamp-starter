@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.adapter.database;
+package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import de.comsystoreply.spring.core.bootcamp.domain.Team;
 
