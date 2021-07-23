@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,10 @@ public interface CrudRepository<T, ID> {
 
     @Transactional
     T create(T item);
+
+    default T create(Supplier<T> supplier) {
+        return create(supplier.get());
+    }
 
     @Transactional(readOnly = true)
     Optional<T> findById(ID id);

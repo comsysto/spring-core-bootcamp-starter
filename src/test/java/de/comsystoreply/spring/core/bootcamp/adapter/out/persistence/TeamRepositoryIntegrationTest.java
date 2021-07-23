@@ -1,35 +1,35 @@
 package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
 import static de.comsystoreply.spring.core.bootcamp.TestData.aTeam;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = PersistenceConfig.class)
-@Transactional
-class TeamRepositoryIntegrationTest {
+class TeamRepositoryIntegrationTest extends PersistenceIntegrationTest{
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
-    private TeamRepository repository;
+    private TeamRepository teamRepository;
 
     @Test
     void injected() {
-        assertNotNull(repository);
+        assertNotNull(teamRepository);
     }
 
     @Test
     void createANewTeam() {
         var original = aTeam();
 
-        var result = repository.create(original);
+        var result = teamRepository.create(original);
+        entityManager.flush();
 
         assertNotNull(result.getId());
         assertEquals(original.getName(), result.getName());
@@ -37,23 +37,24 @@ class TeamRepositoryIntegrationTest {
 
     @Test
     void deleteTeam() {
-        var team = repository.create(aTeam());
+        var team = teamRepository.create(aTeam());
+        entityManager.flush();
 
-        repository.delete(team);
+        teamRepository.delete(team);
+        entityManager.flush();
 
-        var loadedTeam = repository.findById(team.getId());
+        var loadedTeam = teamRepository.findById(team.getId());
         assertTrue(loadedTeam.isEmpty());
     }
 
     @Test
     void findOneTeamById() {
-        var searchedTeam = repository.create(aTeam());
+        var searchedTeam = teamRepository.create(aTeam());
+        teamRepository.create(aTeam());
+        teamRepository.create(aTeam());
+        entityManager.flush();
 
-        //createMultipleTeams
-        repository.create(aTeam());
-        repository.create(aTeam());
-
-        var result = repository.findById(searchedTeam.getId());
+        var result = teamRepository.findById(searchedTeam.getId());
 
         assertTrue(result.isPresent());
         assertEquals(searchedTeam, result.get());
@@ -61,11 +62,12 @@ class TeamRepositoryIntegrationTest {
 
     @Test
     void findAllTeams() {
-        var teamA = repository.create(aTeam());
-        var teamB = repository.create(aTeam());
-        var teamC = repository.create(aTeam());
+        var teamA = teamRepository.create(aTeam());
+        var teamB = teamRepository.create(aTeam());
+        var teamC = teamRepository.create(aTeam());
+        entityManager.flush();
 
-        var result = repository.findAll();
+        var result = teamRepository.findAll();
 
         assertEquals(3, result.size());
         assertTrue(result.contains(teamA));
@@ -75,13 +77,13 @@ class TeamRepositoryIntegrationTest {
 
     @Test
     void findTeamByName() {
-        var namedTeam = repository.create(aTeam());
+        var namedTeam = teamRepository.create(aTeam());
+        teamRepository.create(aTeam());
+        teamRepository.create(aTeam());
+        teamRepository.create(aTeam());
+        entityManager.flush();
 
-        repository.create(aTeam());
-        repository.create(aTeam());
-        repository.create(aTeam());
-
-        var result = repository.findByName(namedTeam.getName());
+        var result = teamRepository.findByName(namedTeam.getName());
 
         assertTrue(result.isPresent());
         assertEquals(namedTeam, result.get());

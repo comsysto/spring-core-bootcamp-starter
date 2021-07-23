@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import de.comsystoreply.spring.core.bootcamp.domain.Team;
@@ -13,7 +14,7 @@ import de.comsystoreply.spring.core.bootcamp.domain.Team;
  * Implements a {@link TeamRepository} by directly interacting with the {@link EntityManager}.
  */
 @Repository
-class EntityManagerTeamRepository implements TeamRepository {
+class EntityManagerTeamRepository extends AbstractCrudRepositroy<Team, Long> implements TeamRepository {
 
     /*
      * Note that this class is package private. It should never be used outside this package. All classes requiring
@@ -22,6 +23,11 @@ class EntityManagerTeamRepository implements TeamRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    EntityManagerTeamRepository() {
+        super(Team.class);
+    }
 
     @Override
     public Team create(Team team) {

@@ -1,11 +1,12 @@
 version: '3.1'
 
 services:
-  db: # makes DB available. JDBC-URL: "jdbc:postgresql://localhost:15432/"
+  db: # makes DB available. JDBC-URL: "jdbc:postgresql://localhost:15432/spring-core-bootcamp"
     image: postgres
     restart: always
     environment:
       POSTGRES_USER: ninja-guy # DB user
       POSTGRES_PASSWORD: inTheSh4d0ws # DB password
+      POSTGRES_DB: "spring-core-bootcamp"
     ports:
       - 15432:5432 # bind to port 15432 on machine running docker (normally localhost)
