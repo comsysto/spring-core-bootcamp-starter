@@ -10,6 +10,8 @@ public class DriverDto {
     String lastName;
     LocalDate dateOfBirth;
 
+    public DriverDto() {}
+
     public DriverDto(Long id, String firstName, String lastName, LocalDate dateOfBirth) {
         this.id = id;
         this.firstName = firstName;

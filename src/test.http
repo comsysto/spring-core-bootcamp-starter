@@ -13,8 +13,13 @@ Content-Type: application/json
  "id": null,
  "name": "best racing team",
  "drivers": [
-"id": null
-]
+{
+  "id": null,
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1978-07-23"
+}
+ ]
 }
 
 

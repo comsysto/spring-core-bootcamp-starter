@@ -9,8 +9,10 @@ public class RacingTeamDto {
 
     Long id;
     String name;
-    List<DriverDto> drivers;
-
+    List<DriverDto> drivers;    
+    
+    public RacingTeamDto() {}
+    
     public RacingTeamDto(Long id, String name, List<DriverDto> drivers) {
         this.id = id;
         this.name = name;
