@@ -4,6 +4,17 @@ GET http://localhost:8080/health
 
 GET http://localhost:8080/teams
 
+###
+
+POST http://localhost:8080/teams
+{
+"id": null,
+"name": "best racing team",
+"drivers": [
+"id": null
+]
+}
+
 
 
 
