@@ -54,12 +54,16 @@ public class RacingTeamDto {
     }
 
     public static RacingTeam fromDto(RacingTeamDto dto) {
-        return new RacingTeam(
+        RacingTeam team =  new RacingTeam(
                 dto.getId(),
                 dto.getName(),
                 dto.getDrivers().stream()
                     .map(DriverDto::fromDto)
                     .collect(Collectors.toList())
         );
+
+        team.getDrivers().forEach(driver -> driver.setRacingTeam(team));
+
+        return team;
     }
 }

@@ -35,6 +35,8 @@ public class Driver {
   @JoinColumn(name = "RACING_TEAM_ID", nullable = false)
   private RacingTeam racingTeam;
 
+  private Driver() {}
+
   public Driver(Long id, String firstName, String lastName, LocalDate dateOfBirth, RacingTeam racingTeam) {
     this.id = id;
     this.firstName = firstName;

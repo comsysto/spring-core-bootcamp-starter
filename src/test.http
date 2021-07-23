@@ -10,11 +10,9 @@ POST http://localhost:8080/teams
 Content-Type: application/json
 
 {
- "id": null,
  "name": "best racing team",
  "drivers": [
 {
-  "id": null,
   "firstName": "John",
   "lastName": "Doe",
   "dateOfBirth": "1978-07-23"
