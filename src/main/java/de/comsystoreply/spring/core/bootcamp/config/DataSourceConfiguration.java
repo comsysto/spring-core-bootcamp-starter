@@ -3,6 +3,7 @@ package de.comsystoreply.spring.core.bootcamp.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -13,15 +14,18 @@ import javax.sql.DataSource;
 
 
 @Configuration
+@PropertySource("classpath:/application.properties")
 public class DataSourceConfiguration {
 
   @Bean
-  public DataSource dataSource() {
+  public DataSource dataSource(@Value("${spring.datasource.url}") String url,
+                               @Value("${spring.datasource.username}") String username,
+                               @Value("${spring.datasource.password}") String password) {
     SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
     dataSource.setDriverClass(org.postgresql.Driver.class);
-    dataSource.setUrl("jdbc:postgresql://localhost:15432/");
-    dataSource.setUsername("ninja-guy");
-    dataSource.setPassword("inTheSh4d0ws");
+    dataSource.setUrl(url);
+    dataSource.setUsername(username);
+    dataSource.setPassword(password);
     return dataSource;
   }
 

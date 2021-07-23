@@ -26,4 +26,10 @@ public class RacingTeamController {
         return racingTeamRepository.findAll();
     }
 
+    @PostMapping("/teams")
+    public RacingTeamDto createRacingTeam(@RequestBody RacingTeamDto racingTeamDto) {
+        RacingTeam racingTeam = racingTeamRepository.save(RacingTeamDto.fromDto(racingTeamDto));
+        return RacingTeamDto.toDto(racingTeam);
+    }
+
 }
