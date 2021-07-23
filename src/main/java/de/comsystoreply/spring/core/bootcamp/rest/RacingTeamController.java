@@ -3,6 +3,7 @@ package de.comsystoreply.spring.core.bootcamp.rest;
 import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.persistence.RacingTeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ public class RacingTeamController {
         this.racingTeamRepository = rtr;
     }
 
+    @Transactional( readOnly = true )
     @GetMapping("/teams")
     public List<RacingTeamDto> getTeams() {
         return racingTeamRepository.findAll().stream()
