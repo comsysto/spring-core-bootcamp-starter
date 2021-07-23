@@ -5,12 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Stream;
+import java.util.List;
 
 
 public interface RacingTeamRepository extends CrudRepository<RacingTeam, Long> {
 
-//    @Transactional(readOnly = true)
-//    Stream<RacingTeam> findAll();
-
+    @Override
+    @Transactional(readOnly = true)
+    public List<RacingTeam> findAll();
 
 }
