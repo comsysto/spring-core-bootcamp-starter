@@ -1,5 +1,10 @@
 package de.comsystoreply.spring.core.bootcamp.rest;
 
+import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
+
+import java.util.stream.Collectors;
+import java.util.List;
+
 public class RacingTeamDto {
 
     Long id;

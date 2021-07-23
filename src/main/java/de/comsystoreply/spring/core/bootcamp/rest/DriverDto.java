@@ -49,22 +49,22 @@ public class DriverDto {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public DriverDto toDto(Driver driver) {
+    public static DriverDto toDto(Driver driver) {
         return new DriverDto(
                 driver.getId(),
                 driver.getFirstName(),
                 driver.getLastName(),
                 driver.getDateOfBirth()
-        )
+        );
     }
 
-    public  Driver fromDto(DriverDto dto) {
+    public static Driver fromDto(DriverDto dto) {
         return new Driver(
                 dto.getId(),
                 dto.getFirstName(),
                 dto.getLastName(),
                 dto.getDateOfBirth(),
                 null // TODO: getTeam
-        )
+        );
     }
 }

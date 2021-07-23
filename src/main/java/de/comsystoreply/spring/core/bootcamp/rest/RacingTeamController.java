@@ -22,8 +22,10 @@ public class RacingTeamController {
     }
 
     @GetMapping("/teams")
-    public Iterable<RacingTeam> getTeams() {
-        return racingTeamRepository.findAll();
+    public List<RacingTeamDto> getTeams() {
+        return racingTeamRepository.findAll().stream()
+                .map(RacingTeamDto::toDto)
+                .collect(Collectors.toList());
     }
 
     @PostMapping("/teams")
