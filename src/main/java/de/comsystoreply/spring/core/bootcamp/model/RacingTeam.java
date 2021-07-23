@@ -27,7 +27,13 @@ public class RacingTeam {
   @OneToMany(cascade = CascadeType.ALL)
   private List<Driver> drivers;
 
-//  private List<RaceCar> raceCars;
+  public RacingTeam(Long id, String name, List<Driver> drivers) {
+    this.id = id;
+    this.name = name;
+    this.drivers = drivers;
+  }
+
+  //  private List<RaceCar> raceCars;
 
   public Long getId() {
     return id;
