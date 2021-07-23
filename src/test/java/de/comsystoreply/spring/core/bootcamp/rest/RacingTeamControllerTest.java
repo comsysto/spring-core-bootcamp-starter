@@ -31,8 +31,8 @@ class RacingTeamControllerTest {
     void getTeams() throws Exception {
         RacingTeam racingTeam = new RacingTeam(6L, "racing-team2", List.of());
         Driver driver = new Driver(1L, "best", "racerX", LocalDate.now(), racingTeam);
-        racingTeam.setDrivers(List.of(driver));
-        when(repository.findAll()).thenReturn(List.of(racingTeam));
+        // racingTeam.setDrivers(List.of(driver));
+        Mockito.when(repository.findAll()).thenReturn(List.of(racingTeam));
 
         mock.perform(get("/teams").accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
