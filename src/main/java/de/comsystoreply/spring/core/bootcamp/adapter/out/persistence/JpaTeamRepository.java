@@ -6,14 +6,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import de.comsystoreply.spring.core.bootcamp.domain.Team;
+
+import static org.springframework.context.annotation.ScopedProxyMode.TARGET_CLASS;
 
 /**
  * Implements a {@link TeamRepository} by directly interacting with the {@link EntityManager}.
  */
 @Repository
+@Scope(proxyMode = TARGET_CLASS) // create class base instead of interface based proxies
 class JpaTeamRepository extends JpaCrudRepositroy<Team, Long> implements TeamRepository {
 
     /*

@@ -6,6 +6,8 @@ import javax.persistence.PersistenceException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import de.comsystoreply.spring.core.bootcamp.domain.Team;
+
 import static de.comsystoreply.spring.core.bootcamp.TestData.aDriver;
 import static de.comsystoreply.spring.core.bootcamp.TestData.aTeam;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
     @Autowired
-    private DriverRepository driverRepository;
+    private JpaDriverRepository driverRepository;
 
     @Autowired
-    private TeamRepository teamRepository;
+    private CrudRepository<Team, Long> teamRepository;
 
     @Test
     void createDriver() {

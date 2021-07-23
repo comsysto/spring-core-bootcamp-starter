@@ -1,8 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
 import java.util.Set;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TeamRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @Autowired
-    private TeamRepository teamRepository;
+    private JpaTeamRepository teamRepository;
 
     @Test
     void injected() {
