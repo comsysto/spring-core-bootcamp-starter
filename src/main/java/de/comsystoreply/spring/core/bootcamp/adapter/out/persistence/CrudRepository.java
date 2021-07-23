@@ -16,9 +16,6 @@ public interface CrudRepository<T, ID> {
     @Transactional
     T create(T item);
 
-    @Transactional
-    T update(T item);
-
     @Transactional(readOnly = true)
     Optional<T> findById(ID id);
 

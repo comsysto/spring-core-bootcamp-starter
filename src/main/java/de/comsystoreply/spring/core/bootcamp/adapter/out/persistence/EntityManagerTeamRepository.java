@@ -29,8 +29,14 @@ class EntityManagerTeamRepository implements TeamRepository {
     }
 
     @Override
-    public Team update(Team team) {
-        return entityManager.merge(team);
+    public void delete(Team item) {
+        entityManager.remove(item);
+    }
+
+    @Override
+    public List<Team> findAll() {
+        return entityManager.createQuery("SELECT t FROM Team t", Team.class)
+                .getResultList();
     }
 
     @Override
@@ -41,13 +47,11 @@ class EntityManagerTeamRepository implements TeamRepository {
     }
 
     @Override
-    public List<Team> findAll() {
-        return entityManager.createQuery("SELECT t FROM Team t", Team.class)
-                .getResultList();
-    }
-
-    @Override
-    public void delete(Team item) {
-        entityManager.remove(item);
+    public Optional<Team> findByName(String name) {
+        return Optional.ofNullable(
+                entityManager.createQuery("SELECT t FROM Team t WHERE t.name = :name", Team.class)
+                        .setParameter("name", name)
+                        .getSingleResult()
+        );
     }
 }

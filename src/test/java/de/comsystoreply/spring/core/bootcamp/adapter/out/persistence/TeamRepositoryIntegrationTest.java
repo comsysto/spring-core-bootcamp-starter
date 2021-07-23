@@ -36,17 +36,13 @@ class TeamRepositoryIntegrationTest {
     }
 
     @Test
-    void updateATeam() {
-        var original = repository.create(aTeam());
+    void deleteTeam() {
+        var team = repository.create(aTeam());
 
-        var newTeamName = "New even more impressive team name";
-        original.setName(newTeamName);
-        repository.update(original);
+        repository.delete(team);
 
-        var loaded = repository.findById(original.getId());
-
-        assertTrue(loaded.isPresent());
-        assertEquals(newTeamName, loaded.get().getName());
+        var loadedTeam = repository.findById(team.getId());
+        assertTrue(loadedTeam.isEmpty());
     }
 
     @Test
@@ -78,12 +74,16 @@ class TeamRepositoryIntegrationTest {
     }
 
     @Test
-    void deleteTeam() {
-        var team = repository.create(aTeam());
+    void findTeamByName() {
+        var namedTeam = repository.create(aTeam());
 
-        repository.delete(team);
+        repository.create(aTeam());
+        repository.create(aTeam());
+        repository.create(aTeam());
 
-        var loadedTeam = repository.findById(team.getId());
-        assertTrue(loadedTeam.isEmpty());
+        var result = repository.findByName(namedTeam.getName());
+
+        assertTrue(result.isPresent());
+        assertEquals(namedTeam, result.get());
     }
 }
