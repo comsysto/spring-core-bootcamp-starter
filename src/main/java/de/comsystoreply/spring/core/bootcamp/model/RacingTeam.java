@@ -24,7 +24,7 @@ public class RacingTeam {
   @Column(name = "NAME")
   private String name;
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(mappedBy="racingTeam", cascade = CascadeType.ALL)
   private List<Driver> drivers;
 
   private RacingTeam() {}
