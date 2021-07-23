@@ -5,6 +5,9 @@ import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.persistence.RacingTeamRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.mockito.Mockito.when;
+
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -34,6 +37,6 @@ class RacingTeamControllerTest {
         mock.perform(get("/teams").accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].id"), equalTo(racingTeam.getId()));
+                .andExpect(jsonPath("$[0].id", equalTo(racingTeam.getId().intValue())));
     }
 }
