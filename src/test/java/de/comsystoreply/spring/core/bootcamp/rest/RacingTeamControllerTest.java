@@ -1,9 +1,9 @@
 package de.comsystoreply.spring.core.bootcamp.rest;
 
+import de.comsystoreply.spring.core.bootcamp.model.Driver;
 import de.comsystoreply.spring.core.bootcamp.model.RacingTeam;
 import de.comsystoreply.spring.core.bootcamp.persistence.RacingTeamRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.test.web.servlet.MockMvc;
 
