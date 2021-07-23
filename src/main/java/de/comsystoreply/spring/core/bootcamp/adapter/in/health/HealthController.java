@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp.health;
+package de.comsystoreply.spring.core.bootcamp.adapter.in.health;
 
 import java.util.Map;
 
