@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Base class for repositories fetching entities from the database.
  *
- * @param <T> the type of entity
+ * @param <T>  the type of entity
  * @param <ID> the type of the entity's ID
  */
 public interface CrudRepository<T, ID> {

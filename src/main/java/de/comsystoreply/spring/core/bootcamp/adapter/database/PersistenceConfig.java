@@ -1,4 +1,4 @@
-package de.comsystoreply.spring.core.bootcamp;
+package de.comsystoreply.spring.core.bootcamp.adapter.database;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,25 +9,26 @@ import org.flywaydb.core.Flyway;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import de.comsystoreply.spring.core.bootcamp.Application;
+
 @Configuration
 @EnableTransactionManagement // enable database transaction support
 @PropertySource("classpath:/datasource.properties") // load properties into environment
+@ComponentScan // scan for Spring Beans
 public class PersistenceConfig {
 
     @Bean
@@ -46,7 +47,6 @@ public class PersistenceConfig {
     }
 
     @Bean
-    @Profile("!connection-pool")
     DataSource dataSource(DataSourceProperties dataSourceProperties) throws SQLException {
         /*
          * All JDBC driver on the classpath are registered with the DriverManage.
@@ -70,7 +70,8 @@ public class PersistenceConfig {
     }
 
     @Bean
-    @Profile("connection-pool")
+    @Primary
+        // from here we want to use the connection pool
     DataSource connectionPoolDataSource(DataSourceProperties dataSourceProperties) {
         /*
          * If you do not use a connection pool you are likely to run into easily avoidable performance issues.

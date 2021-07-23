@@ -1,14 +1,15 @@
 package de.comsystoreply.spring.core.bootcamp;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import de.comsystoreply.spring.core.bootcamp.adapter.database.PersistenceConfig;
 
 /**
  * Initializes the web application.
@@ -21,11 +22,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@Import({PersistenceConfig.class})
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    public void onStartup(ServletContext servletContext) {
 
         /*
          * Create WebApplicationContext.
