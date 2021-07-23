@@ -31,12 +31,13 @@ class RacingTeamControllerTest {
     void getTeams() throws Exception {
         RacingTeam racingTeam = new RacingTeam(6L, "racing-team2", List.of());
         Driver driver = new Driver(1L, "best", "racerX", LocalDate.now(), racingTeam);
-        // racingTeam.setDrivers(List.of(driver));
+        racingTeam.setDrivers(List.of(driver));
         Mockito.when(repository.findAll()).thenReturn(List.of(racingTeam));
 
         mock.perform(get("/teams").accept(APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].id", equalTo(racingTeam.getId().intValue())));
+//                .andExpect(jsonPath("$[0].driver[*].id").value().containsInAnyOrder(1));
     }
 }
