@@ -30,26 +30,9 @@ class EntityManagerTeamRepository extends AbstractCrudRepositroy<Team, Long> imp
     }
 
     @Override
-    public Team create(Team team) {
-        return entityManager.merge(team);
-    }
-
-    @Override
-    public void delete(Team item) {
-        entityManager.remove(item);
-    }
-
-    @Override
     public List<Team> findAll() {
         return entityManager.createQuery("SELECT t FROM Team t", Team.class)
                 .getResultList();
-    }
-
-    @Override
-    public Optional<Team> findById(Long id) {
-        return Optional.ofNullable(
-                entityManager.find(Team.class, id)
-        );
     }
 
     @Override

@@ -1,7 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.adapter.out.persistence;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.Set;
 import javax.persistence.PersistenceException;
 
 import org.junit.jupiter.api.Test;
@@ -16,9 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @Autowired
     private DriverRepository driverRepository;
 
@@ -32,9 +28,13 @@ class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
         driver.setTeam(team);
         var persistentDriver = driverRepository.create(driver);
-        entityManager.flush();
+        flushAndClearSession();
 
         assertNotNull(persistentDriver.getId());
+
+        var persistentTeam = teamRepository.findById(team.getId());
+        assertTrue(persistentTeam.isPresent());
+        assertEquals(Set.of(persistentDriver), persistentTeam.get().getDrivers());
     }
 
     @Test
@@ -44,7 +44,7 @@ class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
         assertThrows(PersistenceException.class, () -> {
             driverRepository.create(driver);
-            entityManager.flush(); // exception only happens when insert is cone
+            flushAndClearSession(); // exception only happens when insert is cone
         });
     }
 
@@ -55,7 +55,7 @@ class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
 
         assertThrows(IllegalStateException.class, () -> {
             driverRepository.create(driver);
-            entityManager.flush(); // exception only happens when insert is cone
+            flushAndClearSession(); // exception only happens when insert is cone
         });
     }
 
@@ -66,7 +66,7 @@ class DriverRepositoryIntegrationTest extends PersistenceIntegrationTest {
             tempDriver.setTeam(teamRepository.create(aTeam()));
             return tempDriver;
         });
-        entityManager.flush();
+        flushAndClearSession();
 
         var found = driverRepository.findById(driver.getId());
 
