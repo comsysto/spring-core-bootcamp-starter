@@ -10,13 +10,13 @@ import org.springframework.stereotype.Repository;
 import de.comsystoreply.spring.core.bootcamp.domain.Driver;
 
 @Repository
-class EntityManagerDriverRepository extends AbstractCrudRepositroy<Driver, Long> implements DriverRepository {
+class JpaDriverRepository extends JpaCrudRepositroy<Driver, Long> implements DriverRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Autowired
-    EntityManagerDriverRepository() {
+    JpaDriverRepository() {
         super(Driver.class);
     }
 

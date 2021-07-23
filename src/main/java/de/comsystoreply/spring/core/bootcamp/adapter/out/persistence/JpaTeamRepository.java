@@ -14,7 +14,7 @@ import de.comsystoreply.spring.core.bootcamp.domain.Team;
  * Implements a {@link TeamRepository} by directly interacting with the {@link EntityManager}.
  */
 @Repository
-class EntityManagerTeamRepository extends AbstractCrudRepositroy<Team, Long> implements TeamRepository {
+class JpaTeamRepository extends JpaCrudRepositroy<Team, Long> implements TeamRepository {
 
     /*
      * Note that this class is package private. It should never be used outside this package. All classes requiring
@@ -25,7 +25,7 @@ class EntityManagerTeamRepository extends AbstractCrudRepositroy<Team, Long> imp
     private EntityManager entityManager;
 
     @Autowired
-    EntityManagerTeamRepository() {
+    JpaTeamRepository() {
         super(Team.class);
     }
 

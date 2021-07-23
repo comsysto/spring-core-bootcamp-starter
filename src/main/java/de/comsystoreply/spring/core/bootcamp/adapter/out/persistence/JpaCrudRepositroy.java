@@ -4,14 +4,14 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-abstract class AbstractCrudRepositroy<T, ID> implements CrudRepository<T, ID> {
+abstract class JpaCrudRepositroy<T, ID> implements CrudRepository<T, ID> {
 
     private final Class<T> clazz;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    AbstractCrudRepositroy(Class<T> clazz) {
+    JpaCrudRepositroy(Class<T> clazz) {
         this.clazz = clazz;
     }
 
