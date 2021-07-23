@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 
 @RestController
 @RequestMapping(produces = APPLICATION_XML_VALUE)
@@ -27,7 +26,7 @@ public class RacingTeamController {
         this.racingTeamRepository = rtr;
     }
 
-    @Transactional( readOnly = true )
+    @Transactional(readOnly = true)
     @GetMapping("/teams")
     public List<RacingTeamDto> getTeams() {
         return racingTeamRepository.findAll().stream()
@@ -40,5 +39,4 @@ public class RacingTeamController {
         RacingTeam racingTeam = racingTeamRepository.save(RacingTeamDto.fromDto(racingTeamDto));
         return RacingTeamDto.toDto(racingTeam);
     }
-
 }
