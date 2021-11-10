@@ -4,7 +4,7 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 application {
@@ -19,7 +19,7 @@ dependencies {
     /*
      * Spring Framework and Testing support.
      */
-    val springVersion = "5.3.9"
+    val springVersion = "5.3.12"
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
