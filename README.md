@@ -6,7 +6,7 @@ So with this participants should be able to start hacking right away.
 
 ## Requirements
 
-To run this example project you need Java 8+ installed properly.
+To run this example project you need Java 11+ installed properly.
 We suggest to use SDKMAN for this.
 
 ## How it works
