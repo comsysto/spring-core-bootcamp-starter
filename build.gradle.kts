@@ -39,6 +39,12 @@ dependencies {
      * DB driver
      */
     runtimeOnly("org.postgresql:postgresql")
+
+    /*
+     * Generate immutable classes.
+     */
+    compileOnly("org.immutables:value:2.8.2")
+    annotationProcessor("org.immutables:value:2.8.2")
 }
 
 tasks.test {
