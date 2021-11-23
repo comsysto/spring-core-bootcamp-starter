@@ -1,5 +1,7 @@
 package de.comsystoreply.spring.core.bootcamp.application;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +33,10 @@ public class RacingTeamApiImpl implements RacingTeamApi{
     @Transactional
     public RacingTeam save(RacingTeam racingTeam) {
         return repository.save(racingTeam);
+    }
+
+    @Override
+    public Optional<RacingTeam> findById(Id<RacingTeam> racingTeamId) {
+        return repository.findById(racingTeamId);
     }
 }

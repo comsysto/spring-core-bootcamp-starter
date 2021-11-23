@@ -5,6 +5,3 @@ spring:
     password: "inTheSh4d0ws"
   jpa:
     generate-ddl: true
-
----
-spring.config.activate.on-profile: "test"

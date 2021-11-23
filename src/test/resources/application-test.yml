@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    # Here happens some magic
+    # we use a special database driver 'tc' to integrate directly with test containers.
+    # As a result a docker container with the image "postresql:14-alpine" is started and used for the connection.
+    # This provides us with a throw away database for our tests.
+    url: "jdbc:tc:postgresql:14-alpine:///testdb"
+    username: ""
+    password: ""

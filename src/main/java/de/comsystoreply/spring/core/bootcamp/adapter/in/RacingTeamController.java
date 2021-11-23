@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import de.comsystoreply.spring.core.bootcamp.application.RacingTeamApi;
+import de.comsystoreply.spring.core.bootcamp.domain.Id;
+import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.ResponseEntity.created;
@@ -35,25 +39,36 @@ public class RacingTeamController {
                 api.createNewRacingTeam(request.name())
         );
 
-        var responseBody = new RacingTeamResponse(
-                createdTeam.id().getValue(),
-                createdTeam.name()
-        );
         var location = uriBuilder.path("/api/racing-team/{id}")
-                .buildAndExpand(Map.of("id", createdTeam.id().getValue()));
+                .buildAndExpand(Map.of("id", createdTeam.id().raw()));
 
         return created(location.toUri())
-                .body(responseBody);
+                .body(RacingTeamResponse.from(createdTeam));
     }
 
-    record CreateRacingTeamRequest(
+    @GetMapping("/{id}")
+    public ResponseEntity<RacingTeamResponse> findById(@PathVariable("id") String id) {
+        return api.findById(Id.of(RacingTeam.class, id))
+                .map(RacingTeamResponse::from)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    private record CreateRacingTeamRequest(
             String name
     ) {
     }
 
-    record RacingTeamResponse(
+    private record RacingTeamResponse(
             String id,
             String name
     ) {
+
+        static RacingTeamResponse from(RacingTeam original) {
+            return new RacingTeamResponse(
+                    original.id().raw(),
+                    original.name()
+            );
+        }
     }
 }

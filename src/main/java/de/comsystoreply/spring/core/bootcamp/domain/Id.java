@@ -22,7 +22,7 @@ public final class Id<T> {
         return Id.of(targetType, UUID.randomUUID().toString());
     }
 
-    public String getValue() {
+    public String raw() {
         return value;
     }
 

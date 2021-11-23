@@ -1,6 +1,7 @@
 plugins {
     java
     id("org.springframework.boot") version "2.6.0"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -11,6 +12,12 @@ java {
 
 repositories {
     mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.testcontainers:testcontainers-bom:1.16.2")
+    }
 }
 
 dependencies {
@@ -43,8 +50,15 @@ dependencies {
     /*
      * Generate immutable classes.
      */
-    compileOnly("org.immutables:value:2.8.2")
-    annotationProcessor("org.immutables:value:2.8.2")
+    val immutablesVersion = "2.8.2"
+    compileOnly("org.immutables:value:${immutablesVersion}")
+    annotationProcessor("org.immutables:value:${immutablesVersion}")
+
+    /*
+     * Bring up test container for our integration tests.
+     */
+    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.testcontainers:postgresql")
 }
 
 tasks.test {
