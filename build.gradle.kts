@@ -23,23 +23,17 @@ dependencyManagement {
 dependencies {
 
     /*
-     * Spring Boot for WebMVC
+     * We use automatic dependency management via the Spring Boot plugin.
+     * This allows us to in most cases omit specifying the version to use. The plugin will automatically resolve a
+     * version compatible with our Spring Boot version for us.
+     */
+
+    /*
+     * Spring Boot
      */
     implementation("org.springframework.boot:spring-boot-starter-web")
-
-    /*
-     * Spring Boot for JPA
-     */
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    /*
-     * Spring Boot "production ready features"
-     */
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-
-    /*
-     * Spring Boot test support
-     */
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     /*
@@ -55,9 +49,8 @@ dependencies {
     annotationProcessor("org.immutables:value:${immutablesVersion}")
 
     /*
-     * Bring up test container for our integration tests.
+     * Test containers allow for Docker container to be started as part of the normal test live cycle.
      */
-    testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
 }
 
