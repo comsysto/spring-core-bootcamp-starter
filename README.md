@@ -1,13 +1,17 @@
-# Spring Core - Bootcamp - Starter
+# Spring Core - Bootcamp - Solution using Spring Boot
 
-This project serves as a basic start point for our Spring core training.
-It provides a basic setup containing an embedded Tomcat and a basic REST controller to check if it works.
-So with this participants should be able to start hacking right away.
+This is an example project to demonstrate how the problem from the bootcamp could be solved using Spring Boot.
+As part of the training we ask participants to forgo this route as we feel it is important to know how to do Spring by hand.
+But for a more practical approach Spring Boot is what would normally be used by most projects by now.
 
 ## Requirements
 
-To run this example project you need Java 11+ installed properly.
+To run this example project you need Java 17+ installed properly.
 We suggest to use SDKMAN for this.
+
+You also need a working Docker installation.
+On Windows and MacOs Docker Desktop is most likely the easy way here.
+On Linux, follow the official instructions to install it from the command line.
 
 ## How it works
 
@@ -18,16 +22,17 @@ It should be able to just import it into the IDE of choice and start adding new 
 
 1. Start the application using gradle:
    ```
-   ./gradlew run
+   docker-compose up -d
+   ./gradlew bootRun
    ```
 
 2. Check if the provided health endpoint is responding:
    ```
-   curl http://localhost:8080/health
+   curl http://localhost:8080/actuator/health
    ```
    This should return:
    ```json
-   {"status":"up"}
+   {"status":"UP"}
    ```
 
 ## What you get
@@ -35,15 +40,10 @@ It should be able to just import it into the IDE of choice and start adding new 
 1. Embedded Tomcat
    The project was setup to provide you with an embedded Tomcat so no need to deploy your own.
    The Tomcat is started as part of a normal Java "main" method.
-2. Spring's DispatcherServlet
-   The project also already provides a DispatcherServlet so REST controller can be reached via HTTP.
-3. Basic /health endpoint
-   The project also contains a first Spring MVC REST controller that is exposing an health endpoint.
-   This is mainly done to help you check if the setup is working at all so you can more easily find errors.
-   
-## Start database
+2. Basic management endpoints
+3. Some basic controller methods to create racing teams
 
-Make sure you have installed Docker Compose. The database can be started as a Docker container as follows:
-```
-docker-compose up -d
-```
+## Things to note
+
+- The tests in this project bring up their own dockerized database.
+  Please be not surprised if you see nothing in the DB started using `docker-compose`
