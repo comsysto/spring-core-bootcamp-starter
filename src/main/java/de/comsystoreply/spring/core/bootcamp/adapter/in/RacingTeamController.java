@@ -1,5 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.adapter.in;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import de.comsystoreply.spring.core.bootcamp.application.RacingTeamApi;
+import de.comsystoreply.spring.core.bootcamp.domain.Driver;
 import de.comsystoreply.spring.core.bootcamp.domain.Id;
 import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 
+import static java.util.Comparator.comparing;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.ResponseEntity.created;
 
@@ -54,6 +57,20 @@ public class RacingTeamController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/drivers")
+    public ResponseEntity<List<DriverResponse>> findDriverInTeam(@PathVariable("id") String id) {
+        return api.findById(Id.of(RacingTeam.class, id))
+                .map(RacingTeam::drivers)
+                .map(
+                        drivers -> drivers.stream()
+                                .map(DriverResponse::from)
+                                .sorted(comparing(DriverResponse::name))
+                                .toList()
+                )
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     private record CreateRacingTeamRequest(
             String name
     ) {
@@ -68,6 +85,18 @@ public class RacingTeamController {
             return new RacingTeamResponse(
                     original.id().raw(),
                     original.name()
+            );
+        }
+    }
+
+    private record DriverResponse(
+            String id,
+            String name
+    ) {
+        static DriverResponse from(Driver driver) {
+            return new DriverResponse(
+                    driver.id().raw(),
+                    driver.name()
             );
         }
     }

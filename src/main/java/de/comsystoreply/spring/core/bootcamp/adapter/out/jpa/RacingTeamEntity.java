@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 @Table(name = "racing_team")
 class RacingTeamEntity {
@@ -17,7 +19,7 @@ class RacingTeamEntity {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = ALL)
     private Set<DriverEntity> drivers;
 
     public String getId() {
