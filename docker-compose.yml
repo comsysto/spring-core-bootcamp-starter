@@ -7,5 +7,6 @@ services:
     environment:
       POSTGRES_USER: ninja-guy # DB user
       POSTGRES_PASSWORD: inTheSh4d0ws # DB password
+      POSTGRES_DB: spring-core-starter
     ports:
       - 15432:5432 # bind to port 15432 on machine running docker (normally localhost)

@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:15432/spring-core-starter"
+    username: "ninja-guy"
+    password: "inTheSh4d0ws"
+  jpa:
+    generate-ddl: true
+
+---
+spring.config.activate.on-profile: "test"
