@@ -12,7 +12,7 @@ import de.comsystoreply.spring.core.bootcamp.domain.ImmutableRacingTeam;
 import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 
 @Component
-public class RacingTeamApiImpl implements RacingTeamApi{
+class RacingTeamApiImpl implements RacingTeamApi {
 
     private final RacingTeamRepository repository;
 

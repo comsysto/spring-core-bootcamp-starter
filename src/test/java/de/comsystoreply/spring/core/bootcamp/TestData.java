@@ -8,7 +8,10 @@ import de.comsystoreply.spring.core.bootcamp.domain.ImmutableDriver;
 import de.comsystoreply.spring.core.bootcamp.domain.ImmutableRacingTeam;
 import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 
-public final class TestData {
+public abstract class TestData {
+
+    private TestData() {
+    }
 
     public static String aString() {
         return UUID.randomUUID().toString();
