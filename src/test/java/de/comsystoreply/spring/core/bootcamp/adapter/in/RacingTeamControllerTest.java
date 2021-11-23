@@ -1,19 +1,16 @@
 package de.comsystoreply.spring.core.bootcamp.adapter.in;
 
-import java.util.UUID;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import de.comsystoreply.spring.core.bootcamp.WebMvcIntegrationTest;
 import de.comsystoreply.spring.core.bootcamp.application.RacingTeamApi;
-import de.comsystoreply.spring.core.bootcamp.domain.Driver;
 import de.comsystoreply.spring.core.bootcamp.domain.Id;
-import de.comsystoreply.spring.core.bootcamp.domain.ImmutableDriver;
-import de.comsystoreply.spring.core.bootcamp.domain.ImmutableRacingTeam;
 import de.comsystoreply.spring.core.bootcamp.domain.RacingTeam;
 
+import static de.comsystoreply.spring.core.bootcamp.TestData.aDriver;
+import static de.comsystoreply.spring.core.bootcamp.TestData.aRacingTeam;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -58,7 +55,7 @@ class RacingTeamControllerTest extends WebMvcIntegrationTest {
         @Test
         void returnRacingTeamIfItExists() throws Exception {
             var racingTeam = racingTeamApi.save(
-                    racingTeamApi.createNewRacingTeam(UUID.randomUUID().toString())
+                    aRacingTeam()
             );
 
             mock.perform(
@@ -88,7 +85,7 @@ class RacingTeamControllerTest extends WebMvcIntegrationTest {
         @Test
         void returnEmptyListIfTeamHasNoDriver() throws Exception {
             var team = racingTeamApi.save(
-                    racingTeamApi.createNewRacingTeam(UUID.randomUUID().toString())
+                    aRacingTeam()
             );
 
             mock.perform(
@@ -102,21 +99,14 @@ class RacingTeamControllerTest extends WebMvcIntegrationTest {
 
         @Test
         void returnListOfDriverInTeam() throws Exception {
+            var driverA = aDriver()
+                    .withName("Speed Racer");
+            var driverB = aDriver()
+                    .withName("Arthur Dent");
+
             var team = racingTeamApi.save(
-                    ImmutableRacingTeam.builder()
-                            .id(Id.randomOf(RacingTeam.class))
-                            .name(UUID.randomUUID().toString())
-                            .addDrivers(
-                                    ImmutableDriver.builder()
-                                            .id(Id.randomOf(Driver.class))
-                                            .name("Speed Racer")
-                                            .build(),
-                                    ImmutableDriver.builder()
-                                            .id(Id.randomOf(Driver.class))
-                                            .name("Arthur Dent")
-                                            .build()
-                            )
-                            .build()
+                    aRacingTeam()
+                            .withDrivers(driverA, driverB)
             );
 
             mock.perform(
