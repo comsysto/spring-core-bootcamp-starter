@@ -1,0 +1,23 @@
+GET http://localhost:8090/cars
+Content-Type: application/json
+
+###
+
+POST http://localhost:8090/cars
+Content-Type: application/json
+
+[
+  {
+    "id": 1,
+    "title": "testCar 1",
+    "horsePower": 100,
+    "weightInKilo": 50.0
+
+  },
+  {
+    "id": 2,
+    "title": "testCar 2",
+    "horsePower": 200,
+    "weightInKilo": 100.0
+  }
+]
