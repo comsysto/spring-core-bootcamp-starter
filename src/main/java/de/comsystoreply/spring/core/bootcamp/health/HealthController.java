@@ -21,7 +21,7 @@ public class HealthController {
     public ResponseEntity<Map<String, Object>> get() {
         /*
          * For more control over the generated result it is normally common practice to use dedicated model classes
-         * for the returned entity. This was not done here as the response is to simple to justify the overhead of an
+         * for the returned entity. This was not done here as the response is too simple to justify the overhead of a
          * dedicated class.
          */
         return ResponseEntity.ok(
