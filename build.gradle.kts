@@ -23,6 +23,13 @@ dependencies {
     implementation("org.springframework:spring-webmvc:$springVersion")
     testImplementation("org.springframework:spring-test:$springVersion")
 
+    /* JPA */
+    /* TODO: Exclude glasfish? */
+    implementation("org.springframework.data:spring-data-jpa:2.1.1.RELEASE") 
+    implementation("org.hibernate:hibernate-core:5.4.1.Final") {
+      exclude(group = "org.glassfish.jaxb", module = "jaxb-runtime")
+    }
+
     /*
      * Embedded Apache Tomcat to run the application on.
      */
