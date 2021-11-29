@@ -20,7 +20,7 @@ public class Application {
      * For real applications it would be a smart to provide an option to configure the port at start up. In the training
      * we will just start with an hard coded port.
      */
-    private static final int SERVER_PORT = 8080;
+    private static final int SERVER_PORT = 8090;
 
     /**
      * Main method that acts as the entry point into the application.
