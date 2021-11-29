@@ -18,16 +18,14 @@ public class CarService {
         this.repository = repository;
     }
 
-    public Iterable<Car> getCars() {
+    public List<Car> getCars() {
         return StreamSupport.stream(repository.findAll().spliterator(), false)
-                .map(carEntity -> new Car(carEntity))
+                .map(Car::new)
                 .toList();
     }
 
     public Car createCar(Car car) {
-
-        this.cars.add(car);
-        LOGGER.debug("{}",cars.size());
-        return car;
+        CarEntity carEntity = repository.save(new CarEntity(car));
+        return new Car(carEntity);
     }
 }

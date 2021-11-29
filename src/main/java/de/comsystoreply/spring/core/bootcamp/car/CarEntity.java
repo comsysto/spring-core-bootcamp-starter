@@ -22,4 +22,31 @@ public class CarEntity {
 
     @Column(name = "WEIGHT_IN_KILO")
     private float weightInKilo;
+
+    public CarEntity(Car car) {
+        this.title = car.getTitle();
+        this.horsePower = car.getHorsePower();
+        this.weightInKilo = car.getWeightInKilo();
+    }
+
+    public CarEntity() {
+
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+
+    public float getWeightInKilo() {
+        return weightInKilo;
+    }
 }

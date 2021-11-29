@@ -17,6 +17,13 @@ public class Car {
 
     public Car() {}
 
+    public Car(CarEntity carEntity) {
+        this.id = carEntity.getId();
+        this.title = carEntity.getTitle();
+        this.horsePower = carEntity.getHorsePower();
+        this.weightInKilo = carEntity.getWeightInKilo();
+    }
+
     public Long getId() {
         return id;
     }
