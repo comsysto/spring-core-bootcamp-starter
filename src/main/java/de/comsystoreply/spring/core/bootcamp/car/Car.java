@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.car;
 
 public class Car {
 
+    //todo: not null, discuss uuid
     private Long id;
     private String title;
     private int horsePower;
