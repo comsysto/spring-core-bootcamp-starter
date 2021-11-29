@@ -16,6 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@EnableJpaRepositories("de.comsystoreply.spring.core.bootcamp")
 public class PersistenceJPAConfig{
 
    @Bean
@@ -23,7 +24,7 @@ public class PersistenceJPAConfig{
       LocalContainerEntityManagerFactoryBean em 
         = new LocalContainerEntityManagerFactoryBean();
       em.setDataSource(dataSource());
-      em.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
+      em.setPackagesToScan(new String[] { "de.comsystoreply.spring.core.bootcamp" });
 
       JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
       em.setJpaVendorAdapter(vendorAdapter);
