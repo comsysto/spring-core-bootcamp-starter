@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 public class CarService {
 
     public List<Car> getCars() {
-        return List.of(new Car(), new Car(), new Car(), new Car());
+        return List.of(new Car(), new Car(), new Car());
     }
 }
