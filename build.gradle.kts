@@ -52,6 +52,12 @@ dependencies {
     runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
 
     /*
+     * h2 dependecy
+     */
+    implementation("com.h2database:h2:1.4.200" )
+
+
+    /*
      * JUnit test framework
      */
     val junitVersion = "5.7.0"
