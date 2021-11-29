@@ -1,14 +1,10 @@
 package de.comsystoreply.spring.core.bootcamp.car;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
-import de.comsystoreply.spring.core.bootcamp.Application;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
