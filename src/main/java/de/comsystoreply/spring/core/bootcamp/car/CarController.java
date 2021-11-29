@@ -20,7 +20,7 @@ public class CarController {
     }
 
     @PostMapping
-    public void createCars(@RequestBody List<Car> cars) {
-        carService.createCars(cars);
+    public Car createCar(@RequestBody Car car) {
+        return carService.createCar(car);
     }
 }

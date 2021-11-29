@@ -21,15 +21,10 @@ public class CarService {
         return cars;
     }
 
-    public void createCar(Car car) {
+    public Car createCar(Car car) {
 
-        cars.add(car);
+        this.cars.add(car);
         LOGGER.debug("{}",cars.size());
-
+        return car;
     }
-
-    public void createCars(List<Car> cars) {
-        cars.addAll(cars);
-    }
-
 }
