@@ -16,11 +16,11 @@ public class CarController {
 
     @GetMapping
     public List<Car> getCars(){
-        return this.carService.getCars();
+        return carService.getCars();
     }
 
     @PostMapping
     public void createCars(@RequestBody List<Car> cars) {
-
+        carService.createCars(cars);
     }
 }
