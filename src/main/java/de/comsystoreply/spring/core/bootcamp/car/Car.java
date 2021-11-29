@@ -1,5 +1,7 @@
 package de.comsystoreply.spring.core.bootcamp.car;
 
+import de.comsystoreply.spring.core.bootcamp.repository.CarEntity;
+
 public class Car {
 
     //todo: not null, discuss uuid
@@ -17,6 +19,7 @@ public class Car {
 
     public Car() {}
 
+    //needs refactoring
     public Car(CarEntity carEntity) {
         this.id = carEntity.getId();
         this.title = carEntity.getTitle();

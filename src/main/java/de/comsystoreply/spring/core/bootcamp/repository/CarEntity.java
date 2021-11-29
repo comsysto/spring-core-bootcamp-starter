@@ -1,5 +1,7 @@
-package de.comsystoreply.spring.core.bootcamp.car;
+package de.comsystoreply.spring.core.bootcamp.repository;
 
+
+import de.comsystoreply.spring.core.bootcamp.car.Car;
 
 import javax.persistence.*;
 
@@ -23,16 +25,16 @@ public class CarEntity {
     @Column(name = "WEIGHT_IN_KILO")
     private float weightInKilo;
 
-    public CarEntity(Car car) {
-        this.title = car.getTitle();
-        this.horsePower = car.getHorsePower();
-        this.weightInKilo = car.getWeightInKilo();
+    public CarEntity(Long id, String title, int horsePower, float weightInKilo) {
+        this.id = id;
+        this.title = title;
+        this.horsePower = horsePower;
+        this.weightInKilo = weightInKilo;
     }
 
     public CarEntity() {
 
     }
-
 
     public Long getId() {
         return id;
@@ -48,5 +50,20 @@ public class CarEntity {
 
     public float getWeightInKilo() {
         return weightInKilo;
+    }
+
+    public void setId(Long id) {
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setHorsePower(int horsePower) {
+        this.horsePower = horsePower;
+    }
+
+    public void setWeightInKilo(float weightInKilo) {
+        this.weightInKilo = weightInKilo;
     }
 }

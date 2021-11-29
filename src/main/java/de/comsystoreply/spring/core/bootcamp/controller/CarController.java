@@ -1,6 +1,9 @@
-package de.comsystoreply.spring.core.bootcamp.car;
+package de.comsystoreply.spring.core.bootcamp.controller;
 
 import java.util.List;
+
+import de.comsystoreply.spring.core.bootcamp.car.Car;
+import de.comsystoreply.spring.core.bootcamp.car.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

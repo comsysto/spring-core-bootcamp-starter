@@ -1,9 +1,11 @@
 package de.comsystoreply.spring.core.bootcamp.car;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
+import de.comsystoreply.spring.core.bootcamp.repository.CarEntity;
+import de.comsystoreply.spring.core.bootcamp.repository.CarEntityRepository;
+import de.comsystoreply.spring.core.bootcamp.repository.CarRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,12 +22,10 @@ public class CarService {
 
     public List<Car> getCars() {
         return StreamSupport.stream(repository.findAll().spliterator(), false)
-                .map(Car::new)
                 .toList();
     }
 
     public Car createCar(Car car) {
-        CarEntity carEntity = repository.save(new CarEntity(car));
-        return new Car(carEntity);
+        return repository.save(car);
     }
 }
