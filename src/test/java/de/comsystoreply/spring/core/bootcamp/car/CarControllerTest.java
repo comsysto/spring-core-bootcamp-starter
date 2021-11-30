@@ -23,9 +23,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+
+import java.util.List;
 
 @WebAppConfiguration
 @ExtendWith(SpringExtension.class)
@@ -50,10 +54,13 @@ public class CarControllerTest {
 
     @Test
     void getCars() throws Exception {
-        this.mvc.perform(
-                get("/cars")
-                .accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+        var expectedCars = List.of(new Car(12L, "Our first test", 700, 780.0f));
+        when(carService.getCars()).thenReturn(expectedCars);
+
+        this.mvc.perform(get("/cars"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                // .andExpect(content().string("[{"id":12,"title":"Our first test","horsePower":700,"weightInKilo":780.0}]")); TODO: pls fix
     }
 
     @EnableWebMvc
