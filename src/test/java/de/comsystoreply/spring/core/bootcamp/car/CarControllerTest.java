@@ -60,7 +60,14 @@ public class CarControllerTest {
         this.mvc.perform(get("/cars"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                // .andExpect(content().string("[{"id":12,"title":"Our first test","horsePower":700,"weightInKilo":780.0}]")); TODO: pls fix
+                .andExpect(content().json("[\n" +
+                        "  {\n" +
+                        "    \"id\": 12,\n" +
+                        "    \"title\": \"Our first test\",\n" +
+                        "    \"horsePower\": 700,\n" +
+                        "    \"weightInKilo\": 780.0\n" +
+                        "  }\n" +
+                        "]"));
     }
 
     @EnableWebMvc

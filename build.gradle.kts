@@ -79,6 +79,9 @@ dependencies {
      * JsonPath used to evaluate values in JSON responses as part of test cases
      */
     testImplementation("com.jayway.jsonpath:json-path-assert:2.6.0")
+
+    // For Controller Tests
+    testImplementation("org.skyscreamer:jsonassert:1.2.3")
 }
 
 tasks.test {
