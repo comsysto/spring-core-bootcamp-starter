@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.car;
 
 import de.comsystoreply.spring.core.bootcamp.Application;
 import org.apache.catalina.LifecycleException;
+import org.apache.coyote.Response;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -9,15 +10,18 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.http.RequestEntity.get;
 import static org.springframework.http.RequestEntity.post;
 
 
@@ -57,13 +61,12 @@ public class E2eTest {
         ResponseEntity<Car> response = restTemplate.exchange(
                 post("http://localhost:8090/cars")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
                         .body(suppliedCar),
                 Car.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        Car returnedCar = response.getBody();
 
+        Car returnedCar = response.getBody();
         assertCarProperties(returnedCar);
         assertNotNull(returnedCar.getId());
     }
@@ -71,13 +74,17 @@ public class E2eTest {
     @Test
     @Order(2)
     void getCars() {
-        // This should be better be a List but the API is easier to use with an array in this case :(
-        Car[] carsArray = restTemplate.getForObject("http://localhost:8090/cars", Car[].class);
+        ResponseEntity<List<Car>> response = restTemplate.exchange(
+                get("http://localhost:8090/cars").build(),
+                new ParameterizedTypeReference<>() {
+                });
+        assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        assertNotNull(carsArray);
-        assertEquals(carsArray.length, 1);
+        List<Car> cars = response.getBody();
+        assertNotNull(cars);
+        assertEquals(cars.size(), 1);
 
-        Car firstCar = carsArray[0];
+        Car firstCar = cars.get(0);
         assertCarProperties(firstCar);
         assertNotNull(firstCar.getId());
     }
