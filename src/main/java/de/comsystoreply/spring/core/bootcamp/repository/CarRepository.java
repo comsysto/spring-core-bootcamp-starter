@@ -4,10 +4,9 @@ import de.comsystoreply.spring.core.bootcamp.car.Car;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @Repository
-public class CarRepository {
+public class CarRepositoryImpl {
 
     private CarEntityRepository carEntityRepository;
 
