@@ -4,6 +4,7 @@ import de.comsystoreply.spring.core.bootcamp.car.Car;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 @Repository
 public class CarRepository {
@@ -37,6 +38,8 @@ public class CarRepository {
     }
 
     public List<Car> findAll() {
-        return null;
+        return StreamSupport.stream(carEntityRepository.findAll().spliterator(), false)
+                .map(this::entityToCar)
+                .toList();
     }
 }
