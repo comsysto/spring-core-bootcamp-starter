@@ -82,6 +82,10 @@ dependencies {
 
     // For Controller Tests
     testImplementation("org.skyscreamer:jsonassert:1.2.3")
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation("org.postgresql:postgresql:42.3.1")
+
 }
 
 tasks.test {
