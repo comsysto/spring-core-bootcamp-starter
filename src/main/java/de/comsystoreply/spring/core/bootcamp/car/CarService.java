@@ -21,8 +21,7 @@ public class CarService {
     }
 
     public List<Car> getCars() {
-        return StreamSupport.stream(repository.findAll().spliterator(), false)
-                .toList();
+        return repository.findAll();
     }
 
     public Car createCar(Car car) {

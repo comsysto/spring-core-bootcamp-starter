@@ -38,7 +38,7 @@ public class CarRepository {
     }
 
     public List<Car> findAll() {
-        return StreamSupport.stream(carEntityRepository.findAll().spliterator(), false)
+        return carEntityRepository.findAll().stream()
                 .map(this::entityToCar)
                 .toList();
     }
