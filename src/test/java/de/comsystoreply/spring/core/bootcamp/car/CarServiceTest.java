@@ -1,9 +1,13 @@
 package de.comsystoreply.spring.core.bootcamp.car;
 
 import de.comsystoreply.spring.core.bootcamp.repository.CarRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Incubating;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +21,12 @@ class CarServiceTest {
     @Mock
     private CarRepository carRepository;
 
-    private final CarService carService = new CarService(carRepository);
+    private CarService carService;
+
+    @BeforeEach
+    void setUp() {
+        carService = new CarService(carRepository);
+    }
 
     @Test
     void getCars() {

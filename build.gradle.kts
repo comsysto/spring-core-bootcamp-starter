@@ -4,7 +4,7 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_11
 }
 
 application {
@@ -25,9 +25,9 @@ dependencies {
 
     /* JPA */
     /* TODO: Exclude glasfish? */
-    implementation("org.springframework.data:spring-data-jpa:2.1.1.RELEASE") 
+    implementation("org.springframework.data:spring-data-jpa:2.1.1.RELEASE")
     implementation("org.hibernate:hibernate-core:5.4.1.Final") {
-      exclude(group = "org.glassfish.jaxb", module = "jaxb-runtime")
+        exclude(group = "org.glassfish.jaxb", module = "jaxb-runtime")
     }
 
     /*
@@ -54,8 +54,7 @@ dependencies {
     /*
      * h2 dependecy
      */
-    implementation("com.h2database:h2:1.4.200" )
-
+    implementation("com.h2database:h2:1.4.200")
 
     /*
      * JUnit test framework
