@@ -2,6 +2,7 @@ package de.comsystoreply.spring.core.bootcamp.repository;
 
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="CAR")
@@ -63,5 +64,18 @@ public class CarEntity {
 
     public void setWeightInKilo(float weightInKilo) {
         this.weightInKilo = weightInKilo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarEntity carEntity = (CarEntity) o;
+        return Objects.equals(id, carEntity.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

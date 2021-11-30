@@ -43,7 +43,7 @@ class CarServiceTest {
       var suppliedCar = new Car();
       when(carRepository.save(Mockito.any())).thenReturn(expectedCar);
 
-      var actualCar = carService.createCar(expectedCar);
+      var actualCar = carService.createCar(suppliedCar);
 
       assertSame(expectedCar, actualCar);
       verify(carRepository).save(suppliedCar);

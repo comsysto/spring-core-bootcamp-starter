@@ -2,6 +2,8 @@ package de.comsystoreply.spring.core.bootcamp.car;
 
 import de.comsystoreply.spring.core.bootcamp.repository.CarEntity;
 
+import java.util.Objects;
+
 public class Car {
 
     //todo: not null, discuss uuid
@@ -67,5 +69,18 @@ public class Car {
                 ", horsePower=" + horsePower +
                 ", weightInKilo=" + weightInKilo +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return horsePower == car.horsePower && Float.compare(car.weightInKilo, weightInKilo) == 0 && Objects.equals(id, car.id) && Objects.equals(title, car.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, horsePower, weightInKilo);
     }
 }
