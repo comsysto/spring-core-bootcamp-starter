@@ -1,8 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.repository;
 
 
-import de.comsystoreply.spring.core.bootcamp.car.Car;
-
 import javax.persistence.*;
 
 @Entity

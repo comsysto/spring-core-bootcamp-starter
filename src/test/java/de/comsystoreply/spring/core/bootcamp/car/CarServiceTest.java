@@ -1,8 +1,6 @@
 package de.comsystoreply.spring.core.bootcamp.car;
 
 import de.comsystoreply.spring.core.bootcamp.repository.CarRepository;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
