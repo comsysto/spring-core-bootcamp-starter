@@ -1,7 +1,9 @@
 package de.comsystoreply.spring.core.bootcamp;
 
+import java.io.IOException;
 import java.nio.file.Files;
 
+import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.startup.Tomcat;
 import org.slf4j.Logger;
@@ -21,14 +23,10 @@ public class Application {
      * we will just start with an hard coded port.
      */
     private static final int SERVER_PORT = 8090;
+    private Tomcat tomcat;
 
-    /**
-     * Main method that acts as the entry point into the application.
-     *
-     * @param args the command line arguments the application is started with
-     * @throws Exception any kind of exception will just be thrown up resulting in the application crashing
-     */
-    public static void main(String... args) throws Exception {
+
+    public void start() throws IOException, LifecycleException {
         LOGGER.info("Application is starting.");
 
         /*
@@ -37,7 +35,7 @@ public class Application {
         var basedir = Files.createTempDirectory("bootcamp-tomcat").toAbsolutePath().toString();
         var appBase = ".";
 
-        var tomcat = new Tomcat();
+        tomcat = new Tomcat();
         tomcat.setBaseDir(basedir);
         tomcat.setPort(SERVER_PORT);
         tomcat.getHost().setAppBase(appBase);
@@ -61,11 +59,27 @@ public class Application {
         if (tomcat.getConnector().getState() != LifecycleState.STARTED) {
             LOGGER.error("Could not start Tomcat connector.");
             tomcat.stop();
+            throw new IllegalStateException("Could not start Tomcat connector.");
         }
+    }
 
+    public void stop() throws LifecycleException {
+        if(this.tomcat != null){
+            this.tomcat.stop();
+        }
+    }
+
+    public void await() {
         /*
          * Keep the application alive until Tomcat is terminated.
          */
         tomcat.getServer().await();
+    }
+
+
+    public static void main(String... args) throws Exception {
+        var application = new Application();
+        application.start();
+        application.await();
     }
 }
