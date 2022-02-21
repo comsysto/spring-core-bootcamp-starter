@@ -1,5 +1,6 @@
 package de.comsystoreply.springtrainingdemo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
@@ -17,6 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -57,6 +59,23 @@ class RacingTeamApplicationTests {
         this.mockMvc.perform(get("/drivers"))
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Peter")))
+                .andExpect(content().string(containsString("Moritz")));
+    }
+
+    @Test
+    void createDriver() throws Exception {
+
+        Driver driver = new Driver("someDriver");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        objectMapper.writeValue(new File("target/car.json"), car);
+
+
+        this.mockMvc.perform(post("/drivers").content())
+                .andDo(print())
+                .andExpect(status().isCreated())
                 .andExpect(content().string(containsString("Peter")))
                 .andExpect(content().string(containsString("Moritz")));
     }

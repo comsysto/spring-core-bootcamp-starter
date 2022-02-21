@@ -2,6 +2,7 @@ package de.comsystoreply.springtrainingdemo.controller;
 
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,12 @@ public class DriverController {
     private final DriverService driverService;
 
 
-    public DriverController(DriverService driverService){
+    public DriverController(DriverService driverService) {
         this.driverService = driverService;
     }
 
     @GetMapping("/drivers")
-    public Iterable<Driver> getDrivers(){
+    public Iterable<Driver> getDrivers() {
         return driverService.getAll();
     }
 
