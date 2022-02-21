@@ -5,6 +5,8 @@ import de.comsystoreply.springtrainingdemo.service.DriverService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,7 +28,11 @@ public class DriverController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/drivers")
     public Driver createDriver(@RequestBody Driver driver) {
-        return driverService.saveDriver(driver);
+        try {
+            return driverService.saveDriver(driver);
+        } catch (Exception e) {
+            throw new DriverNotFoundException();    // todo evtl ControllerAdvice
+        }
     }
 
 
