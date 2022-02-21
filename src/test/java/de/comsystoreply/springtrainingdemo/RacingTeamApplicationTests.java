@@ -74,7 +74,6 @@ class RacingTeamApplicationTests {
     void createDriver() throws Exception {
 
         Driver driver = new Driver("someDriver");
-
         ObjectMapper objectMapper = new ObjectMapper();
 
         String jsonString = objectMapper.writeValueAsString(driver);
@@ -85,21 +84,4 @@ class RacingTeamApplicationTests {
                 .andExpect(content().string(containsString("someDriver")));
     }
 
-    @Test
-    void createDriverDuplicatedId() throws Exception {
-
-        Driver driver = new Driver("someDriver");
-        driver.setId(45L);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String jsonString = objectMapper.writeValueAsString(driver);
-
-        this.mockMvc.perform(post("/drivers").content(jsonString).contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isCreated());
-        this.mockMvc.perform(post("/drivers").content(jsonString).contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isInternalServerError());
-    }
 }
