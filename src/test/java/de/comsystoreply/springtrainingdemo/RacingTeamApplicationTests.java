@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.Assert;
 
@@ -70,13 +71,11 @@ class RacingTeamApplicationTests {
 
         ObjectMapper objectMapper = new ObjectMapper();
 
-        objectMapper.writeValue(new File("target/car.json"), car);
+        String jsonString = objectMapper.writeValueAsString(driver);
 
-
-        this.mockMvc.perform(post("/drivers").content())
+        this.mockMvc.perform(post("/drivers").content(jsonString).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(content().string(containsString("Peter")))
-                .andExpect(content().string(containsString("Moritz")));
+                .andExpect(content().string(containsString("someDriver")));
     }
 }
