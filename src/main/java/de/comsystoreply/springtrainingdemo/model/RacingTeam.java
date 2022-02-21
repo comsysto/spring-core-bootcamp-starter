@@ -1,6 +1,7 @@
 package de.comsystoreply.springtrainingdemo.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,10 +18,15 @@ public class RacingTeam {
     private List<Driver> drivers;
 
     @OneToMany
-    private Collection<RaceCar> raceCars;
+    private List<RaceCar> raceCars;
+
+    public RacingTeam() {
+    }
 
     public RacingTeam(String name) {
         this.name = name;
+        this.drivers = new ArrayList<>();
+        this.raceCars = new ArrayList<>();
     }
 
     public Long getId() {
