@@ -9,6 +9,10 @@ public class RacingTeam {
     private List<Driver> drivers;
     private List<RaceCar> raceCars;
 
+    public RacingTeam(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

@@ -12,6 +12,7 @@ class RacingTeamApplicationTests {
 	void createTeam() {
 		RacingTeamService racingTeamService = new RacingTeamService();
 		Assert.notNull(racingTeamService.createRacingTeam("someRacingTeam"));
+
 	}
 
 
