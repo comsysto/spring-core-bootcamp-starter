@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DriverService {
@@ -20,8 +21,10 @@ public class DriverService {
         return new Driver(firstName);
     }
 
-    public void saveDriver(Driver driver) {
+    public Driver saveDriver(Driver driver) {
         this.driverRepository.save(driver);
+        Optional<Driver> optionalDriver = this.driverRepository.findById(driver.getId());
+        return optionalDriver;
     }
 
     public Iterable<Driver> getAll(){

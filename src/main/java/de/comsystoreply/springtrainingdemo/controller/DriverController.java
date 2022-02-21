@@ -3,6 +3,8 @@ package de.comsystoreply.springtrainingdemo.controller;
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class DriverController {
     @GetMapping("/drivers")
     public Iterable<Driver> getDrivers(){
         return driverService.getAll();
+    }
+
+    @PostMapping("/drivers")
+    public Driver createDriver(@RequestBody Driver driver) {
+        return driverService.saveDriver(driver);
     }
 
 

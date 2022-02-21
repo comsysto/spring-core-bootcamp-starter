@@ -50,14 +50,14 @@ class RacingTeamApplicationTests {
     @Test
     void allDrivers() throws Exception {
         List<Driver> drivers = new ArrayList<Driver>();
-        drivers.addAll( List.of(new Driver("max"), new Driver("moritz")));
+        drivers.addAll( List.of(new Driver("Peter"), new Driver("Moritz")));
 
         driverRepository.saveAll(drivers);
 
-        this.mockMvc.perform(get("/drivers")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("max")));
-
-
-
+        this.mockMvc.perform(get("/drivers"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Peter")))
+                .andExpect(content().string(containsString("Moritz")));
     }
 }
