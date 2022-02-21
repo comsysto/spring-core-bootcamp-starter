@@ -16,6 +16,8 @@ class RacingTeamApplicationTests {
 
     @Autowired
     private DriverRepository driverRepository;
+    @Autowired
+    private DriverService driverService;
 
     @Test
     void createTeam() {
@@ -25,10 +27,9 @@ class RacingTeamApplicationTests {
 
     @Test
     void saveDriver() {
-        DriverService driverService = new DriverService(driverRepository);
         Driver driver = new Driver("Max");
 
-        driverService.saveDriver(driver);
+        this.driverService.saveDriver(driver);
         assertThat(driverRepository.findById(driver.getId()).isPresent()).isTrue();
     }
 }
