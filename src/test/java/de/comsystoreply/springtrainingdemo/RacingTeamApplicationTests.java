@@ -4,26 +4,23 @@ import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
 import de.comsystoreply.springtrainingdemo.service.RacingTeamService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class RacingTeamApplicationTests {
 
+    @Autowired
     private DriverRepository driverRepository;
-
-    @BeforeAll
-    void setup(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
-    }
 
     @Test
     void createTeam() {
         RacingTeamService racingTeamService = new RacingTeamService();
-        Assert.notNull(racingTeamService.createRacingTeam("someRacingTeam"));
-
+        assertThat(racingTeamService.createRacingTeam("someRacingTeam")).isNotNull();
     }
 
     @Test
@@ -32,9 +29,6 @@ class RacingTeamApplicationTests {
         Driver driver = new Driver("Max");
 
         driverService.saveDriver(driver);
-        Assert.isTrue(driverRepository.findById(driver.getId()).isPresent());
-
+        assertThat(driverRepository.findById(driver.getId()).isPresent()).isTrue();
     }
-
-
 }

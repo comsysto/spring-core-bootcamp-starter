@@ -2,7 +2,10 @@ package de.comsystoreply.springtrainingdemo.service;
 
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DriverService {
 
     private final DriverRepository driverRepository;
