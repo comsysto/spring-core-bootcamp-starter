@@ -32,4 +32,9 @@ class RacingTeamApplicationTests {
         this.driverService.saveDriver(driver);
         assertThat(driverRepository.findById(driver.getId()).isPresent()).isTrue();
     }
+
+    @Test
+    void allDrivers(){
+
+    }
 }

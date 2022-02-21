@@ -5,6 +5,8 @@ import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DriverService {
 
@@ -20,6 +22,10 @@ public class DriverService {
 
     public void saveDriver(Driver driver) {
         this.driverRepository.save(driver);
+    }
+
+    public Iterable<Driver> getAll(){
+        return driverRepository.findAll();
     }
 
 
