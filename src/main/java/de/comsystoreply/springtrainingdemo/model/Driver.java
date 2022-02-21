@@ -1,10 +1,19 @@
 package de.comsystoreply.springtrainingdemo.model;
 
+import org.springframework.data.annotation.Reference;
+
+import javax.persistence.*;
+
+@Entity
 public class Driver {
+
+    @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
     private int age;
+    @ManyToOne
     private RacingTeam racingTeam;
 
     public Long getId() {

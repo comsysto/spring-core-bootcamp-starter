@@ -1,13 +1,23 @@
 package de.comsystoreply.springtrainingdemo.model;
 
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
+@Entity
 public class RacingTeam {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
     private String name;
+
+    @OneToMany
     private List<Driver> drivers;
-    private List<RaceCar> raceCars;
+
+    @OneToMany
+    private Collection<RaceCar> raceCars;
 
     public RacingTeam(String name) {
         this.name = name;

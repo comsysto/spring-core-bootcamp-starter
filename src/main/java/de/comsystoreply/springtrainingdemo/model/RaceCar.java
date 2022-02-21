@@ -1,12 +1,18 @@
 package de.comsystoreply.springtrainingdemo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class RaceCar {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String title;
     private String description;
     private int horsePower;
     private float weightInKg;
+    @ManyToOne
     private RacingTeam racingTeam;
 
     public Long getId() {
