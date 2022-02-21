@@ -5,6 +5,7 @@ import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
 import de.comsystoreply.springtrainingdemo.service.RacingTeamService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -35,6 +36,11 @@ class RacingTeamApplicationTests {
     private DriverRepository driverRepository;
     @Autowired
     private DriverService driverService;
+
+    @AfterEach
+    void afterEach() {
+        driverRepository.deleteAll();
+    }
 
     @Test
     void createTeam() {
@@ -77,5 +83,23 @@ class RacingTeamApplicationTests {
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().string(containsString("someDriver")));
+    }
+
+    @Test
+    void createDriverDuplicatedId() throws Exception {
+
+        Driver driver = new Driver("someDriver");
+        driver.setId(45L);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String jsonString = objectMapper.writeValueAsString(driver);
+
+        this.mockMvc.perform(post("/drivers").content(jsonString).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isCreated());
+        this.mockMvc.perform(post("/drivers").content(jsonString).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isInternalServerError());
     }
 }
