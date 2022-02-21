@@ -1,7 +1,5 @@
 package de.comsystoreply.springtrainingdemo.model;
 
-import org.springframework.data.annotation.Reference;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +13,14 @@ public class Driver {
     private int age;
     @ManyToOne
     private RacingTeam racingTeam;
+
+    public Driver() {
+
+    }
+
+    public Driver(String firstName) {
+        this.firstName = firstName;
+    }
 
     public Long getId() {
         return id;

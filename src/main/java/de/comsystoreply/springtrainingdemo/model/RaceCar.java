@@ -16,8 +16,6 @@ public class RaceCar {
     private RacingTeam racingTeam;
 
 
-
-
     public Long getId() {
         return id;
     }
