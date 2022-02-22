@@ -17,5 +17,5 @@ public class DriverConfig {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat(driverConfigProperties.getFormatString()));
         return objectMapper;
-    };
+    }
 }
