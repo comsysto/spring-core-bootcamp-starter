@@ -29,6 +29,14 @@ public class Driver {
         this.birthday = birthday;
     }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
     public Long getId() {
         return id;
     }

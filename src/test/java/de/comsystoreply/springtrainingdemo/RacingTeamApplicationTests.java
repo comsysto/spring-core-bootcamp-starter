@@ -9,6 +9,7 @@ import de.comsystoreply.springtrainingdemo.service.RacingTeamService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -38,6 +39,7 @@ class RacingTeamApplicationTests {
     @Autowired
     private DriverService driverService;
     @Autowired
+    @Qualifier("CustomDateObjectMapper")
     private ObjectMapper objectMapper;
 
 
@@ -95,7 +97,6 @@ class RacingTeamApplicationTests {
 
         String driverConfigString = this.objectMapper.writeValueAsString(driver);
         System.out.println(driverConfigString);
-
 
     }
 
