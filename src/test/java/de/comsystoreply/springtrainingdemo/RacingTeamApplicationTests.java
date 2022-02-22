@@ -41,7 +41,6 @@ class RacingTeamApplicationTests {
     @Autowired
     private DriverService driverService;
     @Autowired
-    @Qualifier("CustomDateObjectMapper")
     private ObjectMapper objectMapper;
 
 
