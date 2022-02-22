@@ -3,12 +3,8 @@ package de.comsystoreply.springtrainingdemo.controller;
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.List;
 
 @RestController
 public class DriverController {
@@ -20,13 +16,13 @@ public class DriverController {
         this.driverService = driverService;
     }
 
-    @GetMapping("/drivers")
+    @GetMapping(value ="/drivers", produces = MediaType.APPLICATION_XML_VALUE)
     public Iterable<Driver> getDrivers() {
         return driverService.getAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/drivers")
+    @PostMapping(value = "/drivers", produces = MediaType.APPLICATION_XML_VALUE)
     public Driver createDriver(@RequestBody Driver driver) {
         try {
             return driverService.saveDriver(driver);
