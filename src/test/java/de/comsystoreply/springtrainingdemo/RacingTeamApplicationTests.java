@@ -38,7 +38,8 @@ class RacingTeamApplicationTests {
     @Autowired
     private DriverService driverService;
     @Autowired
-    private DriverConfig driverConfig;
+    private ObjectMapper objectMapper;
+
 
     @AfterEach
     void afterEach() {
@@ -88,8 +89,14 @@ class RacingTeamApplicationTests {
     }
 
     @Test
-    void testObjectMapper() {
+    void testObjectMapper() throws Exception{
+
         Driver driver = new Driver("someName", new Date());
+
+        String driverConfigString = this.objectMapper.writeValueAsString(driver);
+        System.out.println(driverConfigString);
+
+
     }
 
 }

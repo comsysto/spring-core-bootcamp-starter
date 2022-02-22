@@ -10,7 +10,8 @@ import java.text.SimpleDateFormat;
 
 @Configuration
 public class DriverConfig {
-    @Bean public ObjectMapper driverConfig() {
+    @Bean
+    public ObjectMapper driverConfig() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         return objectMapper;
