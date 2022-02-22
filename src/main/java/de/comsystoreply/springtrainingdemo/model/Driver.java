@@ -1,6 +1,7 @@
 package de.comsystoreply.springtrainingdemo.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Driver {
@@ -11,6 +12,7 @@ public class Driver {
     private String firstName;
     private String lastName;
     private int age;
+    private Date birthday;
     @ManyToOne
     private RacingTeam racingTeam;
 
@@ -20,6 +22,11 @@ public class Driver {
 
     public Driver(String firstName) {
         this.firstName = firstName;
+    }
+
+    public Driver(String firstName, Date birthday) {
+        this.firstName = firstName;
+        this.birthday = birthday;
     }
 
     public Long getId() {

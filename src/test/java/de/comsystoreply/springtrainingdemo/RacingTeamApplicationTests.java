@@ -1,6 +1,7 @@
 package de.comsystoreply.springtrainingdemo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.comsystoreply.springtrainingdemo.config.DriverConfig;
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import de.comsystoreply.springtrainingdemo.service.DriverService;
@@ -12,9 +13,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -36,6 +37,8 @@ class RacingTeamApplicationTests {
     private DriverRepository driverRepository;
     @Autowired
     private DriverService driverService;
+    @Autowired
+    private DriverConfig driverConfig;
 
     @AfterEach
     void afterEach() {
@@ -82,6 +85,11 @@ class RacingTeamApplicationTests {
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(content().string(containsString("someDriver")));
+    }
+
+    @Test
+    void testObjectMapper() {
+        Driver driver = new Driver("someName", new Date());
     }
 
 }

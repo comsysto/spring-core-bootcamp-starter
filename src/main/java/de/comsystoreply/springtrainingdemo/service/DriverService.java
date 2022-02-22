@@ -14,7 +14,7 @@ public class DriverService {
     }
 
     public Driver createDriver(String firstName) {
-        return new Driver(firstName);
+        return new Driver(firstName, birthday);
     }
 
     public Driver saveDriver(Driver driver) {
