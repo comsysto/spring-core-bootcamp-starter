@@ -3,6 +3,7 @@ package de.comsystoreply.springtrainingdemo.service;
 import de.comsystoreply.springtrainingdemo.model.Driver;
 import de.comsystoreply.springtrainingdemo.repos.DriverRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class DriverService {
@@ -17,6 +18,7 @@ public class DriverService {
         return new Driver(firstName);
     }
 
+    @Transactional
     public Driver saveDriver(Driver driver) {
         return this.driverRepository.save(driver);
     }
