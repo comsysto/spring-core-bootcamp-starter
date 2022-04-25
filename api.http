@@ -1,6 +1,12 @@
+GET http://localhost:8080/api/racingteams
+Accept: application/json
+
+###
 POST http://localhost:8080/api/racingteams
 Content-Type: application/json
 
-{}
+{
+  "name": "Team 1"
+}
 
 ###
