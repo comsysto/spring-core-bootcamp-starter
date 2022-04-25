@@ -3,10 +3,11 @@ package com.comsysto.springtraining.formula1manager.service;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
+import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,5 +23,9 @@ public class RacingTeamService {
 
     public List<RacingTeam> getAllRacingTeams() {
         return racingTeamRepository.findAll();
+    }
+
+    public Optional<RacingTeam> getRacingTeamById(UUID teamId) {
+        return racingTeamRepository.findById(teamId);
     }
 }

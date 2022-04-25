@@ -1,10 +1,12 @@
 package com.comsysto.springtraining.formula1manager.controller;
 
+import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.service.RacingTeamService;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,5 +29,11 @@ public class RacingTeamController {
     public RacingTeam createRacingTeam(@RequestBody RacingTeam team) {
         var createdTeam = racingTeamService.createRacingTeam(team);
         return createdTeam;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RacingTeam> getRacingTeamById(@PathVariable UUID teamId) {
+        var teamById = racingTeamService.getRacingTeamById(teamId);
+        return teamById
     }
 }
