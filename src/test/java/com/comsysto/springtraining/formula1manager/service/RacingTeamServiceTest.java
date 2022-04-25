@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -19,9 +20,13 @@ class RacingTeamServiceTest {
 
     @Test
     void createRacingTeamShouldWork() {
-        when(uuidService.generateUuid()).then(new UUID(1L, 2L));
-        RacingTeam team = new RacingTeam(null, "1");
-        var resultingTeam = racingTeamService.createRacingTeam(team);
-        assertNotNull(team.getId());
+        UUID uuid = new UUID(1L, 2L);
+        when(uuidService.generateUuid()).thenReturn(uuid);
+        RacingTeam expectedTeam = new RacingTeam(uuid, "1");
+
+        RacingTeam racingTeam = new RacingTeam(null, "1");
+        var resultingTeam = racingTeamService.createRacingTeam(racingTeam);
+//        assertEquals(uuid, racingTeam.getId());
+        assertThat(resultingTeam).isEqualTo(expectedTeam);
     }
 }
