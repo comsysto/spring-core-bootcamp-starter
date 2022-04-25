@@ -12,7 +12,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.service.RacingTeamService;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+
+import org.hibernate.mapping.Collection;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -32,10 +38,17 @@ class RacingTeamControllerTest {
     @Test
     public void shouldReturnRacingTeamFromService() throws Exception {
         when(racingTeamService.createRacingTeam(any())).thenReturn(new RacingTeam(UUID.randomUUID(), "Team 1"));
-        this.mockMvc.perform(post("/api/racingteams/")
-                        .contentType(MediaType.APPLICATION_JSON)
+        this.mockMvc.perform(post("/api/racingteams/").contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\": \"Team 1\"}"))
                 .andExpect(status().isCreated())
+                .andExpect(content().string(containsString("Team 1")));
+    }
+
+    @Test
+    public void shouldReturnRacingTeams() throws Exception {
+        when(racingTeamService.getAllRacingTeams()).thenReturn(List.of(new RacingTeam(UUID.randomUUID(), "Team 1")));
+        this.mockMvc.perform(get("/api/racingteams/"))
+                .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Team 1")));
     }
 }
