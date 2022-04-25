@@ -1,10 +1,8 @@
 package com.comsysto.springtraining.formula1manager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
-import javax.persistence.ManyToOne;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +20,6 @@ public class Driver {
     private String lastName;
     private int age;
 
-    @ManyToOne
-    private RacingTeam racingTeam;
+//    @ManyToOne
+//    private RacingTeam racingTeam;
 }

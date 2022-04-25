@@ -3,6 +3,7 @@ package com.comsysto.springtraining.formula1manager.service;
 import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 
+import com.comsysto.springtraining.formula1manager.repository.DriverRepository;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
 import java.util.Optional;
 import java.util.UUID;
@@ -17,6 +18,7 @@ import java.util.List;
 public class RacingTeamService {
     private final UuidService uuidService;
     private final RacingTeamRepository racingTeamRepository;
+//    private final DriverRepository
 
     public RacingTeam createRacingTeam(RacingTeam racingTeam) {
 //        racingTeam.setId(uuidService.generateUuid());
@@ -37,9 +39,9 @@ public class RacingTeamService {
         if(racingTeam.isEmpty()) {
             return Optional.empty();
         }
-        driver.setRacingTeam(racingTeam.get());
+//        driver.setRacingTeam(racingTeam.get());
         racingTeam.get().getDrivers().add(driver);
-        racingTeamRepository.save(racingTeam.get());
+        var result = racingTeamRepository.save(racingTeam.get());
         return Optional.of(driver);
     }
 }

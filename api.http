@@ -1,3 +1,13 @@
+POST http://localhost:8080/api/racingteams/1fddf6f8-4394-4c7f-880d-e795d8317170/drivers
+Content-Type: application/json
+
+{
+  "firstName": "first",
+  "lastName": "last",
+  "age": 5
+}
+
+###
 GET http://localhost:8080/api/racingteams
 Accept: application/json
 
@@ -10,3 +20,4 @@ Content-Type: application/json
 }
 
 ###
+
