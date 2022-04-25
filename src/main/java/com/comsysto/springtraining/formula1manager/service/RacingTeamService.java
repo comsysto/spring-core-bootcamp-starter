@@ -19,7 +19,7 @@ public class RacingTeamService {
     private final RacingTeamRepository racingTeamRepository;
 
     public RacingTeam createRacingTeam(RacingTeam racingTeam) {
-        racingTeam.setId(uuidService.generateUuid());
+//        racingTeam.setId(uuidService.generateUuid());
         return racingTeamRepository.save(racingTeam);
     }
 
@@ -32,12 +32,14 @@ public class RacingTeamService {
     }
 
     public Optional<Driver> createDriver(UUID racingTeamId, Driver driver) {
-        driver.setId(uuidService.generateUuid());
+//        driver.setId(uuidService.generateUuid());
         var racingTeam = getRacingTeamById(racingTeamId);
         if(racingTeam.isEmpty()) {
             return Optional.empty();
         }
         driver.setRacingTeam(racingTeam.get());
-
+        racingTeam.get().getDrivers().add(driver);
+        racingTeamRepository.save(racingTeam.get());
+        return Optional.of(driver);
     }
 }

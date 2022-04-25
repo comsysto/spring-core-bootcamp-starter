@@ -37,7 +37,7 @@ public class RacingTeamController {
 
     @PostMapping("/{id}/drivers"
     )@ResponseStatus(HttpStatus.CREATED)
-    public Driver createDriver(@PathVariable UUID id, @RequestBody Driver driver) {
-        return racingTeamService.createDriver()
+    public ResponseEntity<Driver> createDriver(@PathVariable UUID id, @RequestBody Driver driver) {
+        return ResponseEntity.of(racingTeamService.createDriver(id, driver));
     }
 }
