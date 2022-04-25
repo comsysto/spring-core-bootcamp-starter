@@ -1,7 +1,6 @@
 package com.comsysto.springtraining.formula1manager.service;
 
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
-import java.util.UUID;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
