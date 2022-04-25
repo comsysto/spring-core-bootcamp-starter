@@ -20,6 +20,6 @@ public class Driver {
     private String lastName;
     private int age;
 
-//    @ManyToOne
-//    private RacingTeam racingTeam;
+    @ManyToOne
+    private RacingTeam racingTeam;
 }

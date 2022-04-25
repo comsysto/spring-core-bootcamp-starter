@@ -19,7 +19,4 @@ public class RacingTeam {
     @GeneratedValue
     private UUID id;
     private String name;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Driver> drivers = new ArrayList<>();
 }

@@ -1,4 +1,8 @@
-POST http://localhost:8080/api/racingteams/1fddf6f8-4394-4c7f-880d-e795d8317170/drivers
+GET http://localhost:8080/api/racingteams/b33737d2-b132-49b7-9580-177b2f795782
+Accept: application/json
+
+###
+POST http://localhost:8080/api/racingteams/b33737d2-b132-49b7-9580-177b2f795782/drivers
 Content-Type: application/json
 
 {

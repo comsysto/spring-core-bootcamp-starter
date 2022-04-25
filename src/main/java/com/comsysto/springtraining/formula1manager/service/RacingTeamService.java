@@ -18,7 +18,7 @@ import java.util.List;
 public class RacingTeamService {
     private final UuidService uuidService;
     private final RacingTeamRepository racingTeamRepository;
-//    private final DriverRepository
+    private final DriverRepository driverRepository;
 
     public RacingTeam createRacingTeam(RacingTeam racingTeam) {
 //        racingTeam.setId(uuidService.generateUuid());
@@ -34,14 +34,13 @@ public class RacingTeamService {
     }
 
     public Optional<Driver> createDriver(UUID racingTeamId, Driver driver) {
-//        driver.setId(uuidService.generateUuid());
+
         var racingTeam = getRacingTeamById(racingTeamId);
         if(racingTeam.isEmpty()) {
             return Optional.empty();
         }
-//        driver.setRacingTeam(racingTeam.get());
-        racingTeam.get().getDrivers().add(driver);
-        var result = racingTeamRepository.save(racingTeam.get());
-        return Optional.of(driver);
+        driver.setRacingTeam(racingTeam.get());
+
+        return Optional.of(driverRepository.save(driver));
     }
 }
