@@ -2,6 +2,7 @@ package com.comsysto.springtraining.formula1manager.service;
 
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -33,12 +34,12 @@ class RacingTeamServiceTest {
     @Test
     void createRacingTeamShouldWork() {
         UUID uuid = new UUID(1L, 2L);
-        RacingTeam expectedTeam = new RacingTeam(uuid, "1");
+        RacingTeam expectedTeam = new RacingTeam(uuid, "1", List.of());
 
         when(uuidService.generateUuid()).thenReturn(uuid);
         when(racingTeamRepository.save(expectedTeam)).thenReturn(expectedTeam);
 
-        RacingTeam racingTeam = new RacingTeam(null, "1");
+        RacingTeam racingTeam = new RacingTeam(null, "1", List.of());
         var resultingTeam = racingTeamService.createRacingTeam(racingTeam);
         assertThat(resultingTeam).isEqualTo(expectedTeam);
     }

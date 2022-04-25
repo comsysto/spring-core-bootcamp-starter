@@ -36,8 +36,8 @@ class RacingTeamControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnRacingTeamFromService() throws Exception {
-        when(racingTeamService.createRacingTeam(any())).thenReturn(new RacingTeam(UUID.randomUUID(), "Team 1"));
+    void shouldReturnRacingTeamFromService() throws Exception {
+        when(racingTeamService.createRacingTeam(any())).thenReturn(new RacingTeam(UUID.randomUUID(), "Team 1", List.of()));
         this.mockMvc.perform(post("/api/racingteams/").contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\": \"Team 1\"}"))
                 .andExpect(status().isCreated())
@@ -45,8 +45,8 @@ class RacingTeamControllerTest {
     }
 
     @Test
-    public void shouldReturnRacingTeams() throws Exception {
-        when(racingTeamService.getAllRacingTeams()).thenReturn(List.of(new RacingTeam(UUID.randomUUID(), "Team 1")));
+    void shouldReturnRacingTeams() throws Exception {
+        when(racingTeamService.getAllRacingTeams()).thenReturn(List.of(new RacingTeam(UUID.randomUUID(), "Team 1", List.of())));
         this.mockMvc.perform(get("/api/racingteams/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Team 1")));

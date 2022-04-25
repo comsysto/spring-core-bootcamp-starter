@@ -27,13 +27,11 @@ public class RacingTeamController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public RacingTeam createRacingTeam(@RequestBody RacingTeam team) {
-        var createdTeam = racingTeamService.createRacingTeam(team);
-        return createdTeam;
+        return racingTeamService.createRacingTeam(team);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RacingTeam> getRacingTeamById(@PathVariable UUID teamId) {
-        var teamById = racingTeamService.getRacingTeamById(teamId);
-        return teamById
+    public ResponseEntity<RacingTeam> getRacingTeamById(@PathVariable UUID id) {
+        return ResponseEntity.of(racingTeamService.getRacingTeamById(id));
     }
 }
