@@ -1,5 +1,6 @@
 package com.comsysto.springtraining.formula1manager.service;
 
+import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
 import java.util.List;
@@ -21,27 +22,28 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class RacingTeamServiceTest {
-
-    @Mock
-    private UuidService uuidService;
-
     @Mock
     private RacingTeamRepository racingTeamRepository;
 
     @InjectMocks
     private RacingTeamService racingTeamService;
 
+    private final UUID uuid = UUID.randomUUID();
+
     @Test
     void createRacingTeamShouldWork() {
-        UUID uuid = new UUID(1L, 2L);
-        RacingTeam expectedTeam = new RacingTeam(uuid, "1", List.of());
+        RacingTeam inputTeam = new RacingTeam(null, "1");
+        RacingTeam expectedTeam = new RacingTeam(uuid, "1");
+        when(racingTeamRepository.save(inputTeam)).thenReturn(expectedTeam);
 
-        when(uuidService.generateUuid()).thenReturn(uuid);
-        when(racingTeamRepository.save(expectedTeam)).thenReturn(expectedTeam);
-
-        RacingTeam racingTeam = new RacingTeam(null, "1", List.of());
-        var resultingTeam = racingTeamService.createRacingTeam(racingTeam);
+        var resultingTeam = racingTeamService.createRacingTeam(inputTeam);
         assertThat(resultingTeam).isEqualTo(expectedTeam);
+    }
+
+    @Test
+    void createDriver_shouldReturnDriverWithId() {
+        var racingTeam = new RacingTeam(uuid, "Mercedes");
+        var driver = new Driver()
     }
 
 }

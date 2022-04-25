@@ -16,12 +16,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RacingTeamService {
-    private final UuidService uuidService;
     private final RacingTeamRepository racingTeamRepository;
     private final DriverRepository driverRepository;
 
     public RacingTeam createRacingTeam(RacingTeam racingTeam) {
-//        racingTeam.setId(uuidService.generateUuid());
         return racingTeamRepository.save(racingTeam);
     }
 
