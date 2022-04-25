@@ -19,9 +19,7 @@ public class RacingTeamController {
 
     @GetMapping
     public List<RacingTeam> getAllRacingTeams () {
-        List<RacingTeam> teams = new ArrayList<>();
-        teams.add(new RacingTeam(UUID.randomUUID(), "test"));
-        return teams;
+        return racingTeamService.getAllRacingTeams();
     }
 
     @PostMapping
