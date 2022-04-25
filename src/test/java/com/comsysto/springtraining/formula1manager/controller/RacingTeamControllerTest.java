@@ -30,11 +30,12 @@ class RacingTeamControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void shouldReturnRacingTeamFromService() throws Exception {
         when(racingTeamService.createRacingTeam(any())).thenReturn(new RacingTeam(UUID.randomUUID(), "Team 1"));
-        this.mockMvc.perform(post("/api/racingteams/").contentType(MediaType.APPLICATION_JSON).content("{\n" +
-                "  \"name\": \"Team 1\"\n" +
-                "}")).andExpect(status().isCreated())
-            .andExpect(content().string(containsString("Team 1")));
+        this.mockMvc.perform(post("/api/racingteams/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\": \"Team 1\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(content().string(containsString("Team 1")));
     }
 }
