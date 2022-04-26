@@ -32,9 +32,8 @@ public class RacingTeamService {
         return racingTeamRepository.findById(teamId);
     }
 
-    @Transactional()
-    public Optional<Driver> createDriver(UUID racingTeamId, Driver driver) {
 
+    public Optional<Driver> createDriver(UUID racingTeamId, Driver driver) {
         var racingTeam = getRacingTeamById(racingTeamId);
         if(racingTeam.isEmpty()) {
             return Optional.empty();
