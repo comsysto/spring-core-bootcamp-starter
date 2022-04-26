@@ -4,6 +4,8 @@ import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.repository.DriverRepository;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,7 +31,8 @@ public class Formula1managerApplication {
                     "first",
                     "last",
                     5,
-                    Instant.parse("2022-03-15T15:30:22.000Z"), resultingTeam);
+                    Instant.parse("2022-03-15T15:30:22.000+0000"), resultingTeam);
+//			ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("GMT-7000")).toInstant();
             driverRepository.save(driver1);
         };
     }
