@@ -44,7 +44,7 @@ public class Formula1managerApplication {
 
     @Bean
     @Profile("America")
-    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder, @Value("$app.timezone") String timezone) {
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder, @Value("${app.timezone}") String timezone) {
         return builder.createXmlMapper(false).timeZone(timezone).build();
     }
 }
