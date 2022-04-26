@@ -18,8 +18,7 @@ public class RacingTeamServiceProxy implements RacingTeamServiceIF {
     @Override
     public RacingTeam createRacingTeam(
             RacingTeam racingTeam) {
-        transactionTemplate.execute()
-        return racingTeamService.createRacingTeam(racingTeam);
+        return transactionTemplate.execute(param -> racingTeamService.createRacingTeam(racingTeam));
     }
 
     @Override
@@ -30,26 +29,26 @@ public class RacingTeamServiceProxy implements RacingTeamServiceIF {
     @Override
     public Optional<RacingTeam> getRacingTeamById(
             UUID teamId) {
-        return racingTeamService.getRacingTeamById(teamId);
+        return transactionTemplate.execute(param -> racingTeamService.getRacingTeamById(teamId));
     }
 
     @Override
     public Optional<Driver> createDriver(
             UUID racingTeamId,
             Driver driver) {
-        return racingTeamService.createDriver(racingTeamId, driver);
+        return transactionTemplate.execute(param -> racingTeamService.createDriver(racingTeamId, driver));
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Driver> getAllDriversByRacingTeamId(
             UUID id) {
-        return racingTeamService.getAllDriversByRacingTeamId(id);
+        return transactionTemplate.execute(param -> racingTeamService.getAllDriversByRacingTeamId(id));
     }
 
     @Override
     public List<Driver> getAllDrivers() {
-        return racingTeamService.getAllDrivers();
+        return transactionTemplate.execute(param -> racingTeamService.getAllDrivers());
     }
 
 }
