@@ -3,15 +3,14 @@ package com.comsysto.springtraining.formula1manager.controller;
 import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.service.RacingTeamService;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/racingteams")
@@ -27,7 +26,7 @@ public class RacingTeamController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RacingTeam createRacingTeam(@RequestBody RacingTeam team) {
+    public RacingTeam createRacingTeam(@RequestBody @Valid RacingTeam team) {
         return racingTeamService.createRacingTeam(team);
     }
 
@@ -36,8 +35,8 @@ public class RacingTeamController {
         return ResponseEntity.of(racingTeamService.getRacingTeamById(id));
     }
 
-    @PostMapping("/{id}/drivers"
-    )@ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/{id}/drivers")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Driver> createDriver(@PathVariable UUID id, @RequestBody @Valid Driver driver) {
         return ResponseEntity.of(racingTeamService.createDriver(id, driver));
     }
