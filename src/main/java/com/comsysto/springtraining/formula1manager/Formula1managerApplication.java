@@ -15,6 +15,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.time.Instant;
@@ -37,13 +38,14 @@ public class Formula1managerApplication {
                     "first",
                     "last",
                     5,
-                ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("America/Los_Angeles")).toInstant(), resultingTeam);
+                ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("America/Los_Angeles")), resultingTeam);
             driverRepository.save(driver1);
         };
     }
 
     @Bean
+    @Profile("America")
     public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
-        return builder.createXmlMapper(false).timeZone("America/Los_Angeles").dateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).build();
+        return builder.createXmlMapper(false).timeZone("America/Los_Angeles").build();
     }
 }
