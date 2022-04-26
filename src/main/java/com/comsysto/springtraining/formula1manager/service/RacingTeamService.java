@@ -8,13 +8,13 @@ import com.comsysto.springtraining.formula1manager.repository.RacingTeamReposito
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class RacingTeamService {
     private final RacingTeamRepository racingTeamRepository;
@@ -32,6 +32,7 @@ public class RacingTeamService {
         return racingTeamRepository.findById(teamId);
     }
 
+    @Transactional()
     public Optional<Driver> createDriver(UUID racingTeamId, Driver driver) {
 
         var racingTeam = getRacingTeamById(racingTeamId);
@@ -40,9 +41,14 @@ public class RacingTeamService {
         }
         driver.setRacingTeam(racingTeam.get());
 
-        return Optional.of(driverRepository.save(driver));
+        Optional<Driver> optDriver = Optional.of(driverRepository.save(driver));
+        if(optDriver.get().getAge() == 50) {
+            throw new RuntimeException();
+        }
+        return optDriver;
     }
 
+    @Transactional(readOnly = true)
     public List<Driver> getAllDriversByRacingTeamId(UUID id) {
         return driverRepository.findAllByRacingTeamId(id);
     }
