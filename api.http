@@ -1,14 +1,15 @@
-GET http://localhost:8080/api/racingteams/b33737d2-b132-49b7-9580-177b2f795782
+GET http://localhost:8080/api/racingteams/95f4136e-a39e-4f94-8f5b-8a457ec6b916/drivers
 Accept: application/json
 
 ###
-POST http://localhost:8080/api/racingteams/b33737d2-b132-49b7-9580-177b2f795782/drivers
+POST http://localhost:8080/api/racingteams/95f4136e-a39e-4f94-8f5b-8a457ec6b916/drivers
 Content-Type: application/json
 
 {
   "firstName": "first",
   "lastName": "last",
-  "age": 5
+  "age": 5,
+  "birthday": "2022-03-15T15:30:22.000Z"
 }
 
 ###

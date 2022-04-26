@@ -1,8 +1,12 @@
 package com.comsysto.springtraining.formula1manager.model;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +23,9 @@ public class Driver {
     private String firstName;
     private String lastName;
     private int age;
+
+    @JsonFormat(timezone = "Vancouver")
+    private Instant birthday;
 
     @ManyToOne
     private RacingTeam racingTeam;

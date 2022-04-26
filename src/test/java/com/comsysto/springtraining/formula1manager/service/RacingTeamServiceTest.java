@@ -48,9 +48,9 @@ class RacingTeamServiceTest {
     @Test
     void createDriver_shouldReturnDriverWithId() {
         var racingTeam = new RacingTeam(uuid, "Mercedes");
-        var inputDriver = new Driver(null, "First", "Last", 20, null);
-        var inputDriverWithTeam = new Driver(null, "First", "Last", 20, racingTeam);
-        var expectedDriver = new Driver(uuid, "First", "Last", 20, racingTeam);
+        var inputDriver = new Driver(null, "First", "Last", 20, null, null);
+        var inputDriverWithTeam = new Driver(null, "First", "Last", 20, null, racingTeam);
+        var expectedDriver = new Driver(uuid, "First", "Last", 20, null, racingTeam);
         when(racingTeamRepository.findById(uuid)).thenReturn(Optional.of(racingTeam));
         when(driverRepository.save(inputDriverWithTeam)).thenReturn(expectedDriver);
 
