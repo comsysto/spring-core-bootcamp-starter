@@ -6,6 +6,7 @@ import com.comsysto.springtraining.formula1manager.service.RacingTeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -49,5 +50,10 @@ public class RacingTeamController {
     @GetMapping("/drivers")
     public List<Driver> getAllDrivers() {
         return racingTeamService.getAllDrivers();
+    }
+
+    @ExceptionHandler()
+    public ResponseEntity handleException(MethodArgumentNotValidException ex) {
+        return ResponseEntity.unprocessableEntity().body(ex.getBindingResult());//unprocessableEntity().body(ex.getBindingResult());
     }
 }
