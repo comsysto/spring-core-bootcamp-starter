@@ -45,4 +45,8 @@ public class RacingTeamService {
     public List<Driver> getAllDriversByRacingTeamId(UUID id) {
         return driverRepository.findAllByRacingTeamId(id);
     }
+
+    public List<Driver> getAllDrivers() {
+        return driverRepository.findAll();
+    }
 }

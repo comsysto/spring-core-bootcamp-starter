@@ -44,4 +44,9 @@ public class RacingTeamController {
     public List<Driver> getAllDriverForRacingTeam(@PathVariable UUID id) {
         return racingTeamService.getAllDriversByRacingTeamId(id);
     }
+
+    @GetMapping("/drivers")
+    public List<Driver> getAllDrivers() {
+        return racingTeamService.getAllDrivers();
+    }
 }
