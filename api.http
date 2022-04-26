@@ -21,7 +21,7 @@ POST http://localhost:8080/api/racingteams
 Content-Type: application/json
 
 {
-  "name": "Team 1"
+  "name": ""
 }
 
 ###

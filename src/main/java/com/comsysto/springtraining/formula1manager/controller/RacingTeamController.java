@@ -52,8 +52,8 @@ public class RacingTeamController {
         return racingTeamService.getAllDrivers();
     }
 
-    @ExceptionHandler()
-    public ResponseEntity handleException(MethodArgumentNotValidException ex) {
-        return ResponseEntity.unprocessableEntity().body(ex.getBindingResult());//unprocessableEntity().body(ex.getBindingResult());
-    }
+//    @ExceptionHandler
+//    public ResponseEntity handleException(MethodArgumentNotValidException ex) {
+//        return ResponseEntity.unprocessableEntity().body(ex.getBindingResult());
+//    }
 }
