@@ -9,12 +9,12 @@ import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.plaf.multi.MultiDesktopIconUI;
-import javax.validation.Valid;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class RacingTeamService {
     private final RacingTeamRepository racingTeamRepository;
