@@ -24,7 +24,7 @@ public class Driver {
     private String lastName;
     private int age;
 
-    @JsonFormat(timezone = "America/Los_Angeles")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Los_Angeles")
     private Instant birthday;
 
     @ManyToOne

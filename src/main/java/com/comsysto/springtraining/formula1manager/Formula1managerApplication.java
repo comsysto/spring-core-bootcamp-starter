@@ -6,10 +6,13 @@ import com.comsysto.springtraining.formula1manager.repository.DriverRepository;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -37,4 +40,8 @@ public class Formula1managerApplication {
         };
     }
 
+    @Bean
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
+        return builder.createXmlMapper(false).timeZone("America/Los_Angeles").build();
+    }
 }
