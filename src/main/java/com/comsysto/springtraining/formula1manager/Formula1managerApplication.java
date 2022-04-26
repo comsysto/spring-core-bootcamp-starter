@@ -31,7 +31,7 @@ public class Formula1managerApplication {
                     "first",
                     "last",
                     5,
-                    Instant.parse("2022-03-15T15:30:22.000+0000"), resultingTeam);
+                ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("America/Los_Angeles")).toInstant(), resultingTeam);
 //			ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("GMT-7000")).toInstant();
             driverRepository.save(driver1);
         };
