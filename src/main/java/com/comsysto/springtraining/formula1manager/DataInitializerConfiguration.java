@@ -23,7 +23,7 @@ public class DataInitializerConfiguration {
             Driver driver1 = new Driver(UUID.fromString("2b674d9d-6d41-418f-ac49-560de47bd81d"),
                     "first",
                     "last",
-                    5,
+                    50,
                 ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("America/Los_Angeles")), resultingTeam);
             driverRepository.save(driver1);
         };

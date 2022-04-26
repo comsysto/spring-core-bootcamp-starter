@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.swing.plaf.multi.MultiDesktopIconUI;
+import javax.validation.Valid;
 import java.util.List;
 
 @Service

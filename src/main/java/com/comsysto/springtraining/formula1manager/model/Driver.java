@@ -1,6 +1,8 @@
 package com.comsysto.springtraining.formula1manager.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -11,6 +13,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 @Entity
 @Data
@@ -22,6 +25,9 @@ public class Driver {
     private UUID id;
     private String firstName;
     private String lastName;
+
+    @Min(18)
+    @Max(99)
     private int age;
 
     private ZonedDateTime birthday;

@@ -7,8 +7,10 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,7 +38,7 @@ public class RacingTeamController {
 
     @PostMapping("/{id}/drivers"
     )@ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Driver> createDriver(@PathVariable UUID id, @RequestBody Driver driver) {
+    public ResponseEntity<Driver> createDriver(@PathVariable UUID id, @RequestBody @Valid Driver driver) {
         return ResponseEntity.of(racingTeamService.createDriver(id, driver));
     }
 
