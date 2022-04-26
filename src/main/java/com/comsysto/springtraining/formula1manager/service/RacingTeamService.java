@@ -41,4 +41,8 @@ public class RacingTeamService {
 
         return Optional.of(driverRepository.save(driver));
     }
+
+    public List<Driver> getAllDriversByRacingTeamId(UUID id) {
+        return driverRepository.findAllByRacingTeamId(id);
+    }
 }

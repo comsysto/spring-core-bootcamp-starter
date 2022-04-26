@@ -39,4 +39,9 @@ public class RacingTeamController {
     public ResponseEntity<Driver> createDriver(@PathVariable UUID id, @RequestBody Driver driver) {
         return ResponseEntity.of(racingTeamService.createDriver(id, driver));
     }
+
+    @GetMapping("/{id}/drivers")
+    public List<Driver> getAllDriverForRacingTeam(@PathVariable UUID id) {
+        return racingTeamService.getAllDriversByRacingTeamId(id);
+    }
 }
