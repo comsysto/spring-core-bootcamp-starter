@@ -4,6 +4,9 @@ import com.comsysto.springtraining.formula1manager.model.Driver;
 import com.comsysto.springtraining.formula1manager.model.RacingTeam;
 import com.comsysto.springtraining.formula1manager.repository.DriverRepository;
 import com.comsysto.springtraining.formula1manager.repository.RacingTeamRepository;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -35,13 +38,12 @@ public class Formula1managerApplication {
                     "last",
                     5,
                 ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("America/Los_Angeles")).toInstant(), resultingTeam);
-//			ZonedDateTime.of(1990, 2, 1, 0, 0, 0, 0, ZoneId.of("GMT-7000")).toInstant();
             driverRepository.save(driver1);
         };
     }
 
     @Bean
     public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
-        return builder.createXmlMapper(false).timeZone("America/Los_Angeles").build();
+        return builder.createXmlMapper(false).timeZone("America/Los_Angeles").dateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).build();
     }
 }
