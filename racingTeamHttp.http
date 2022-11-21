@@ -1,4 +1,4 @@
-GET http://localhost:8080/helloworld
+GET http://localhost:8080/racingteam/1
 Accept: application/json
 
 

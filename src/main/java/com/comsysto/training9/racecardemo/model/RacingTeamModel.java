@@ -4,6 +4,11 @@ public class RacingTeamModel {
     private long id;
     private String name;
 
+    public RacingTeamModel(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
@@ -11,4 +16,6 @@ public class RacingTeamModel {
     public String getName() {
         return name;
     }
+
+
 }
