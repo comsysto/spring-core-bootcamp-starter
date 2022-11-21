@@ -21,7 +21,7 @@ public class RacingTeamsController {
     public ResponseEntity<RacingTeamModel> getRacingTeam(@PathVariable long id) {
         RacingTeamModel byId = racingTeamRepository.findById(id);
         if (byId == null) {
-            return ResponseEntity<RacingTeamModel>.notFound();
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(byId);
     }
