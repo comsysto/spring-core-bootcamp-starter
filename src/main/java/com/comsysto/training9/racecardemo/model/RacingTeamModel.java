@@ -4,6 +4,6 @@ import lombok.Value;
 
 @Value
 public class RacingTeamModel {
-    long id;
+    Long id;
     String name;
 }

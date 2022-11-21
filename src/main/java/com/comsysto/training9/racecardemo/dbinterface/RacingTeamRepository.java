@@ -22,7 +22,7 @@ public class RacingTeamRepository {
 
     public RacingTeamModel findById(long id) {
         for(RacingTeamModel racingTeamRepository: racingTeamModelList){
-            if(racingTeamRepository.getId()==id){
+            if(racingTeamRepository.getId().equals(id)){
                 return racingTeamRepository;
             }
         }
