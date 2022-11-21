@@ -1,7 +1,7 @@
 package com.comsysto.training9.racecardemo.controllers;
 
-import com.comsysto.training9.racecardemo.dbinterface.RacingTeamRepository;
-import com.comsysto.training9.racecardemo.model.RacingTeamModel;
+import com.comsysto.training9.racecardemo.repositories.RacingTeamRepository;
+import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 
 import java.util.List;
 

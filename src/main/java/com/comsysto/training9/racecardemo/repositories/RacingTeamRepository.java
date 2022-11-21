@@ -1,10 +1,9 @@
-package com.comsysto.training9.racecardemo.dbinterface;
+package com.comsysto.training9.racecardemo.repositories;
 
-import com.comsysto.training9.racecardemo.model.RacingTeamModel;
+import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.context.annotation.ApplicationScope;
 
 @Repository
 public class RacingTeamRepository {

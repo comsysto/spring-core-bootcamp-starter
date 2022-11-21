@@ -1,10 +1,10 @@
-package com.comsysto.training9.racecardemo.model;
+package com.comsysto.training9.racecardemo.controllers.model;
 
 import javax.persistence.Entity;
 import lombok.Value;
 
 @Value
-@Entity
+
 public class RacingTeamModel {
 
     Long id;
