@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping()
 public class RacingTeamsController {
-
   RacingTeamRepository racingTeamRepository;
+
+  public RacingTeamsController(RacingTeamRepository racingTeamRepository) {
+    this.racingTeamRepository = racingTeamRepository;
+  }
 
   @GetMapping("/racingteam/{id}")
   public RacingTeamModel getRacingTeam(@PathVariable long id){
-
-    racingTeamRepository.findAll();
-
-    return new RacingTeamModel(id, "TeamSuperb");
+    return racingTeamRepository.findById(id);
   }
 
   @PutMapping("/racingteam")
