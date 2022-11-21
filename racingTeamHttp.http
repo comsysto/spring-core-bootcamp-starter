@@ -1,11 +1,35 @@
-GET http://localhost:8080/racingteam/40000
-Accept: application/json
+PUT http://localhost:8080/racingteam
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Team1"
+}
 ###
 PUT http://localhost:8080/racingteam
 Content-Type: application/json
 
 {
-  "id": 40000,
-  "name": "jvkfdslaföd"
+  "id": 2,
+  "name": "Team2"
 }
+###
+PUT http://localhost:8080/racingteam
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Team3"
+}
+###
+GET http://localhost:8080/racingteam/40000
+Accept: application/json
+###
+
+GET http://localhost:8080/racingteam/2
+Accept: application/json
+###
+
+GET http://localhost:8080/racingteam
+Accept: application/json
 ###
