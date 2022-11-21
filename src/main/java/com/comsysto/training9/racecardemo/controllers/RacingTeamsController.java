@@ -13,7 +13,7 @@ public class RacingTeamsController {
     return new RacingTeamModel(id, "TeamSuperb");
   }
 
-  @PutMapping("/racingteam/")
+  @PutMapping("/racingteam")
   public RacingTeamModel putRacingTeam(@RequestBody RacingTeamModel racingTeamModel){
     //TODO save it somewhere
     return racingTeamModel;
