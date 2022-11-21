@@ -1,6 +1,10 @@
 GET http://localhost:8080/racingteam/1
 Accept: application/json
-
-
-
+###
+PUT http://localhost:8080/racingteam
+Content-Type: application/json
+{
+  "id": 999,
+  "name": "jvkfdslaföd"
+}
 ###

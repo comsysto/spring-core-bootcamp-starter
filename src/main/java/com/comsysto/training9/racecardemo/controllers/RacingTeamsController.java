@@ -1,10 +1,7 @@
 package com.comsysto.training9.racecardemo.controllers;
 
 import com.comsysto.training9.racecardemo.model.RacingTeamModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping()
@@ -15,5 +12,12 @@ public class RacingTeamsController {
 
     return new RacingTeamModel(id, "TeamSuperb");
   }
+
+  @PutMapping("/racingteam/")
+  public RacingTeamModel putRacingTeam(@RequestBody RacingTeamModel racingTeamModel){
+    //TODO save it somewhere
+    return racingTeamModel;
+  }
+
 
 }
