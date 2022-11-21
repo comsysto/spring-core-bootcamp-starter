@@ -5,6 +5,7 @@ import com.comsysto.training9.racecardemo.model.RacingTeamModel;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +18,12 @@ public class RacingTeamsController {
     }
 
     @GetMapping("{id}")
-    public RacingTeamModel getRacingTeam(@PathVariable long id) {
-        return racingTeamRepository.findById(id);
+    public ResponseEntity<RacingTeamModel> getRacingTeam(@PathVariable long id) {
+        RacingTeamModel byId = racingTeamRepository.findById(id);
+        if (byId == null) {
+            return ResponseEntity<RacingTeamModel>.notFound();
+        }
+        return ResponseEntity.ok(byId);
     }
 
     @GetMapping()
