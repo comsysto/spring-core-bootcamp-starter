@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import lombok.Value;
 
 @Value
-
 public class RacingTeamModel {
 
     Long id;
