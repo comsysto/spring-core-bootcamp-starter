@@ -43,6 +43,9 @@ public class RacingTeamsController {
 
     @PutMapping()
     public RacingTeamModel putRacingTeam(@RequestBody RacingTeamModel racingTeamModel) {
-        return racingTeamRepository.save(racingTeamModel);
+        var entity = new RacingTeamEntity();
+        entity.setId(racingTeamModel.getId());
+        entity.setName(racingTeamModel.getName());
+        return racingTeamRepository.save(entity);
     }
 }
