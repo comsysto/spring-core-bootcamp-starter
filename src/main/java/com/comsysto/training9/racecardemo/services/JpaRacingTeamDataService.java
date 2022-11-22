@@ -1,6 +1,5 @@
 package com.comsysto.training9.racecardemo.services;
 
-import com.comsysto.training9.racecardemo.controllers.RacingTeamsController;
 import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 import com.comsysto.training9.racecardemo.repositories.RacingTeamRealRepository;
 import java.util.List;
@@ -8,8 +7,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
-import com.sun.istack.NotNull;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
