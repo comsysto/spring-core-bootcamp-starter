@@ -10,4 +10,5 @@ public interface RacingTeamDataService {
     public RacingTeamModel save(RacingTeamModel racingTeamModel);
     public List<RacingTeamModel> findAll();
     public RacingTeamModel findById(long id);
+
 }

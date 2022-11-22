@@ -1,10 +1,8 @@
 package com.comsysto.training9.racecardemo.controllers;
 
 import com.comsysto.training9.racecardemo.repositories.RacingTeamRealRepository;
-import com.comsysto.training9.racecardemo.repositories.RacingTeamRepository;
 import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
