@@ -8,25 +8,24 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
+import com.comsysto.training9.racecardemo.services.JpaRacingTeamDataService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/racingteam")
 public class RacingTeamsController {
-    RacingTeamRealRepository racingTeamRepository;
+    JpaRacingTeamDataService racingTeamRepository;
 
-    public RacingTeamsController(RacingTeamRealRepository racingTeamRepository) {
+    public RacingTeamsController(JpaRacingTeamDataService racingTeamRepository) {
         this.racingTeamRepository = racingTeamRepository;
     }
 
     @GetMapping("{id}")
     public ResponseEntity<RacingTeamModel> getRacingTeam(@PathVariable long id) {
-        Optional<RacingTeamEntity> byId = racingTeamRepository.findById(id); //BAD!!
-        if (byId.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(toRacingTeamModel(byId.get()));
+        Optional<RacingTeamModel> byId = racingTeamRepository.findById(id)
+                .map()
+        return ;
     }
 
     private static RacingTeamModel toRacingTeamModel(RacingTeamEntity racingTeamEntity) {
@@ -35,17 +34,11 @@ public class RacingTeamsController {
 
     @GetMapping()
     public List<RacingTeamModel> getRacingTeams() {
-        return racingTeamRepository.findAll().stream()
-                .map(RacingTeamsController::toRacingTeamModel)
-                .collect(Collectors.toList());
+        return racingTeamRepository.findAll();
     }
 
     @PutMapping()
     public RacingTeamModel putRacingTeam(@RequestBody RacingTeamModel racingTeamModel) {
-        var entity = new RacingTeamEntity();
-        entity.setId(racingTeamModel.getId());
-        entity.setName(racingTeamModel.getName());
-        RacingTeamEntity savedEntity = racingTeamRepository.save(entity);
-        return toRacingTeamModel(savedEntity);
+        return racingTeamRepository.save(racingTeamModel);
     }
 }
