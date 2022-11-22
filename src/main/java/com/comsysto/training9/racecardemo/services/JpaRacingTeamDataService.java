@@ -1,10 +1,15 @@
 package com.comsysto.training9.racecardemo.services;
 
+import com.comsysto.training9.racecardemo.controllers.RacingTeamsController;
 import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 import com.comsysto.training9.racecardemo.repositories.RacingTeamRealRepository;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
+import com.sun.istack.NotNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,12 +30,15 @@ public class JpaRacingTeamDataService implements RacingTeamDataService{
 
   @Override
   public List<RacingTeamModel> findAll() {
-    return null;
+    return racingTeamRealRepository.findAll().stream()
+            .map(JpaRacingTeamDataService::toRacingTeamModel)
+            .collect(Collectors.toList());
   }
 
   @Override
-  public RacingTeamModel findById(long id) {
-    return null;
+  public Optional<RacingTeamModel> findById(long id) {
+    return racingTeamRealRepository.findById(id)
+            .map(JpaRacingTeamDataService::toRacingTeamModel);
   }
 
   private RacingTeamEntity toRacingTeamEntity(RacingTeamModel racingTeamModel) {

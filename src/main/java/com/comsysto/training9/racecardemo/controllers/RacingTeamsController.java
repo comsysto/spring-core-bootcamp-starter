@@ -22,7 +22,7 @@ public class RacingTeamsController {
 
     @GetMapping("{id}")
     public ResponseEntity<RacingTeamModel> getRacingTeam(@PathVariable long id) {
-        Optional<RacingTeamEntity> byId = racingTeamRepository.findById(id);
+        Optional<RacingTeamEntity> byId = racingTeamRepository.findById(id); //BAD!!
         if (byId.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
