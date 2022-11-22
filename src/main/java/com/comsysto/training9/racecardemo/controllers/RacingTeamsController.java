@@ -7,6 +7,7 @@ import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
 import org.springframework.http.ResponseEntity;
@@ -36,11 +37,9 @@ public class RacingTeamsController {
 
     @GetMapping()
     public List<RacingTeamModel> getRacingTeams() {
-        ArrayList<RacingTeamModel> list = new ArrayList<>();
-//        racingTeamRepository.findAll().forEach(i -> list.add(toRacingTeamModel(i)));
-//        TODO
-//        racingTeamRepository.findAll().stream().map();
-        return list;
+        return racingTeamRepository.findAll().stream()
+                .map(RacingTeamsController::toRacingTeamModel)
+                .collect(Collectors.toList());
     }
 
     @PutMapping()
