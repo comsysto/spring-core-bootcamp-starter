@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
+@Profile("jpa")
 public class JpaRacingTeamDataService implements RacingTeamDataService{
 
   private final RacingTeamRealRepository racingTeamRealRepository;
