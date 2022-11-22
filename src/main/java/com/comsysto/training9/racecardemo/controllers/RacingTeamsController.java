@@ -30,14 +30,16 @@ public class RacingTeamsController {
         return ResponseEntity.ok(toRacingTeamModel(byId.get()));
     }
 
-    private static RacingTeamModel toRacingTeamModel(RacingTeamEntity byId) {
-        return new RacingTeamModel(byId.getId(), byId.getName());
+    private static RacingTeamModel toRacingTeamModel(RacingTeamEntity racingTeamEntity) {
+        return new RacingTeamModel(racingTeamEntity.getId(), racingTeamEntity.getName());
     }
 
     @GetMapping()
     public List<RacingTeamModel> getRacingTeams() {
         ArrayList<RacingTeamModel> list = new ArrayList<>();
-        racingTeamRepository.findAll().forEach(i -> list.add(toRacingTeamModel(i)));
+//        racingTeamRepository.findAll().forEach(i -> list.add(toRacingTeamModel(i)));
+//        TODO
+//        racingTeamRepository.findAll().stream().map();
         return list;
     }
 
@@ -46,6 +48,7 @@ public class RacingTeamsController {
         var entity = new RacingTeamEntity();
         entity.setId(racingTeamModel.getId());
         entity.setName(racingTeamModel.getName());
-        return racingTeamRepository.save(entity);
+        RacingTeamEntity savedEntity = racingTeamRepository.save(entity);
+        return toRacingTeamModel(savedEntity);
     }
 }
