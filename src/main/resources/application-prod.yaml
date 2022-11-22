@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:15432/
+    username: ninja-guy # DB user
+    password: inTheSh4d0ws # DB password
