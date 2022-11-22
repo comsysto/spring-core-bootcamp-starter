@@ -7,15 +7,16 @@ import java.util.Optional;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
 import com.comsysto.training9.racecardemo.services.JpaRacingTeamDataService;
+import com.comsysto.training9.racecardemo.services.RacingTeamDataService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/racingteam")
 public class RacingTeamsController {
-    JpaRacingTeamDataService jpaRacingTeamDataService;
+    RacingTeamDataService jpaRacingTeamDataService;
 
-    public RacingTeamsController(JpaRacingTeamDataService racingTeamRepository) {
+    public RacingTeamsController(RacingTeamDataService racingTeamRepository) {
         this.jpaRacingTeamDataService = racingTeamRepository;
     }
 

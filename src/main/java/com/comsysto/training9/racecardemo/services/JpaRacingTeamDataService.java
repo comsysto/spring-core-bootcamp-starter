@@ -7,9 +7,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class JpaRacingTeamDataService implements RacingTeamDataService{
 
   private final RacingTeamRealRepository racingTeamRealRepository;
