@@ -1,34 +1,44 @@
 package com.comsysto.training9.racecardemo.controllers;
 
+import com.comsysto.training9.racecardemo.repositories.RacingTeamRealRepository;
 import com.comsysto.training9.racecardemo.repositories.RacingTeamRepository;
 import com.comsysto.training9.racecardemo.controllers.model.RacingTeamModel;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import com.comsysto.training9.racecardemo.repositories.entity.RacingTeamEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/racingteam")
 public class RacingTeamsController {
-    RacingTeamRepository racingTeamRepository;
+    RacingTeamRealRepository racingTeamRepository;
 
-    public RacingTeamsController(RacingTeamRepository racingTeamRepository) {
+    public RacingTeamsController(RacingTeamRealRepository racingTeamRepository) {
         this.racingTeamRepository = racingTeamRepository;
     }
 
     @GetMapping("{id}")
     public ResponseEntity<RacingTeamModel> getRacingTeam(@PathVariable long id) {
-        RacingTeamModel byId = racingTeamRepository.findById(id);
-        if (byId == null) {
+        Optional<RacingTeamEntity> byId = racingTeamRepository.findById(id);
+        if (byId.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(byId);
+        return ResponseEntity.ok(toRacingTeamModel(byId.get()));
+    }
+
+    private static RacingTeamModel toRacingTeamModel(RacingTeamEntity byId) {
+        return new RacingTeamModel(byId.getId(), byId.getName());
     }
 
     @GetMapping()
     public List<RacingTeamModel> getRacingTeams() {
-        return racingTeamRepository.findAll();
+        ArrayList<RacingTeamModel> list = new ArrayList<>();
+        racingTeamRepository.findAll().forEach(i -> list.add(toRacingTeamModel(i)));
+        return list;
     }
 
     @PutMapping()
